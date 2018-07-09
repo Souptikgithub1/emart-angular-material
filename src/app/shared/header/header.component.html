@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg fixed-top " color-on-scroll="500">
+  <div class="container">
+      <a class="navbar-brand" href="/">EMART</a>
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <ul class="navbar-nav">
+
+          <li class="nav-item" *ngFor="let parentCategory of categories; let i = index">
+            <div *ngIf="parentCategory.parentId == 0" ngbDropdown class="d-inline-block dropdown">
+              <a routerLink="/lp/{{parentCategory.id}}" class="nav-link" id="dropdownBasic1" ngbDropdownToggle>{{parentCategory.name}}</a>
+
+              <div  aria-labelledby="dropdownBasic1" class="dropdown-primary dropdown-content">
+                <div *ngFor="let category of categories; let i = index">
+                  <div class="col-md-3 category-menu-link-container" *ngIf="category.parentId == parentCategory.id" ><a class="category-menu-link text-uppercase" routerLink="/lp/{{category.encodedId}}">{{category.name}} <i class="fa fa-caret-right"></i></a>
+
+                    <div *ngFor="let subCategory of categories;">
+                      <a class="sub-category-menu-link" *ngIf="subCategory.parentId == category.id" routerLink="/search" [queryParams]="{catId : subCategory.id  }">{{subCategory.name}}</a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+  </div>
+</nav>
