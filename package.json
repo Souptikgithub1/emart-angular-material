@@ -4,16 +4,19 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --target=production"
   },
   "dependencies": {
     "@angular/animations": "4.3.1",
+    "@angular/cli": "1.4.10",
     "@angular/common": "4.3.1",
     "@angular/compiler": "4.3.1",
+    "@angular/compiler-cli": "4.3.1",
     "@angular/core": "4.3.1",
     "@angular/forms": "4.3.1",
     "@angular/http": "4.3.1",
@@ -23,17 +26,17 @@
     "@ng-bootstrap/ng-bootstrap": "1.0.0-beta.4",
     "bootstrap": "4.0.0-beta",
     "core-js": "^2.4.1",
+    "express": "^4.16.3",
     "jquery": "3.2.1",
     "jw-bootstrap-switch-ng2": "1.0.3",
     "ng2-nouislider": "1.6.1",
     "nouislider": "9.2.0",
     "popper.js": "^1.12.3",
     "rxjs": "^5.1.0",
+    "typescript": "2.3.3",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.4.10",
-    "@angular/compiler-cli": "4.3.1",
     "@angular/language-service": "4.3.1",
     "@types/jasmine": "2.5.45",
     "@types/node": "~6.0.60",
@@ -48,7 +51,10 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "protractor": "~5.1.2",
     "ts-node": "~3.0.4",
-    "tslint": "~5.3.2",
-    "typescript": "2.3.3"
+    "tslint": "~5.3.2"
+  },
+  "engines": {
+    "node": "8.11.1",
+    "npm": "5.6.0"
   }
 }
