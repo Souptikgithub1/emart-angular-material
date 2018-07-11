@@ -33,6 +33,7 @@ import {AddBrandComponent} from "./admin/brand/add-brand/add-brand.component";
 import {EditProductComponent} from "./admin/product/edit-product/edit-product.component";
 import {EditProductFeatureNamesComponent} from "./admin/product/edit-product-feature-names/edit-product-feature-names.component";
 import {ManageProductComponent} from "./admin/product/manage-product/manage-product.component";
+import {ProductDetailsPageComponent} from "./shop/product-details-page/product-details-page.component";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {ManageProductComponent} from "./admin/product/manage-product/manage-prod
       AddBrandComponent,
       EditProductComponent,
       EditProductFeatureNamesComponent,
-      ManageProductComponent
+      ManageProductComponent,
+      ProductDetailsPageComponent
   ],
   imports: [
     BrowserModule,

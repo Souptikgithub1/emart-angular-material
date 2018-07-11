@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg fixed-top " color-on-scroll="500">
-  <div class="container">
+  <div class="container-fluid">
       <a class="navbar-brand" href="/">EMART</a>
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="navbar-nav">
@@ -9,11 +9,11 @@
               <a routerLink="/lp/{{parentCategory.id}}" class="nav-link" id="dropdownBasic1" ngbDropdownToggle>{{parentCategory.name}}</a>
 
               <div  aria-labelledby="dropdownBasic1" class="row dropdown-primary dropdown-content">
-                <div class="category-menu-link-container" *ngFor="let category of categories; let i = index">
-                  <div class="" *ngIf="category.parentId == parentCategory.id" ><a class="dropdown-item category-menu-link text-uppercase" routerLink="/lp/{{category.encodedId}}">{{category.name}} <i class="fa fa-caret-right"></i></a>
+                <div class="category-menu-link-container" *ngFor="let vertical of categories; let i = index">
+                  <div class="" *ngIf="vertical.parentId == parentCategory.id" ><a class="dropdown-item category-menu-link text-uppercase" routerLink="/search" [queryParams]="{vertId : vertical.id  }">{{vertical.name}} <i class="fa fa-caret-right"></i></a>
 
-                    <div *ngFor="let subCategory of categories;">
-                      <a class="dropdown-item sub-category-menu-link" *ngIf="subCategory.parentId == category.id" routerLink="/search" [queryParams]="{catId : subCategory.id  }">{{subCategory.name}}</a>
+                    <div *ngFor="let leaf of categories;">
+                      <a class="dropdown-item sub-category-menu-link" *ngIf="leaf.parentId == vertical.id" routerLink="/search" [queryParams]="{catId : leaf.id  }">{{leaf.name}}</a>
                     </div>
 
                   </div>
@@ -21,6 +21,17 @@
               </div>
             </div>
           </li>
+        </ul>
+      </div>
+
+
+      <div class="collapse navbar-collapse" id="navbar-primary">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="nc-icon nc-single-02" aria-hidden="true"></i>&nbsp;Profile</a>
+          </li>
+
         </ul>
       </div>
   </div>

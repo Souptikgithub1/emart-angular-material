@@ -13,6 +13,10 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
 
+@import url('https://fonts.googleapis.com/css?family=Belleza');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+
 @import "paper-kit/variables";
 @import "paper-kit/mixins";
 
@@ -64,10 +68,10 @@
 }
 
 
-.img-responsive{
+.responsive-img{
   display: block;
   max-width: 100%;
-  height: inherit;
+  height: 100%;
   margin: 0 auto;
 }
 

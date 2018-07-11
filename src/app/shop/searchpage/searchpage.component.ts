@@ -38,7 +38,9 @@ export class SearchpageComponent implements OnInit {
   }
 
   getProducts(){
+    let vertId: number;
     let catId : number;
+
     let page : number;
     let size : number;
     this.activatedRoute.queryParams.subscribe(params => {
@@ -48,8 +50,17 @@ export class SearchpageComponent implements OnInit {
       page = (!!params.page || typeof params.page !== 'undefined') ? params.page-1 : 0;
       size = (!!params.size || typeof params.size !== 'undefined') ? params.size : 12;
 
+      let queryParams = {};
+      if(!!vertId){
+        queryParams = {'verticalId' : vertId, 'page' : page, 'size' : size};
+      }
+
+      if(!!catId){
+        queryParams = {'categoryId' : catId, 'page' : page, 'size' : size};
+      }
+
       //fetching data from api
-      this.productService.getProducts({'categoryId' : catId, 'page' : page, 'size' : size}).subscribe(response => {
+      this.productService.getProducts(queryParams).subscribe(response => {
         let products = response.products;
         products.forEach((product, index) => {
           product.sellingRate = product.sellingRate / 100;

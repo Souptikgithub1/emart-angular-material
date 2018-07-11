@@ -18,11 +18,12 @@ import {AddProductComponent} from "./admin/product/add-product/add-product.compo
 import {EditProductComponent} from "./admin/product/edit-product/edit-product.component";
 import {AddProductFeatureNamesComponent} from "./admin/product/add-product-feature-names/add-product-feature-names.component";
 import {ProductCardComponent} from "./shop/product-card/product-card.component";
+import {ProductDetailsPageComponent} from "./shop/product-details-page/product-details-page.component";
 
 const routes: Routes =[
     { path: '',             component: HomeComponent },
     { path: 'search',  component: SearchpageComponent},
-    { path: 'product/:productId',  component: ProductCardComponent},
+    { path: 'product/:productId',  component: ProductDetailsPageComponent},
 
     {
         path: 'admin',

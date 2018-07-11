@@ -75,6 +75,7 @@ export class ProductDetailsPageComponent implements OnInit {
               keyFeature += feature['name'] + ' ' + feature['value'] + ' | ';
             }
         }
+        keyFeature = keyFeature.slice(0, keyFeature.length-3);
         if(keyFeature.trim().length != 0){
           if(this.keyFeatures.length == 0){
             this.keyFeatures = [keyFeature];
