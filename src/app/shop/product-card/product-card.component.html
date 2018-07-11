@@ -1,0 +1,17 @@
+<div class="reset-padding product-card-container">
+  <button class="btn quickViewBtn" (click)="openQuickViewModal()">Quick View</button>
+  <a class="product-card-anchor action">
+    <div class="product-card" (click)="onClickProductCard()">
+      <div class="image-holder">
+        <img class="img-responsive" src="{{imgRoot}}{{product.brand.brandName}}%2F{{product.image1}}" />
+      </div>
+      <div class="product-desc">
+        <div class="product-name">{{product.productName}}</div>
+        <div class="">
+          <span class="product-price">{{product.sellingRate | currency:'INR':true:'1.0'}}</span>
+          <span class="mrp">{{product.mrp | currency:'INR':true:'1.0'}}</span>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

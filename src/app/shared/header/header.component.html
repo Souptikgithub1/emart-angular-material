@@ -8,12 +8,12 @@
             <div *ngIf="parentCategory.parentId == 0" ngbDropdown class="d-inline-block dropdown">
               <a routerLink="/lp/{{parentCategory.id}}" class="nav-link" id="dropdownBasic1" ngbDropdownToggle>{{parentCategory.name}}</a>
 
-              <div  aria-labelledby="dropdownBasic1" class="dropdown-primary dropdown-content">
-                <div *ngFor="let category of categories; let i = index">
-                  <div class="col-md-3 category-menu-link-container" *ngIf="category.parentId == parentCategory.id" ><a class="category-menu-link text-uppercase" routerLink="/lp/{{category.encodedId}}">{{category.name}} <i class="fa fa-caret-right"></i></a>
+              <div  aria-labelledby="dropdownBasic1" class="row dropdown-primary dropdown-content">
+                <div class="category-menu-link-container" *ngFor="let category of categories; let i = index">
+                  <div class="" *ngIf="category.parentId == parentCategory.id" ><a class="dropdown-item category-menu-link text-uppercase" routerLink="/lp/{{category.encodedId}}">{{category.name}} <i class="fa fa-caret-right"></i></a>
 
                     <div *ngFor="let subCategory of categories;">
-                      <a class="sub-category-menu-link" *ngIf="subCategory.parentId == category.id" routerLink="/search" [queryParams]="{catId : subCategory.id  }">{{subCategory.name}}</a>
+                      <a class="dropdown-item sub-category-menu-link" *ngIf="subCategory.parentId == category.id" routerLink="/search" [queryParams]="{catId : subCategory.id  }">{{subCategory.name}}</a>
                     </div>
 
                   </div>

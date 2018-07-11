@@ -1,0 +1,36 @@
+.search-page-container{
+  /*font-family: Roboto;*/
+  background: #fff;
+  display: flex;
+  border-bottom: 2px solid #eee;
+}
+
+
+.product-list-container{
+  border-left: 2px solid #eee;
+  /*padding: 20px 20px;*/
+  padding-bottom: 20px;
+}
+.product-list{
+  display: block;
+}
+
+
+.search-details-container{
+  display: flex;
+  border-bottom: 1px solid #dedede;
+}
+.search-details{
+  flex-grow: 1;
+  padding: 15px 0;
+  padding-left: 15px;
+}
+.search-category-name{
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.search-count{
+  font-size: 13px;
+  font-weight: 400;
+}

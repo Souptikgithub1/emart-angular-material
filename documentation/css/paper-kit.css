@@ -2088,11 +2088,10 @@ textarea.form-control {
   display: inline;
 }
 .navbar .navbar-collapse .nav-item .dropdown-item i {
-  margin: 0 10px;
   margin: 0 10px 0px 5px;
-  font-size: 18px;
+  font-size: 11px;
   position: relative;
-  top: 3px;
+  top: 0px;
 }
 .navbar .navbar-collapse.show .navbar-nav .nav-item {
   padding-right: 10px;

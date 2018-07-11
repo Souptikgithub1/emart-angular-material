@@ -1,0 +1,43 @@
+<div class="container-fluid" style="background: #fff">
+  <h2>Manage Website</h2>
+  <p>Manage categories, Products, Users from this admin panel</p>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Type</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Category</td>
+      <td>
+        <button class="btn btn-success btn-xs" (click)="navigateToAddCategory()">Add</button>
+        <button class="btn btn-primary btn-xs">Manage</button>
+      </td>
+    </tr>
+    <tr>
+      <td>Brand</td>
+      <td>
+        <button class="btn btn-success btn-xs" (click)="navigateToAddBrand()">Add</button>
+        <button class="btn btn-primary btn-xs">Manage</button>
+      </td>
+    </tr>
+    <tr>
+      <td>Product Feature Names</td>
+      <td>
+        <button class="btn btn-success btn-xs" (click)="navigateToAddProductFeatureNames()">Add</button>
+        <button class="btn btn-primary btn-xs" (click)="navigateToEditProductFeatureNames()">Manage</button>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Products</td>
+      <td>
+        <button class="btn btn-success btn-xs" (click)="navigateToAddProduct()">Add</button>
+        <button class="btn btn-primary btn-xs" (click)="navigateToManageProduct()" >Manage</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

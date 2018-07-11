@@ -1,0 +1,45 @@
+<div class="container-fluid reset-padding-right reset-padding-left">
+  <div *ngIf="products.length != 0" class="search-page-container">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-9 product-list-container reset-padding">
+      <div class="search-details-container">
+        <div class="search-details">
+          <span class="search-category-name">{{searchResultName ? searchResultName : categoryName}}</span>
+          <span class="search-count">(Showing {{startCount}} - {{endCount}} products of {{totalProductCount}})</span>
+        </div>
+      </div>
+      <div class="product-list">
+        <div *ngFor="let product of products; let i = index">
+          <app-product-card [product]="product"></app-product-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="products.length == 0" class="search-page-container">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-9 product-list-container reset-padding">
+      <div class="search-details-container">
+        <div class="search-details">
+          <span class="search-category-name"></span>
+          <span class="search-count">(Showing 0 - 0 products of 0)</span>
+        </div>
+      </div>
+      <div class="product-list">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="pageParams.length == 0" class="container text-center">
+  <ul class="pagination">
+    <li *ngFor="let pageParam of pageParams;let i = index">
+      <a (click)="navigateToPage(pageParam)">{{i+1}}</a>
+    </li>
+  </ul>
+</div>
+

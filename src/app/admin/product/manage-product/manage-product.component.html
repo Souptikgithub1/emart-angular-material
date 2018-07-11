@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th>Brand</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products">
+    <td>{{product.productName}}</td>
+    <td>{{product.brand.brandDisplayName}}</td>
+    <td>
+      <button class="btn btn-success btn-xs" (click)="editProduct(product.id)">Edit</button>
+      <button class="btn btn-danger btn-xs" (click)="deleteProduct(product.id)">Delete</button>
+      <button class="btn {{product['state'] == '1' ? 'btn-warning' : 'btn-success'}} btn-xs" (click)="toggleProductState(product)">{{ product['state'] == '1' ? 'Deactivate' : 'Activate' }}</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

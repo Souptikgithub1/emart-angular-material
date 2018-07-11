@@ -1,0 +1,26 @@
+<div class="container-fluid" style="background: #fff;padding: 20px 0">
+  <form class="form-horizontal" (ngSubmit)="addBrand()">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="brandName">Name:</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="brandName" [(ngModel)]="brandName" name="brandName">
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="brandDisplayName">Brand Display Name:</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="brandDisplayName" [(ngModel)]="brandDisplayName" name="brandDisplayName">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+
+
+  </form>
+</div>

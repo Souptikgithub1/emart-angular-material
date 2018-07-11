@@ -9,14 +9,30 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './shop/home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
-import { HomeModule } from './home/home.module';
-import {CategoryService} from "./services/category/category.service";
+import { HomeModule } from './shop/home/home.module';
+import {CategoryService} from "./shop/services/category/category.service";
 import {HttpModule} from "@angular/http";
 import { HeaderComponent } from './shared/header/header.component';
+import {BrandService} from "./shop/services/brand/brand.service";
+import {ProductService} from "./shop/services/product/product.service";
+import {ProductFeatureValueService} from "./shop/services/ProductFeatureValue/product-feature-value.service";
+import {ProductFeatureCategoryService} from "./shop/services/productFeatureCategory/product-feature-category.service";
+import {ProductFeatureNamesService} from "./shop/services/ProductFeatureNames/product-feature-names.service";
+import {SearchpageComponent} from "./shop/searchpage/searchpage.component";
+import {ProductCardComponent} from "./shop/product-card/product-card.component";
+import {HttpClientModule} from "@angular/common/http";
+import {AdminHomeComponent} from "./admin/admin-home/admin-home.component";
+import {AddCategoryComponent} from "./admin/add-category/add-category.component";
+import {AddProductComponent} from "./admin/product/add-product/add-product.component";
+import {AddProductFeatureNamesComponent} from "./admin/product/add-product-feature-names/add-product-feature-names.component";
+import {AddBrandComponent} from "./admin/brand/add-brand/add-brand.component";
+import {EditProductComponent} from "./admin/product/edit-product/edit-product.component";
+import {EditProductFeatureNamesComponent} from "./admin/product/edit-product-feature-names/edit-product-feature-names.component";
+import {ManageProductComponent} from "./admin/product/manage-product/manage-product.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +42,18 @@ import { HeaderComponent } from './shared/header/header.component';
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+      SearchpageComponent,
+      ProductCardComponent,
+
+      AdminHomeComponent,
+      AddCategoryComponent,
+      AddProductComponent,
+      AddProductFeatureNamesComponent,
+      AddBrandComponent,
+      EditProductComponent,
+      EditProductFeatureNamesComponent,
+      ManageProductComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +62,17 @@ import { HeaderComponent } from './shared/header/header.component';
     RouterModule,
     AppRoutingModule,
     HomeModule,
-    HttpModule
+    HttpModule,
+      HttpClientModule
   ],
-  providers: [CategoryService],
+  providers: [
+      ProductService,
+      CategoryService,
+      BrandService,
+      ProductFeatureCategoryService,
+      ProductFeatureNamesService,
+      ProductFeatureValueService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

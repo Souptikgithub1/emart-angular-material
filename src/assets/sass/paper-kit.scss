@@ -53,3 +53,82 @@
 @import "paper-kit/plugins/datetimepicker";
 @import "paper-kit/social-buttons";
 @import "paper-kit/examples";
+
+
+.mrp{
+  font-size: 13px;
+  text-decoration: line-through;
+  font-weight: 300;
+  color: #aaa;
+  padding: 0 7px;
+}
+
+
+.img-responsive{
+  display: block;
+  max-width: 100%;
+  height: inherit;
+  margin: 0 auto;
+}
+
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+.reset-padding{
+  padding: 0 !important;
+}
+.reset-padding-right{
+  padding-right: 0 !important;
+}
+.reset-padding-left{
+  padding-left: 0 !important;
+}
+.reset-padding-top{
+  padding-top: 0 !important;
+}
+.reset-padding-bottom{
+  padding-bottom: 0 !important;
+}
+
+.reset-margin{
+  margin: 0;
+}
+
+.carousel-inner > .item > img{
+  height: 350px;
+}
+.pagination > li > a{
+  cursor: pointer;
+}
+
+.action{
+  cursor: pointer;
+}
+
+
+/*Scrollbar css*/
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(40,40,40,0.1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.4);
+}
+/*scrollbar css*/
