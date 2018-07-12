@@ -17,7 +17,7 @@ import {ManageProductComponent} from "./admin/product/manage-product/manage-prod
 import {AddProductComponent} from "./admin/product/add-product/add-product.component";
 import {EditProductComponent} from "./admin/product/edit-product/edit-product.component";
 import {AddProductFeatureNamesComponent} from "./admin/product/add-product-feature-names/add-product-feature-names.component";
-import {ProductCardComponent} from "./shop/product-card/product-card.component";
+import {ProductCardComponent} from "./shop/shared-partials/product-card/product-card.component";
 import {ProductDetailsPageComponent} from "./shop/product-details-page/product-details-page.component";
 
 const routes: Routes =[

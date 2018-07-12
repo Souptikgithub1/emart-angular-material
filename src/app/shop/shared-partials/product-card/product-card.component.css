@@ -1,6 +1,6 @@
 .image-holder{
   width: 200px;
-  height: 200px;
+  height: 150px;
   margin: 0 auto;
 }
 .product-name{
@@ -28,6 +28,7 @@
 }
 .product-desc{
   padding: 0 30px;
+  font-family: "Helvetica", Arial, sans-serif;
 }
 .product-price{
   font-size: 14px;
@@ -55,4 +56,8 @@
 .product-card-container{
   width: 25%;
   float: left;
+}
+
+.product-card-carousel{
+  width: 16.6667% !important;
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {Product} from "../entities/product";
-import {Utils} from "../utils/utils";
+import {Product} from "../../entities/product";
+import {Utils} from "../../utils/utils";
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,6 +12,9 @@ export class ProductCardComponent implements OnInit {
 
   @Input('product')
   product : Product;
+  @Input('card-type')
+  cardType: string = '';
+
   imgRoot : string;
 
   constructor(private router: Router) {

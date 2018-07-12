@@ -23,7 +23,7 @@ import {ProductFeatureValueService} from "./shop/services/ProductFeatureValue/pr
 import {ProductFeatureCategoryService} from "./shop/services/productFeatureCategory/product-feature-category.service";
 import {ProductFeatureNamesService} from "./shop/services/ProductFeatureNames/product-feature-names.service";
 import {SearchpageComponent} from "./shop/searchpage/searchpage.component";
-import {ProductCardComponent} from "./shop/product-card/product-card.component";
+import {ProductCardComponent} from "./shop/shared-partials/product-card/product-card.component";
 import {HttpClientModule} from "@angular/common/http";
 import {AdminHomeComponent} from "./admin/admin-home/admin-home.component";
 import {AddCategoryComponent} from "./admin/add-category/add-category.component";
@@ -34,47 +34,53 @@ import {EditProductComponent} from "./admin/product/edit-product/edit-product.co
 import {EditProductFeatureNamesComponent} from "./admin/product/edit-product-feature-names/edit-product-feature-names.component";
 import {ManageProductComponent} from "./admin/product/manage-product/manage-product.component";
 import {ProductDetailsPageComponent} from "./shop/product-details-page/product-details-page.component";
+import { RegisterSigninModalComponent } from './shop/register-signin-modal/register-signin-modal.component';
+import { ProductCarouselComponent } from './shop/shared-partials/product-carousel/product-carousel.component';
+import { RvpComponent } from './shop/shared-components/rvp/rvp.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignupComponent,
-    LandingComponent,
-    ProfileComponent,
-    NavbarComponent,
-    FooterComponent,
-    HeaderComponent,
-      SearchpageComponent,
-      ProductCardComponent,
+    declarations: [
+        AppComponent,
+        SignupComponent,
+        LandingComponent,
+        ProfileComponent,
+        NavbarComponent,
+        FooterComponent,
+        HeaderComponent,
+        SearchpageComponent,
+        ProductCardComponent,
 
-      AdminHomeComponent,
-      AddCategoryComponent,
-      AddProductComponent,
-      AddProductFeatureNamesComponent,
-      AddBrandComponent,
-      EditProductComponent,
-      EditProductFeatureNamesComponent,
-      ManageProductComponent,
-      ProductDetailsPageComponent
-  ],
-  imports: [
-    BrowserModule,
-    NgbModule.forRoot(),
-    FormsModule,
-    RouterModule,
-    AppRoutingModule,
-    HomeModule,
-    HttpModule,
-      HttpClientModule
-  ],
-  providers: [
-      ProductService,
-      CategoryService,
-      BrandService,
-      ProductFeatureCategoryService,
-      ProductFeatureNamesService,
-      ProductFeatureValueService
-  ],
-  bootstrap: [AppComponent]
+        AdminHomeComponent,
+        AddCategoryComponent,
+        AddProductComponent,
+        AddProductFeatureNamesComponent,
+        AddBrandComponent,
+        EditProductComponent,
+        EditProductFeatureNamesComponent,
+        ManageProductComponent,
+        ProductDetailsPageComponent,
+        RegisterSigninModalComponent,
+        ProductCarouselComponent,
+        RvpComponent
+    ],
+    imports: [
+        BrowserModule,
+        NgbModule.forRoot(),
+        FormsModule,
+        RouterModule,
+        AppRoutingModule,
+        HomeModule,
+        HttpModule,
+        HttpClientModule
+    ],
+    providers: [
+        ProductService,
+        CategoryService,
+        BrandService,
+        ProductFeatureCategoryService,
+        ProductFeatureNamesService,
+        ProductFeatureValueService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

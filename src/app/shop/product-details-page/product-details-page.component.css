@@ -13,9 +13,9 @@
 }
 
 .product-img-holder{
-  padding: 20px 0;
+  padding: 80px 0;
   margin: 20px auto;
-  height: 480px;
+  height: 460px;
   width: 500px;
   border: 1px solid #f1f1f1;
     box-shadow: 0 0px 20px -4px rgba(0, 0, 0, 0.15);
@@ -36,15 +36,15 @@
   min-height: 400px;
 }
 .product-title{
-  font-size: 25px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 400;
 }
 .product-price-details{
   clear: both;
 }
 
 .product-selling-price{
-  font-size: 28px;
+  font-size: 23px;
   font-weight: 500;
 }
 

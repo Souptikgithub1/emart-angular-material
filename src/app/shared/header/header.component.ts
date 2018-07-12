@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from "../../shop/services/category/category.service";
+import {Utils} from "../../shop/utils/utils";
 
 @Component({
   selector: 'app-header',

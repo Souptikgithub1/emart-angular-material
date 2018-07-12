@@ -1,0 +1,21 @@
+<div class="section product-carousel-section" id="carousel">
+  <div class="">
+    <div class="product-carousel-title">{{title}}</div>
+    <div class="divider"></div>
+    <div class="row">
+      <div class="col-md-12 mr-auto ml-auto">
+        <div class="page-carousel">
+          <ngb-carousel>
+            <ng-template ngbSlide *ngFor="let productChunk of productChunkedArr">
+              <div *ngFor="let product of productChunk">
+                <app-product-card [product]="product" [card-type]="'product-card-carousel'"></app-product-card>
+              </div>
+
+            </ng-template>
+
+          </ngb-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

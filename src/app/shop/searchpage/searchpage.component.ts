@@ -62,11 +62,6 @@ export class SearchpageComponent implements OnInit {
       //fetching data from api
       this.productService.getProducts(queryParams).subscribe(response => {
         let products = response.products;
-        products.forEach((product, index) => {
-          product.sellingRate = product.sellingRate / 100;
-          product.mrp = product.mrp / 100;
-        });
-
 
         // build pagination strip
         this.noOfPages = Number(response.noOfPages);
@@ -91,7 +86,7 @@ export class SearchpageComponent implements OnInit {
 
         //console.log(this.searchResultName);
         this.products = products;
-        console.log(this.products);
+        //console.log(this.products);
 
       });
     });
