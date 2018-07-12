@@ -7,6 +7,7 @@
     line-height: 1.75;
     cursor: pointer;
     text-transform: uppercase;
+    box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
 
     &.btn-border,
     &.btn-link{
@@ -19,7 +20,8 @@
     &:hover,
     &:focus{
         outline: 0 !important;
-        @include box-shadow(none);
+        /*@include box-shadow(none);*/
+        box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.4);
     }
     &:active,
     &.active,
