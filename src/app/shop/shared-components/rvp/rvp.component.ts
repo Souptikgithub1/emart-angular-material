@@ -8,7 +8,8 @@ import {Utils} from "../../utils/utils";
 })
 export class RvpComponent implements OnInit {
 
-    public rvpProducts: object;
+    public rvpProducts: Array<object>;
+    isVisible: boolean = false;
 
     constructor() { }
 
@@ -18,6 +19,7 @@ export class RvpComponent implements OnInit {
 
     getRvp(){
         this.rvpProducts = Utils.getRvp().reverse();
+        if(this.rvpProducts.length > 0) this.isVisible = true;
     }
 
 }

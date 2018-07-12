@@ -104,7 +104,6 @@ export class ProductDetailsPageComponent implements OnInit {
     }
 
     addToRvp(){
-
         if(Utils.getPreviousUrlLocalStorage() === Utils.getCurrentUrl()){
             //setting last url (product) visited
             //to eliminate repetation of product
@@ -114,16 +113,13 @@ export class ProductDetailsPageComponent implements OnInit {
 
         //setting last url (product) visited
         //to eliminate repetation of product
-        this.setLastVisitedUrl()
-
+        this.setLastVisitedUrl();
         let rvpObj = this.productDetails;
-
         let rvpArr = [];
 
         //setting rvp to localstorage
-        if(Utils.rvpLocalStorage == null || Utils.rvpLocalStorage === 'undefined'){
+        if(Utils.getRvp().length == 0){
             rvpArr = [rvpObj];
-            Utils.setRvp(JSON.stringify(rvpArr));
         }else{
             rvpArr = Utils.getRvp();
 
@@ -131,18 +127,15 @@ export class ProductDetailsPageComponent implements OnInit {
             if(rvpArr.length == 12){
                 rvpArr.splice(0,1);
             }
-
             //eliminating repeated product by just reordering it
             for(let i = 0 ; i < rvpArr.length ; i++){
                 if(rvpArr[i]['id'].toString() === this.productId){
                     rvpArr.splice(i, 1);
                 }
             }
-
-
             rvpArr.push(rvpObj);
-            Utils.setRvp(JSON.stringify(rvpArr));
         }
+        Utils.setRvp(JSON.stringify(rvpArr));
     }
 
     setLastVisitedUrl(){

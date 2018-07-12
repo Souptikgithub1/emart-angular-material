@@ -9,7 +9,7 @@ import {Utils} from "../../utils/utils";
 export class ProductCarouselComponent implements OnInit {
 
     @Input('products')
-    products: object;
+    products: Array<object>;
     @Input('title')
     title: string = 'Carousel';
 

@@ -1,1 +1,1 @@
-<app-product-carousel [products]="rvpProducts" [title]="'Recently Viewed'"></app-product-carousel>
+<app-product-carousel *ngIf="!!isVisible" [products]="rvpProducts" [title]="'Recently Viewed'"></app-product-carousel>
