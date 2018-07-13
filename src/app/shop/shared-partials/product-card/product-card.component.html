@@ -1,9 +1,10 @@
 <div class="reset-padding product-card-container  {{cardType}}">
-  <button class="btn quickViewBtn" (click)="openQuickViewModal()">Quick View</button>
+
   <a class="product-card-anchor action" [routerLink]="'/product/'+product['id']">
     <div class="product-card" >
       <div class="image-holder">
         <img class="responsive-img" src="{{imgRoot}}{{product.brand.brandName}}%2F{{product.image1}}" />
+        <button class="btn btn-dark quickViewBtn" (click)="openQuickViewModal()">Quick View</button>
       </div>
       <div class="product-desc">
         <div class="product-name">{{product.productName}}</div>

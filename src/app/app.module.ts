@@ -37,6 +37,99 @@ import {ProductDetailsPageComponent} from "./shop/product-details-page/product-d
 import { RegisterSigninModalComponent } from './shop/register-signin-modal/register-signin-modal.component';
 import { ProductCarouselComponent } from './shop/shared-partials/product-carousel/product-carousel.component';
 import { RvpComponent } from './shop/shared-components/rvp/rvp.component';
+import {BsModalService, ComponentLoaderFactory, ModalModule, PositioningService} from "ngx-bootstrap";
+
+import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
+
+import {
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatStepperModule,
+} from '@angular/material';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { SigninComponent } from './shop/shared-components/signin/signin.component';
+import { RegisterComponent } from './shop/shared-components/register/register.component';
+import {UserService} from "./shop/services/user.service";
+
+
+/*@NgModule({
+    exports: [
+        MatAutocompleteModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatChipsModule,
+        MatStepperModule,
+        MatDatepickerModule,
+        MatDialogModule,
+        MatExpansionModule,
+        MatGridListModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatNativeDateModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+        MatProgressSpinnerModule,
+        MatRadioModule,
+        MatRippleModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatSliderModule,
+        MatSlideToggleModule,
+        MatSnackBarModule,
+        MatSortModule,
+        MatTableModule,
+        MatTabsModule,
+        MatToolbarModule,
+        MatTooltipModule
+    ],
+    declarations: []
+})
+export class MaterialModule {}*/
+
+
+let config = new AuthServiceConfig([
+    {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider("257312850825-3ovgv5f9emeqnek6u51pcpgrqhpejuv1.apps.googleusercontent.com")
+    },
+    {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider("685563628444166")
+    }
+]);
 
 @NgModule({
     declarations: [
@@ -61,9 +154,12 @@ import { RvpComponent } from './shop/shared-components/rvp/rvp.component';
         ProductDetailsPageComponent,
         RegisterSigninModalComponent,
         ProductCarouselComponent,
-        RvpComponent
+        RvpComponent,
+        SigninComponent,
+        RegisterComponent
     ],
     imports: [
+        BrowserAnimationsModule,
         BrowserModule,
         NgbModule.forRoot(),
         FormsModule,
@@ -71,15 +167,27 @@ import { RvpComponent } from './shop/shared-components/rvp/rvp.component';
         AppRoutingModule,
         HomeModule,
         HttpModule,
-        HttpClientModule
+        HttpClientModule,
+        ModalModule,
+        SocialLoginModule.initialize(config)
+    ],
+    entryComponents: [
+        RegisterSigninModalComponent
     ],
     providers: [
+        ComponentLoaderFactory,
+        PositioningService,
+
+        BsModalService,
         ProductService,
         CategoryService,
         BrandService,
         ProductFeatureCategoryService,
         ProductFeatureNamesService,
-        ProductFeatureValueService
+        ProductFeatureValueService,
+        UserService,
+
+        RegisterSigninModalComponent
     ],
     bootstrap: [AppComponent]
 })

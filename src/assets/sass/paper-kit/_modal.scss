@@ -1,26 +1,33 @@
 .modal-header {
     border-bottom: 1px solid $medium-gray;
-    padding: 20px;
+    padding: 15px 20px;
     text-align: center;
     display: block !important;
 
     &.no-border-header{
         border-bottom: 0 none !important;
         & .modal-title{
-            margin-top: 20px;
+            /*margin-top: 20px;*/
 
         }
     }
     .modal-title{
-        color: $black-color;
+        color: $default-color;
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
     }
     button.close{
         margin-top: -25px;
+        font-size: 15px;
+        padding-top: 25px;
+        padding-right: 10px;
     }
 }
 .modal-content {
     border: 0 none;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
+  border-radius: 0;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15), 0 0 1px 1px rgba(0, 0, 0, 0.1);
     .modal-header{
         h6{
@@ -29,7 +36,8 @@
     }
 }
 .modal-dialog {
-    padding-top: 60px;
+    padding-top: 20px;
+    max-width: 600px;
 }
 .modal-body{
     padding: 20px 50px;

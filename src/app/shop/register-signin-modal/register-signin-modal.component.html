@@ -1,0 +1,15 @@
+<div class="modal-header no-border-header modal-header-borderless">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <!--<i class="material-icons">clear</i>-->
+        X
+    </button>
+    <!--<div class="modal-title">Register / Sign in</div>-->
+</div>
+<div class="modal-body">
+    <div class="" style="padding: 0 20px">
+
+        <app-register *ngIf="!!isSignupVisible" (openLogin)="openLogin($event)"></app-register>
+
+        <app-signin *ngIf="!isSignupVisible" (openSignupForm)="openSignup($event)"></app-signin>
+    </div>
+</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from "../../shop/services/category/category.service";
 import {Utils} from "../../shop/utils/utils";
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import {RegisterSigninModalComponent} from "../../shop/register-signin-modal/register-signin-modal.component";
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,9 @@ export class HeaderComponent implements OnInit {
 
   categories = [];
 
-  constructor(private categoryService: CategoryService) { }
+  modalRef: BsModalRef;
+  constructor(private categoryService: CategoryService,
+              private bsModalService: BsModalService) { }
 
   ngOnInit() {
     this.getAllCategories();
@@ -22,4 +26,8 @@ export class HeaderComponent implements OnInit {
       this.categories = response;
     });
   }
+
+    openModal(){
+      this.modalRef = this.bsModalService.show(RegisterSigninModalComponent);
+    }
 }
