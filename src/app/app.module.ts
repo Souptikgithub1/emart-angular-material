@@ -39,7 +39,7 @@ import { ProductCarouselComponent } from './shop/shared-partials/product-carouse
 import { RvpComponent } from './shop/shared-components/rvp/rvp.component';
 import {BsModalService, ComponentLoaderFactory, ModalModule, PositioningService} from "ngx-bootstrap";
 
-import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
+import {SocialLoginModule, AuthServiceConfig, AuthService} from "angular4-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
 
 import {
@@ -182,6 +182,7 @@ export function getAuthServiceConfigs() {
             provide: AuthServiceConfig,
             useFactory: getAuthServiceConfigs
         },
+        AuthService,
 
         ComponentLoaderFactory,
         PositioningService,
