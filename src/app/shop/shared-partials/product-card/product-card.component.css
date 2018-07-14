@@ -37,18 +37,18 @@
 
 .quickViewBtn{
   position: absolute;
-  transform: translate(35%, -210%);
-  padding: 8px 18px;
+  transform: translate(50%, -275%);
+  padding: 5px 10px;
   color: #fff;
   border-color: #403D39;
   background: #403D39;
   font-weight: 500;
-  opacity: 0.7;
+  opacity: 0.8;
   display: none;
 }
 
 .quickViewBtn:hover{
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .product-card-container:hover .quickViewBtn{
@@ -62,4 +62,9 @@
 
 .product-card-carousel{
   width: 16.6667% !important;
+}
+
+img{
+  box-shadow: none;
+  border-radius: unset;
 }

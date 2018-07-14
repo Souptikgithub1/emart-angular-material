@@ -5,6 +5,11 @@ export class Utils {
 
     public static adminBaseRoot: string = '/admin/';
 
+
+    public static SELF_PROVIDER = 'SELF';
+    public static GOOGLE_PROVIDER = 'GOOGLE';
+    public static FB_PROVIDER = 'FACEBOOK';
+
     public static rvpKey = 'rvp';
     public static rvpLocalStorage = localStorage.getItem(Utils.rvpKey);
 

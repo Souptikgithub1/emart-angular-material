@@ -41,6 +41,9 @@
             &:hover{
                 color: $white-color;
             }
+            &:active{
+                background: #9A9A9A;
+            }
 
            img{
                margin-top: -3px;

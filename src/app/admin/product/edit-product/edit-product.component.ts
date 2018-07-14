@@ -22,6 +22,7 @@ export class EditProductComponent implements OnInit {
   productSpecifications = [];
 
 
+    productFeatureNames = [];
 
   brands = [];
   brandId: number;

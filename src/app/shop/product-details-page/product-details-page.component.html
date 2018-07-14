@@ -1,62 +1,63 @@
-<div *ngIf="productDetails!=null" class="page-container">
-  <div class="row">
-    <div class="col-md-5">
-        <div class="product-img-holder">
-          <img class="responsive-img" src="{{imgRoot}}{{productDetails.brand.brandName}}%2F{{productDetails.image1}}" (onload)="onLoad()">
-        </div>
-        <div class="action-btns">
-            <div class="row">
-                <div class="col-md-6"><button class="btn btn-danger btn-block">Buy Now</button></div>
-                <div class="col-md-6"><button class="btn btn-success btn-block">Add to cart</button></div>
+<div *ngIf="productDetails!=null" class="page-container" id="product-details-container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="product-img-holder">
+                <img class="responsive-img" src="{{imgRoot}}{{productDetails.brand.brandName}}%2F{{productDetails.image1}}" (onload)="onLoad()">
             </div>
-        </div>
-    </div>
-    <div class="col-md-7 reset-padding-left">
-      <div class="product-details-section">
-          <div class="row">
-            <div class="col-md-12">
-                  <div class="product-details">
-                    <div class="product-title">
-                      {{productDetails.productName}}
-                    </div>
-                    <div class="product-price-details">
-                      <span class="product-selling-price">{{productDetails.sellingRateParsed | currency:'INR':true:'1.0'}}</span>
-                      <span class="mrp">{{productDetails.mrpParsed | currency:'INR':true:'1.0'}}</span>
-                    </div>
-                    <div class="product-summary">
-                      <li *ngFor="let keyFeature of keyFeatures">
-                        {{keyFeature}}
-                      </li>
-                    </div>
-                  </div>
-            </div>
-          </div>
-          <div class="row" *ngIf="productSpecifications.length > 0">
-            <div class="col-md-12">
-              <div class="product-specifications">
+            <div class="action-btns">
                 <div class="row">
-                  <div *ngFor="let productSpecification of productSpecifications" class="col-md-12">
-                    <div class="product-specification-category">
-                      <div class="product-specification-category-name">
-                        {{productSpecification.name}}
-                      </div>
-                      <div class="product-sectional-features">
-                          <div *ngFor="let productFeature of productSpecification['features']" class="product-feature">
-                              <div class="product-feature-name">{{productFeature['name']}}</div>
-                              <div class="product-feature-name-value-separator"></div>
-                              <div class="product-feature-value">{{productFeature['value']}}</div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
+                    <div class="col-md-6"><button class="btn btn-danger btn-block">Buy Now</button></div>
+                    <div class="col-md-6"><button class="btn btn-success btn-block">Add to cart</button></div>
                 </div>
-              </div>
             </div>
-          </div>
-      </div>
-    </div>
+        </div>
+        <div class="col-md-7 reset-padding-left">
+            <div class="product-details-section">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-details">
+                            <div class="product-title">
+                                {{productDetails.productName}}
+                            </div>
+                            <div class="product-price-details">
+                                <span class="product-selling-price">{{productDetails.sellingRateParsed | currency:'INR':true:'1.0'}}</span>
+                                <span class="mrp">{{productDetails.mrpParsed | currency:'INR':true:'1.0'}}</span>
+                                <span class="offer-percent">{{productDetails.offerPercent}}% off</span>
+                            </div>
+                            <div class="product-summary">
+                                <li *ngFor="let keyFeature of keyFeatures">
+                                    {{keyFeature}}
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="productSpecifications.length > 0">
+                    <div class="col-md-12">
+                        <div class="product-specifications">
+                            <div class="row">
+                                <div *ngFor="let productSpecification of productSpecifications" class="col-md-12">
+                                    <div class="product-specification-category">
+                                        <div class="product-specification-category-name">
+                                            {{productSpecification.name}}
+                                        </div>
+                                        <div class="product-sectional-features">
+                                            <div *ngFor="let productFeature of productSpecification['features']" class="product-feature">
+                                                <div class="product-feature-name">{{productFeature['name']}}</div>
+                                                <div class="product-feature-name-value-separator"></div>
+                                                <div class="product-feature-value">{{productFeature['value']}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  </div>
+    </div>
 
 
     <app-rvp></app-rvp>

@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductService} from "../services/product/product.service";
 import {Utils} from "../utils/utils";
+
+declare const $: any;
 
 @Component({
     selector: 'app-product-details-page',
     templateUrl: './product-details-page.component.html',
     styleUrls: ['./product-details-page.component.css']
 })
-export class ProductDetailsPageComponent implements OnInit {
+export class ProductDetailsPageComponent implements OnInit, OnChanges {
 
     productId: string;
 
-    productDetails: object;
+    productDetails: Array<object>;
     keyFeatures = [];
     imgRoot: string;
 
@@ -26,6 +28,9 @@ export class ProductDetailsPageComponent implements OnInit {
     ngOnInit() {
         this.getProductDetails();
     }
+    ngOnChanges(){
+        $('#product-details-container').scrollTop();
+    }
 
     getProductDetails(){
         this.activatedRoute.params.subscribe(params => {
@@ -36,6 +41,8 @@ export class ProductDetailsPageComponent implements OnInit {
                 //console.log(this.productDetails);
                 this.productDetails['sellingRateParsed'] = this.productDetails['sellingRate'] / 100;
                 this.productDetails['mrpParsed'] = this.productDetails['mrp'] / 100;
+                this.productDetails['offer'] = this.productDetails['mrpParsed'] - this.productDetails['sellingRateParsed'];
+                this.productDetails['offerPercent'] = this.productDetails['offer']/100;
 
                 let productFeatureList = this.productDetails['featureList'];
 
