@@ -12,6 +12,7 @@ export class SigninComponent implements OnInit {
 
   email: string;
   password: string;
+  provider: string;
 
   constructor(private userService: UserService,
               private authService: AuthService) { }
@@ -32,14 +33,16 @@ export class SigninComponent implements OnInit {
 
         this.authService.authState.subscribe((user) => {
             console.log(user);
-        }).unsubscribe();
+            this.provider = user.provider;
+        });
     }
 
     signInWithFB(): void {
         this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
         this.authService.authState.subscribe((user) => {
             console.log(user);
-        }).unsubscribe();
+            this.provider = user.provider;
+        });
     }
 
     @Output('openSignupForm')

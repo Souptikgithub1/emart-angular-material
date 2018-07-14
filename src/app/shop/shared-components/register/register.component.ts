@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from "../../services/user.service";
+import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from "angular4-social-login";
 
 @Component({
     selector: 'app-register',
@@ -12,9 +13,10 @@ export class RegisterComponent implements OnInit {
     email: string;
     password: string;
     phone: string;
+    provider: string;
 
-
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService,
+                private authService: AuthService) { }
 
     ngOnInit() {
     }
@@ -31,6 +33,23 @@ export class RegisterComponent implements OnInit {
 
         this.userService.add(user).subscribe(response => {
 
+        });
+    }
+
+    signUpWithGoogle(): void {
+        this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+
+        this.authService.authState.subscribe((user) => {
+            console.log(user);
+            this.provider = user.provider;
+        });
+    }
+
+    signUpWithFB(): void {
+        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+        this.authService.authState.subscribe((user) => {
+            console.log(user);
+            this.provider = user.provider;
         });
     }
 

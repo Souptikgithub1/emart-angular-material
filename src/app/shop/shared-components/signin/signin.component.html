@@ -7,9 +7,6 @@
         <a class="btn btn-neutral btn-google btn-just-icon action" (click)="signInWithGoogle()">
             <i class="fa fa-google-plus"></i>
         </a>
-        <a class="btn btn-neutral btn-twitter btn-just-icon action">
-            <i class="fa fa-twitter"></i>
-        </a>
     </div>
     <div style="margin-top: 25px">
         <h6 class="title" style="margin-bottom: 0">OR</h6>
@@ -32,7 +29,7 @@
             </div>
         </form>
     </div>
-
+    {{provider}}
     <div><a class="action text-danger">Forgot password?</a></div>
     <div class="text-center" style="padding: 25px; "><a class="action text-blue" style="font-size: 14px; font-weight: 600" (click)="goToSignup()">Don't have an account? Signup</a></div>
 </div>

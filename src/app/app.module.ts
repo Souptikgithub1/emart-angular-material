@@ -120,16 +120,19 @@ import {UserService} from "./shop/services/user.service";
 export class MaterialModule {}*/
 
 
-let config = new AuthServiceConfig([
-    {
-        id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider("257312850825-3ovgv5f9emeqnek6u51pcpgrqhpejuv1.apps.googleusercontent.com")
-    },
-    {
-        id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider("685563628444166")
-    }
-]);
+export function getAuthServiceConfigs() {
+    let config = new AuthServiceConfig([
+        {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider("257312850825-3ovgv5f9emeqnek6u51pcpgrqhpejuv1.apps.googleusercontent.com")
+        },
+        {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider("685563628444166")
+        }
+    ]);
+    return config;
+}
 
 @NgModule({
     declarations: [
@@ -169,12 +172,17 @@ let config = new AuthServiceConfig([
         HttpModule,
         HttpClientModule,
         ModalModule,
-        SocialLoginModule.initialize(config)
+        /*SocialLoginModule.initialize(config)*/
     ],
     entryComponents: [
         RegisterSigninModalComponent
     ],
     providers: [
+        {
+            provide: AuthServiceConfig,
+            useFactory: getAuthServiceConfigs
+        },
+
         ComponentLoaderFactory,
         PositioningService,
 

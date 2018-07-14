@@ -1,7 +1,7 @@
-import {forEach} from "@angular/router/src/utils/collection";
-import {unescape} from "querystring";
+
 export class Utils {
-    public static emartBaseUrl : string = "http://localhost:5555/";
+    /*public static emartBaseUrl : string = "http://localhost:5555/";*/
+    public static emartBaseUrl : string = "https://emartapi.herokuapp.com/";
     public static imgRoot : string = "https://firebasestorage.googleapis.com/v0/b/emart-7fabf.appspot.com/o/";
 
     public static adminBaseRoot: string = '/admin/';
