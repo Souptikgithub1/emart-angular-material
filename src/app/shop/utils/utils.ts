@@ -1,7 +1,6 @@
 
 export class Utils {
-    /*public static emartBaseUrl : string = "http://localhost:5555/";*/
-    public static emartBaseUrl : string = "https://emartapi.herokuapp.com/";
+    public static emartBaseUrl : string = !!Utils.isLocalHost() ? "http://localhost:5555/" : "https://emartapi.herokuapp.com/";
     public static imgRoot : string = "https://firebasestorage.googleapis.com/v0/b/emart-7fabf.appspot.com/o/";
 
     public static adminBaseRoot: string = '/admin/';
@@ -30,6 +29,14 @@ export class Utils {
     public static getRvp(){
         return localStorage.getItem(this.rvpKey) == null
                 || localStorage.getItem(this.rvpKey) === undefined ? [] : JSON.parse(localStorage.getItem(this.rvpKey));
+    }
+
+    public static isLocalHost(){
+        return this.getBaseDomainName() == 'localhost' ? true : false;
+    }
+
+    public static getBaseDomainName(){
+        return this.getCurrentUrl().split('/')[2].split(':')[0];
     }
 
     public static getBaseUrl() : string{
