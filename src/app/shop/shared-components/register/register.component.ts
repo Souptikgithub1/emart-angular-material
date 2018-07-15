@@ -3,6 +3,7 @@ import {UserService} from "../../services/user.service";
 import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from "angular4-social-login";
 import {Utils} from "../../utils/utils";
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/takeUntil';
 
 
 @Component({

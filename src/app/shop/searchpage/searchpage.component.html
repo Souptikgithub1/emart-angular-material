@@ -11,7 +11,8 @@
       </div>
       <div class="product-list">
         <div *ngFor="let product of products; let i = index">
-          <app-product-card [product]="product"></app-product-card>
+          <app-product-card *ngIf="!product['featureList']" [product]="product"></app-product-card>
+          <app-product-card-detailed *ngIf="!!product['featureList']" [product]="product"></app-product-card-detailed>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, RequestOptions} from "@angular/http";
+import {Http, RequestOptions, ResponseContentType} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {Utils} from "../../utils/utils";
 import {HttpClient} from "@angular/common/http";
@@ -42,6 +42,6 @@ export class ProductService {
 
   getSearchedProducts(params : object){
     const options = new RequestOptions({params: params});
-    return this.httpClient.get(this.searchEndpoint + '?categoryId=' + params['categoryId']);
+    return this.http.get(this.endpoint + '?categoryId=' + params['categoryId']).map(res => res.json());
   }
 }

@@ -79,6 +79,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SigninComponent } from './shop/shared-components/signin/signin.component';
 import { RegisterComponent } from './shop/shared-components/register/register.component';
 import {UserService} from "./shop/services/user.service";
+import { ProductCardDetailedComponent } from './shop/shared-partials/product-card-detailed/product-card-detailed.component';
 
 
 /*@NgModule({
@@ -159,7 +160,8 @@ export function getAuthServiceConfigs() {
         ProductCarouselComponent,
         RvpComponent,
         SigninComponent,
-        RegisterComponent
+        RegisterComponent,
+        ProductCardDetailedComponent
     ],
     imports: [
         BrowserAnimationsModule,

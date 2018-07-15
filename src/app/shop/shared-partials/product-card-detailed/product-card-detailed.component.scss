@@ -1,0 +1,41 @@
+.product-card-anchor{
+  color: #1d1e1f;
+  font-family: roboto;
+}
+.product-card-anchor:hover .product-name{
+  color: #2874f0;
+}
+.product-card{
+  padding: 25px 0px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+
+.image-holder{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.product-desc{
+
+}
+.product-name{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.product-highlights{
+  padding-top: 20px;
+  color: #66615b;
+  font-weight: 400;
+}
+
+.product-price{
+  font-size: 25px;
+  font-weight: 500;
+}
+.mrp{
+  font-size: 17px;
+  padding: 0;
+}

@@ -17,6 +17,7 @@ export class SearchpageComponent implements OnInit {
   isModal: boolean = false;
 
    products: Product[] = [];
+
    startCount: string;
    endCount: string;
    noOfPages: number;
@@ -34,7 +35,7 @@ export class SearchpageComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
-    this.getSearchedProducts();
+    //this.getSearchedProducts();
   }
 
   getProducts(){
@@ -61,8 +62,8 @@ export class SearchpageComponent implements OnInit {
 
       //fetching data from api
       this.productService.getProducts(queryParams).subscribe(response => {
-        let products = response.products;
-
+          console.log(response.productDetailsBeans);
+        this.products = response.productDetailsBeans;
         // build pagination strip
         this.noOfPages = Number(response.noOfPages);
         this.pageParams = [];
@@ -76,17 +77,13 @@ export class SearchpageComponent implements OnInit {
         }
         // build pagination strip
 
-        if(products.length > 0){
+        if(this.products.length > 0){
           this.startCount = response.startCount;
           this.endCount = response.endCount;
           this.totalProductCount = response.totalProductCount;
-          this.categoryName = (!!params.catId && params.catId !== 'undefined') ? response.products[0].category.name : 'All Products';
-          this.searchResultName = (!!params.catId && params.catId !== 'undefined') ? response.products[0].category.searchResultName : 'All Products';
+          this.categoryName = (!!params.catId && params.catId !== 'undefined') ? this.products[0].category.name : 'All Products';
+          this.searchResultName = (!!params.catId && params.catId !== 'undefined') ? this.products[0].category.searchResultName : 'All Products';
         }
-
-        //console.log(this.searchResultName);
-        this.products = products;
-        //console.log(this.products);
 
       });
     });
