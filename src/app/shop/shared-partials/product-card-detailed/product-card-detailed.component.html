@@ -18,7 +18,7 @@
             <div class="col-md-3">
                 <div class="">
                     <div class="product-price">{{product.sellingRate/100 | currency:'INR':true:'1.0'}}</div>
-                    <div class="mrp">{{product.mrp/100 | currency:'INR':true:'1.0'}}</div>
+                    <div *ngIf="product.mrp != 0" class="mrp">{{product.mrp/100 | currency:'INR':true:'1.0'}}</div>
                 </div>
             </div>
 

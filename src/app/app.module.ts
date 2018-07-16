@@ -80,6 +80,10 @@ import { SigninComponent } from './shop/shared-components/signin/signin.componen
 import { RegisterComponent } from './shop/shared-components/register/register.component';
 import {UserService} from "./shop/services/user.service";
 import { ProductCardDetailedComponent } from './shop/shared-partials/product-card-detailed/product-card-detailed.component';
+import {ComponentsModule} from "./components/components.module";
+import { HomepageComponent } from './shop/homepage/homepage.component';
+import { BannerComponent } from './shop/shared-components/banner/banner.component';
+import {BannerService} from "./shop/services/banner.service";
 
 
 /*@NgModule({
@@ -161,7 +165,9 @@ export function getAuthServiceConfigs() {
         RvpComponent,
         SigninComponent,
         RegisterComponent,
-        ProductCardDetailedComponent
+        ProductCardDetailedComponent,
+        HomepageComponent,
+        BannerComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -174,6 +180,7 @@ export function getAuthServiceConfigs() {
         HttpModule,
         HttpClientModule,
         ModalModule,
+        ComponentsModule,
         /*SocialLoginModule.initialize(config)*/
     ],
     entryComponents: [
@@ -197,6 +204,7 @@ export function getAuthServiceConfigs() {
         ProductFeatureNamesService,
         ProductFeatureValueService,
         UserService,
+        BannerService,
 
         RegisterSigninModalComponent
     ],

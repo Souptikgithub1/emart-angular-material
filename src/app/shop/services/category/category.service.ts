@@ -20,6 +20,10 @@ export class CategoryService {
     return this.http.get(this.endpoint + 'getAll').map(res => res.json());
   }
 
+  getCategory(id: string){
+    return this.http.get(this.endpoint + 'get/' + id).map(res => res.json());
+  }
+
   getVerticals(){
     return this.http.get(this.endpoint + 'getAllVerticals').map(res => res.json());
   }

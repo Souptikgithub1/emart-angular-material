@@ -19,9 +19,10 @@ import {EditProductComponent} from "./admin/product/edit-product/edit-product.co
 import {AddProductFeatureNamesComponent} from "./admin/product/add-product-feature-names/add-product-feature-names.component";
 import {ProductCardComponent} from "./shop/shared-partials/product-card/product-card.component";
 import {ProductDetailsPageComponent} from "./shop/product-details-page/product-details-page.component";
+import {HomepageComponent} from "./shop/homepage/homepage.component";
 
 const routes: Routes =[
-    { path: '',             component: HomeComponent },
+    { path: '',             component: HomepageComponent },
     { path: 'search',  component: SearchpageComponent},
     { path: 'product/:productId',  component: ProductDetailsPageComponent},
 

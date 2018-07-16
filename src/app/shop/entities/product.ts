@@ -14,4 +14,5 @@ export interface Product {
 
   brand : Brand;
   category : Category;
+  verticalId: number;
 }

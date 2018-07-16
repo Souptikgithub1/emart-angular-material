@@ -14,8 +14,7 @@ import { ComponentsModule } from '../../components/components.module';
         CommonModule,
         BrowserModule,
         FormsModule,
-        RouterModule,
-        ComponentsModule
+        RouterModule
     ],
     declarations: [ HomeComponent ],
     exports:[ HomeComponent ],

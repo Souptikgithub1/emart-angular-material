@@ -76,12 +76,16 @@
 .carousel-inner{
     .carousel-item{
         img{
-            border-radius: $border-radius-extreme;
+            /*border-radius: $border-radius-extreme;*/
             box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
             height: 400px;
             width: 100%;
         }
     }
+}
+
+.carousel-item{
+    transition:  opacity 1.2s ease-in-out, visibility 1.2s;
 }
 
 .carousel-indicators{
