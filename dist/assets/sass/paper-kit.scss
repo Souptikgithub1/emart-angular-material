@@ -1,0 +1,150 @@
+/*!
+
+ =========================================================
+ * Paper Kit 2 Angular - v1.0.0
+ =========================================================
+
+ * Product Page: http://www.creative-tim.com/product/paper-kit-2-angular
+ * Copyright 2017 Creative Tim (http://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/timcreative/paper-kit/blob/master/LICENSE.md)
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ */
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Belleza');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+
+@import "paper-kit/variables";
+@import "paper-kit/mixins";
+
+@import "paper-kit/typography";
+
+// Core CSS
+@import "paper-kit/misc";
+@import "paper-kit/buttons";
+@import "paper-kit/inputs";
+@import "paper-kit/progress-bars";
+@import "paper-kit/sliders";
+@import "paper-kit/alerts";
+@import "paper-kit/labels";
+@import "paper-kit/tooltips-and-popovers";
+@import "paper-kit/sections";
+@import "paper-kit/checkbox-radio";
+@import "paper-kit/navbars";
+@import "paper-kit/images";
+@import "paper-kit/cards";
+@import "paper-kit/footers";
+@import "paper-kit/register-signin";
+@import "paper-kit/pagination";
+
+// Bootstrap Switch
+@import "paper-kit/bootstrap-switch";
+
+// Fancy Stuff
+@import "paper-kit/dropdown";
+//
+// icons
+@import "paper-kit/icons";
+//
+@import "paper-kit/tabs-navs-pagination";
+@import "paper-kit/collapse";
+@import "paper-kit/carousel";
+@import "paper-kit/modal";
+//
+@import "paper-kit/responsive";
+@import "paper-kit/plugins/datetimepicker";
+@import "paper-kit/social-buttons";
+@import "paper-kit/examples";
+
+
+.mrp{
+  font-size: 13px;
+  text-decoration: line-through;
+  font-weight: 300;
+  color: #aaa;
+  padding: 0 7px;
+}
+
+.offer-percent{
+  font-size: 16px;
+  font-weight: 500;
+  color: #28a745;
+}
+
+
+.responsive-img{
+  display: block !important;
+  width: unset !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  margin: 0 auto !important;
+}
+
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+.reset-padding{
+  padding: 0 !important;
+}
+.reset-padding-right{
+  padding-right: 0 !important;
+}
+.reset-padding-left{
+  padding-left: 0 !important;
+}
+.reset-padding-top{
+  padding-top: 0 !important;
+}
+.reset-padding-bottom{
+  padding-bottom: 0 !important;
+}
+
+.reset-margin{
+  margin: 0;
+}
+
+
+
+/*.carousel-inner > .item > img{
+  height: 350px;
+}
+.pagination > li > a{
+  cursor: pointer;
+}*/
+
+.action{
+  cursor: pointer;
+}
+
+
+/*Scrollbar css*/
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(40,40,40,0.1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.4);
+}
+/*scrollbar css*/
