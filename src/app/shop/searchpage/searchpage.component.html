@@ -1,18 +1,27 @@
 <div class="container-fluid reset-padding-right reset-padding-left">
-    <div *ngIf="products.length != 0" class="search-page-container">
+    <div  class="search-page-container">
         <div class="col-md-3"></div>
 
         <div class="col-md-9 product-list-container reset-padding">
-            <div class="search-details-container">
-                <div class="search-details">
-                    <span class="search-category-name">{{searchResultName ? searchResultName : categoryName}}</span>
-                    <span class="search-count">(Showing {{startCount}} - {{endCount}} products of {{totalProductCount}})</span>
-                </div>
+            <div *ngIf="products.length == 0" class="skeleton-loader-detailed-card">
+                <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
+                <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
+                <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
+                <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
             </div>
-            <div class="product-list">
-                <div *ngFor="let product of products; let i = index">
-                    <app-product-card *ngIf="!isproductCardDetailed()" [product]="product"></app-product-card>
-                    <app-product-card-detailed *ngIf="!!isproductCardDetailed()" [product]="product"></app-product-card-detailed>
+
+            <div *ngIf="products.length > 0">
+                <div class="search-details-container">
+                    <div class="search-details">
+                        <span class="search-category-name">{{searchResultName ? searchResultName : categoryName}}</span>
+                        <span class="search-count">(Showing {{startCount}} - {{endCount}} products of {{totalProductCount}})</span>
+                    </div>
+                </div>
+                <div class="product-list">
+                    <div  *ngFor="let product of products; let i = index">
+                        <app-product-card *ngIf="!isproductCardDetailed()" [product]="product"></app-product-card>
+                        <app-product-card-detailed *ngIf="!!isproductCardDetailed()" [product]="product"></app-product-card-detailed>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,5 +57,4 @@
         </div>
     </div>
 </div>
-
 <app-rvp></app-rvp>

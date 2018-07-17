@@ -84,6 +84,7 @@ import {ComponentsModule} from "./components/components.module";
 import { HomepageComponent } from './shop/homepage/homepage.component';
 import { BannerComponent } from './shop/shared-components/banner/banner.component';
 import {BannerService} from "./shop/services/banner.service";
+import { ProductDetailedCardSkeletonComponent } from './shop/shared-partials/product-detailed-card-skeleton/product-detailed-card-skeleton.component';
 
 
 /*@NgModule({
@@ -167,7 +168,8 @@ export function getAuthServiceConfigs() {
         RegisterComponent,
         ProductCardDetailedComponent,
         HomepageComponent,
-        BannerComponent
+        BannerComponent,
+        ProductDetailedCardSkeletonComponent
     ],
     imports: [
         BrowserAnimationsModule,

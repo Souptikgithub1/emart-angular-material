@@ -41,6 +41,8 @@
 @import "paper-kit/footers";
 @import "paper-kit/register-signin";
 @import "paper-kit/pagination";
+@import "paper-kit/loader";
+@import "paper-kit/skeleton";
 
 // Bootstrap Switch
 @import "paper-kit/bootstrap-switch";
@@ -124,6 +126,11 @@
   cursor: pointer;
 }
 
+
+.dropdown-item:active{
+  color: #007bff !important;
+  background: $background-lighter-grey !important;
+}
 
 /*Scrollbar css*/
 

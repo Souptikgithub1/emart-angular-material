@@ -14,6 +14,8 @@ declare var $: any;
 })
 export class SearchpageComponent implements OnInit {
 
+    isLoaderVisible: boolean = true;
+
     public imgRoot: string;
     isModal: boolean = false;
 
@@ -43,6 +45,7 @@ export class SearchpageComponent implements OnInit {
     }
 
     getProducts(){
+
         let catId;
         let vertId;
 
@@ -67,6 +70,7 @@ export class SearchpageComponent implements OnInit {
             };
 
             //fetching data from api
+            this.products = [];
             this.productService.getProducts(queryParams).subscribe(response => {
                 //console.log(response);
                 this.products = response.productDetailsBeans;
@@ -102,7 +106,6 @@ export class SearchpageComponent implements OnInit {
                     }
 
                 }
-
             });
         });
     }
