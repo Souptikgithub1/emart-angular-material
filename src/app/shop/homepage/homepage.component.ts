@@ -8,6 +8,8 @@ import {ProductService} from "../services/product/product.service";
 })
 export class HomepageComponent implements OnInit {
 
+  isloaderVisible: boolean = true;
+
   isMobilesLessThan10kVisible: boolean = false
   mobilesLessThan10k: Array<object>;
 
@@ -26,6 +28,8 @@ export class HomepageComponent implements OnInit {
     this.productService.getProducts(queryParams).subscribe(products => {
       this.mobilesLessThan10k = products.productDetailsBeans;
       this.isMobilesLessThan10kVisible = true;
+
+      this.isloaderVisible = false
     });
   }
 
