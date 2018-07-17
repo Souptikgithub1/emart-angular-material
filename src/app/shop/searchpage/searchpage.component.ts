@@ -63,8 +63,8 @@ export class SearchpageComponent implements OnInit {
             size = (!!params.size || typeof params.size !== 'undefined') ? params.size : 12;
 
             let queryParams = {
-                'categoryId' : !!catId ? catId : '',
-                'verticalId' : !!vertId ? vertId : '',
+                'categoryId' : !!catId ? catId : 0,
+                'verticalId' : !!vertId ? vertId : 0,
                 'page' : page,
                 'size' : size
             };

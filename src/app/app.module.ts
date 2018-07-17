@@ -186,7 +186,7 @@ export function getAuthServiceConfigs() {
         HttpModule,
         HttpClientModule,
         ModalModule,
-        ComponentsModule,
+        ComponentsModule
         /*SocialLoginModule.initialize(config)*/
     ],
     entryComponents: [
