@@ -8,6 +8,7 @@ import {BannerService} from "../../services/banner.service";
 })
 export class BannerComponent implements OnInit {
 
+    isLoaderVisible: boolean = true;
     banners: Array<object>;
 
     constructor(private bannerService: BannerService) { }
@@ -19,6 +20,7 @@ export class BannerComponent implements OnInit {
     getBanners(){
       this.bannerService.getAllBanners().subscribe(banners => {
         this.banners = banners;
+        this.isLoaderVisible = false;
       });
     }
 }

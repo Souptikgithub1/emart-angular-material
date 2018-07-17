@@ -1,4 +1,5 @@
-<div class="section" id="carousel">
+<app-banner-skeleton *ngIf="!!isLoaderVisible"></app-banner-skeleton>
+<div *ngIf="!isLoaderVisible" class="section" id="carousel">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 reset-padding mr-auto ml-auto">
