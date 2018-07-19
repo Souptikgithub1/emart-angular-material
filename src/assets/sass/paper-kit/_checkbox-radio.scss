@@ -9,8 +9,10 @@
         display: inline-block;
         position: relative;
         cursor: pointer;
-        padding-left: 35px;
-        line-height: 26px;
+        font-size: 10px;
+        font-weight: 600;
+        /*padding-left: 35px;
+        line-height: 26px;*/
         margin-bottom: 0;
     }
 
@@ -19,13 +21,13 @@
         content: " ";
         display: inline-block;
         position: absolute;
-        width: 24px;
-        height: 24px;
+        width: 15px;
+        height: 15px;
         left: 0;
         cursor: pointer;
-        border-radius: 3px;
+        /*border-radius: 3px;*/
         top: 0;
-        background-color: #AAA7A4;
+        background-color: #f1f1f1;
         border: 1px solid $light-gray;
         @include transition-opacity(0.3s, linear);
     }
@@ -34,7 +36,7 @@
         content: "\f00c";
         top: 0px;
         text-align: center;
-        font-size: 14px;
+        font-size: 10px;
         opacity: 0;
         color: #EFE;
         border: 0;
@@ -106,7 +108,7 @@
 }
 
 .form-check-label input[type="checkbox"]:checked + .form-check-sign:before{
-    background-color: #66615B;
+    background-color: $success-color;
 }
 
 .form-check-radio input[type="radio"] + .form-check-sign:after,

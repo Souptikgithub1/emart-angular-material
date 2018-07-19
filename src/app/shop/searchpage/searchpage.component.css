@@ -37,6 +37,19 @@
 }
 
 
+.filters{
+
+}
+
+.filter-body{
+
+}
+
+.filter-header{
+  padding-left: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
 
 body {
   margin: 0;
