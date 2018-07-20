@@ -60,6 +60,8 @@ export class SearchpageComponent implements OnInit {
         let size : number;
         this.activatedRoute.queryParams.subscribe(params => {
 
+            this.isLoaderVisible = true;
+
             //fetching url params
             //console.log(params.catId);
             //console.log(params.vertId);
