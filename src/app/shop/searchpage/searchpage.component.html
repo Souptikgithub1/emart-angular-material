@@ -20,12 +20,10 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
 
         <div class="col-md-10 product-list-container reset-padding">
-            <div *ngIf="products.length == 0" class="skeleton-loader-detailed-card">
+            <div *ngIf="!!isLoaderVisible" class="skeleton-loader-detailed-card">
                 <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
                 <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
                 <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
@@ -46,21 +44,10 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div *ngIf="products.length == 0" class="search-page-container">
-        <div class="col-md-3"></div>
-
-        <div class="col-md-9 product-list-container reset-padding">
-            <div class="search-details-container">
-                <div class="search-details">
-                    <span class="search-category-name"></span>
-                    <span class="search-count">(Showing 0 - 0 products of 0)</span>
+            <div *ngIf="!isLoaderVisible && products.length == 0" class="zero-level-product-list-holder">
+                <div class="zero-level-product-list">
+                    No Item Found
                 </div>
-            </div>
-            <div class="product-list">
-
             </div>
         </div>
     </div>

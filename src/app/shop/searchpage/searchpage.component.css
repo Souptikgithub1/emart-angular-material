@@ -64,3 +64,12 @@
 body {
   margin: 0;
 }
+
+.zero-level-product-list-holder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  font-size: 25px;
+  font-weight: 500;
+}

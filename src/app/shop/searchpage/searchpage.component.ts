@@ -122,6 +122,7 @@ export class SearchpageComponent implements OnInit {
                     //fetch filterable features
                     this.getFilterableFeatures();
                 }
+                this.isLoaderVisible = false;
             });
         });
     }
