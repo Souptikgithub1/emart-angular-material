@@ -1,17 +1,20 @@
 <div class="container-fluid reset-padding-right reset-padding-left">
     <div  class="search-page-container">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="row">
                 <div class="col-md-12">
-                    <div *ngFor="let filter of filters; let i = index" class="filters">
-                        <div class="filter-header">{{filter['prodFeatureName']}}</div>
-                        <div class="filter-body">
-                            <div *ngFor="let value of filter['values']; let j = index" class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" [checked]="value['checked']"  (change)="onFilterChange($event, filter['id'], value.value, i, j)">
-                                    {{value.text}}
-                                    <span class="form-check-sign"></span>
-                                </label>
+                    <div class="filters">
+                        <div class="filters-header">Filters</div>
+                        <div *ngFor="let filter of filters; let i = index" class="">
+                            <div class="filter-header">{{filter['prodFeatureName']}}</div>
+                            <div class="filter-body">
+                                <div *ngFor="let value of filter['values']; let j = index" class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" [checked]="value['checked']"  (change)="onFilterChange($event, filter['id'], value.value, i, j)">
+                                        {{value.text}}
+                                        <span class="form-check-sign"></span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -21,7 +24,7 @@
 
         </div>
 
-        <div class="col-md-9 product-list-container reset-padding">
+        <div class="col-md-10 product-list-container reset-padding">
             <div *ngIf="products.length == 0" class="skeleton-loader-detailed-card">
                 <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
                 <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>

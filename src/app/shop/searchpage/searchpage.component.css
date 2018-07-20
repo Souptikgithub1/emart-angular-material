@@ -37,6 +37,14 @@
 }
 
 
+.filters-header{
+  padding: 10px;
+  padding-left: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 .filters{
 
 }
@@ -47,8 +55,10 @@
 
 .filter-header{
   padding-left: 20px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
+  padding-bottom: 5px;
+  text-transform: uppercase;
 }
 
 body {
