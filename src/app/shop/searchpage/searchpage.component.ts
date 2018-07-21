@@ -202,19 +202,29 @@ export class SearchpageComponent implements OnInit {
                 }
             }
 
-            for(let filter of this.filters){
-                for(let activeFilter of this.activeFilters){
-                    if(filter['id'] == activeFilter['featureId']){
-                        for(let filterValue of filter['values']){
-                            for(let activeFilterValue of activeFilter['filterValues']){
-                                if(filterValue['value'] === activeFilterValue){
-                                    filterValue['checked'] = true;
+
+            if(this.activeFilters.length > 0){
+                for(let filter of this.filters){
+                    for(let activeFilter of this.activeFilters){
+                        if(filter['id'] == activeFilter['featureId']){
+                            for(let filterValue of filter['values']){
+                                for(let activeFilterValue of activeFilter['filterValues']){
+                                    if(filterValue['value'] === activeFilterValue){
+                                        filterValue['checked'] = true;
+                                    }
                                 }
                             }
                         }
                     }
                 }
+            }else {
+                for (let filter of this.filters){
+                    for (let filterValue of filter['values']){
+                        filterValue['checked'] = false;
+                    }
+                }
             }
+
 
             //console.log(this.filters);
 
