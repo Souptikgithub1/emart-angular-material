@@ -2,7 +2,7 @@
     <div class="product-card">
         <div class="row reset-margin">
 
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="image-holder">
                     <img class="responsive-img" src="{{imgRoot}}{{product.brand.brandName}}%2F{{product.image1}}" />
                 </div>
@@ -15,7 +15,7 @@
                     <li *ngFor="let feature of product['featureList']" >{{feature['name']}} {{feature['value']}}</li>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="">
                     <div class="product-price">{{product.sellingRate/100 | currency:'INR':true:'1.0'}}</div>
                     <div *ngIf="product.mrp != 0" class="mrp">{{product.mrp/100 | currency:'INR':true:'1.0'}}</div>

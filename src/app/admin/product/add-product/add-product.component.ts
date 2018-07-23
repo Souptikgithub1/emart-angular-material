@@ -99,30 +99,10 @@ export class AddProductComponent implements OnInit {
     this.productService.add(product).subscribe(productrResponse => {
       console.log(productrResponse);
 
-
-      this.productFeatureValues = [];
-      let idCount = -1;
-      for (let feature of this.productFeatureNames){
-
-        //feature value entry to be inserted in the db
-        const featureValueEntry = {
-          id: idCount--,
-          prodFeatureId: feature.id,
-          productId: productrResponse['id'],
-          prodFeatureValue: (feature.value!=undefined && feature.value!=null) ? feature.value : ' ',
-        };
-
-        if(this.productFeatureValues.length < 1){
-          this.productFeatureValues = [featureValueEntry];
-        }else{
-          this.productFeatureValues.push(featureValueEntry);
-        }
-      }
-
-      // saving product features
-      this.productFeatureValueService.addAll(this.productFeatureValues).subscribe(response => {
+      this.productFeatureValueService.addProductFeatureValues(this.productFeatureNames, productrResponse).subscribe(response => {
         console.log(response);
       });
+
 
       this.router.navigate(['/admin']);
 

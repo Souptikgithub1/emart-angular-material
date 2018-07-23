@@ -1,20 +1,57 @@
-<table class="table">
-  <thead>
-  <tr>
-    <th>Product</th>
-    <th>Brand</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let product of products">
-    <td>{{product.productName}}</td>
-    <td>{{product.brand.brandDisplayName}}</td>
-    <td>
-      <button class="btn btn-success btn-xs" (click)="editProduct(product.id)">Edit</button>
-      <button class="btn btn-danger btn-xs" (click)="deleteProduct(product.id)">Delete</button>
-      <button class="btn {{product['state'] == '1' ? 'btn-warning' : 'btn-success'}} btn-xs" (click)="toggleProductState(product)">{{ product['state'] == '1' ? 'Deactivate' : 'Activate' }}</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<div class="container-fluid">
+  <form class="form-horizontal" (ngSubmit)="getAllProducts()">
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="brandId">Vertical:</label>
+      <div class="col-sm-5">
+        <select name="verticalId" id="verticalId" [(ngModel)]="verticalId" class="form-control">
+          <option value="" disabled>--Select--</option>
+          <option value="0"></option>
+          <option *ngFor="let vertical of verticals; let i = index" [value]="vertical['id']">
+            {{vertical.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="brandId">Brand:</label>
+      <div class="col-sm-5">
+        <select name="brandId" id="brandId" [(ngModel)]="brandId" class="form-control">
+          <option value="" disabled>--Select--</option>
+          <option *ngFor="let brand of brands; let i = index" [value]="brand['id']">
+            {{brand.brandName}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Product</th>
+      <th>Brand</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.productName}}</td>
+      <td>{{product.brand.brandDisplayName}}</td>
+      <td>
+        <button class="btn btn-success btn-xs" (click)="editProduct(product.id)">Edit</button>
+        <button class="btn btn-danger btn-xs" (click)="deleteProduct(product.id)">Delete</button>
+        <button class="btn {{product['state'] == '1' ? 'btn-warning' : 'btn-success'}} btn-xs" (click)="toggleProductState(product)">{{ product['state'] == '1' ? 'Deactivate' : 'Activate' }}</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

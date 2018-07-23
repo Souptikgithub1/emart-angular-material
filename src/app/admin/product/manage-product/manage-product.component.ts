@@ -2,55 +2,86 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../../../shop/services/product/product.service";
 import {Router} from "@angular/router";
 import {Utils} from "../../../shop/utils/utils";
+import {BrandService} from "../../../shop/services/brand/brand.service";
+import {CategoryService} from "../../../shop/services/category/category.service";
 
 @Component({
-  selector: 'app-manage-product',
-  templateUrl: './manage-product.component.html',
-  styleUrls: ['./manage-product.component.css']
+    selector: 'app-manage-product',
+    templateUrl: './manage-product.component.html',
+    styleUrls: ['./manage-product.component.css']
 })
 export class ManageProductComponent implements OnInit {
 
-  products = [];
-  constructor(private productService: ProductService,
-              private router: Router) { }
+    products = [];
 
-  adminBaseRoot: string = Utils.adminBaseRoot;
+    brands = [];
+    brandId: number = 0;
+
+    verticals = [];
+    verticalId: number = 0;
+    constructor(private productService: ProductService,
+                private brandService: BrandService,
+                private categoryService: CategoryService,
+                private router: Router) { }
+
+    adminBaseRoot: string = Utils.adminBaseRoot;
 
 
-  ngOnInit() {
-    this.getAllProducts();
-  }
+    ngOnInit() {
+        this.getVerticals();
+        this.getAllBrands();
 
-  getAllProducts(){
-    this.productService.getAll().subscribe(response => {
-      console.log(response);
-      this.products = response;
-    });
-  }
+        //this.getAllProducts();
+    }
 
-  editProduct(productId){
-    this.router.navigate([this.adminBaseRoot + 'edit-product/' + productId]);
-  }
+    getVerticals(){
+        this.categoryService.getVerticals().subscribe(verticals => {
+            this.verticals = verticals;
+            console.log(verticals);
+        });
+    }
 
-  deleteProduct(productId){
-    this.productService.deleteProduct(productId).subscribe(response => {
-      if(!!response){
-        this.getAllProducts();
-      }
-    });
-  }
+    getAllBrands(){
+        this.brandService.getAll().subscribe(brands => {
+            this.brands = brands;
+        });
+    }
 
-  toggleProductState(product){
-    this.productService.updateProductState(product['id']).subscribe(response => {
-      if(!!response){
-        if(product['state'] === '1'){
-            product['state'] = '0';
-        }else{
-          product['state'] = '1';
+
+    getAllProducts(){
+        const params = {
+            verticalId: this.verticalId,
+            brandId: this.brandId
         }
-      }
-    });
-    console.log(product['id']);
-  }
+        this.productService.getByBrandAndVertical(params).subscribe(response => {
+            console.log(response);
+            this.products = response;
+        });
+    }
+
+    editProduct(productId){
+        this.router.navigate([this.adminBaseRoot + 'edit-product/' + productId]);
+    }
+
+    deleteProduct(productId){
+        this.productService.deleteProduct(productId).subscribe(response => {
+            if(!!response){
+                this.getAllProducts();
+            }
+        });
+    }
+
+    toggleProductState(product){
+        this.productService.updateProductState(product['id']).subscribe(response => {
+            if(!!response){
+                if(product['state'] === '1'){
+                    product['state'] = '0';
+                }else{
+                    product['state'] = '1';
+                }
+            }
+        });
+        console.log(product['id']);
+    }
 
 }

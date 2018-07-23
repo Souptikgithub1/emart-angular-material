@@ -1,11 +1,11 @@
 <div class="container-fluid" style="background: #fff;padding: 20px 0">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <form class="form-horizontal" (ngSubmit)="updateProduct()">
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="brandId">Brand:</label>
-          <div class="col-sm-5">
+          <div class="col-sm-8">
             <select name="parent-category" id="brandId" [(ngModel)]="brandId" class="form-control">
               <option value="" disabled>--Select--</option>
               <option *ngFor="let brand of brands; let i = index" [value]="brand['id']">
@@ -17,7 +17,7 @@
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="verticalId">Vertical:</label>
-          <div class="col-sm-5">
+          <div class="col-sm-8">
             <select name="verticalId" id="verticalId" [(ngModel)]="verticalId" class="form-control" (change)="onChangeVertical()">
               <option value="" disabled>--Select--</option>
               <option *ngFor="let vertical of verticals; let i = index" [value]="vertical['id']">
@@ -29,7 +29,7 @@
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="categoryId">Category:</label>
-          <div class="col-sm-5">
+          <div class="col-sm-8">
             <select name="categoryId" id="categoryId" [(ngModel)]="categoryId" class="form-control">
               <option value="" disabled>--Select--</option>
               <option *ngFor="let category of categories; let i = index" [value]="category['id']">
@@ -42,56 +42,56 @@
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="productName">Product Name:</label>
-          <div class="col-sm-5">
+          <div class="col-sm-8">
             <input type="text" class="form-control" id="productName" [(ngModel)]="productName" name="productName">
           </div>
         </div>
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="sellingRate">Selling Rate (paisa):</label>
-          <div class="col-sm-5">
+          <div class="col-sm-8">
             <input type="text" class="form-control" id="sellingRate" [(ngModel)]="sellingRate" name="sellingRate">
           </div>
         </div>
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="mrp">Mrp (paisa):</label>
-          <div class="col-sm-5">
+          <div class="col-sm-8">
             <input type="text" class="form-control" id="mrp" [(ngModel)]="mrp" name="mrp">
           </div>
         </div>
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="image1">Image 1:</label>
-          <div class="col-sm-5">
+          <div class="col-sm-8">
             <input type="text" class="form-control" id="image1" [(ngModel)]="image1" name="image1">
           </div>
         </div>
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="image2">Image 2:</label>
-          <div class="col-sm-5">
+          <div class="col-sm-8">
             <input type="text" class="form-control" id="image2" [(ngModel)]="image2" name="image2">
           </div>
         </div>
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="image3">Image 3:</label>
-          <div class="col-sm-5">
+          <div class="col-sm-8">
             <input type="text" class="form-control" id="image3" [(ngModel)]="image3" name="image3">
           </div>
         </div>
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="image4">Image 4:</label>
-          <div class="col-sm-5">
+          <div class="col-sm-8">
             <input type="text" class="form-control" id="image4" [(ngModel)]="image4" name="image4">
           </div>
         </div>
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="image5">Image 5:</label>
-          <div class="col-sm-5">
+          <div class="col-sm-8">
             <input type="text" class="form-control" id="image5" [(ngModel)]="image5" name="image5">
           </div>
         </div>
@@ -103,14 +103,38 @@
         </div>
       </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5" *ngIf="productFeatureNames.length > 0">
+      <h6>New Features</h6>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Feature Name</th>
+          <th>Feature Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <form (ngSubmit)="addNewFeatures()">
+          <tr *ngFor="let feature of productFeatureNames; let i = index">
+            <td>{{feature.prodFeatureName}}</td>
+            <td><input type="text" [name]="feature.prodFeatureName" [(ngModel)]="productFeatureNames[i]['value']"></td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-sm btn-success">Submit</button></td>
+          </tr>
+        </form>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
       <form class="form-horizontal" (ngSubmit)="updateProductFeatures()">
 
 
           <div *ngFor="let feature of productFeatureList" class="form-group">
-            <label class="control-label col-sm-5" >{{feature['prodFeatureName']}}</label>
-            <div class="col-sm-5">
+            <label class="control-label col-sm-8" >{{feature['prodFeatureName']}}</label>
+            <div class="col-sm-8">
               <input type="text" class="form-control" [(ngModel)]="feature['prodFeatureValue']" [name]="feature['prodFeatureName']">
+              {{feature['prodFeatureValue']}}
             </div>
           </div>
 

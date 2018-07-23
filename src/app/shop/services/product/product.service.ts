@@ -28,6 +28,10 @@ export class ProductService {
     return this.http.get(this.endpoint + 'product/getAll').map(res => res.json());
   }
 
+  getByBrandAndVertical(params: object){
+    return this.http.get(this.endpoint + 'product/' + params['verticalId'] + "/" + params['brandId']).map(res => res.json());
+  }
+
   update(productBody: object){
     return this.http.put(this.endpoint + 'product/' + productBody['id'], productBody).map(res => res.json());
   }

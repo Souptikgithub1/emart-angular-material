@@ -15,6 +15,8 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
     productId: string;
 
     productDetails: Array<object>;
+    activeProductImage: string;
+    activeImageIndex: number = 0;
     keyFeatures = [];
     imgRoot: string;
 
@@ -43,6 +45,27 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
                 this.productDetails['mrpParsed'] = this.productDetails['mrp'] / 100;
                 this.productDetails['offer'] = this.productDetails['mrpParsed'] - this.productDetails['sellingRateParsed'];
                 this.productDetails['offerPercent'] = this.productDetails['offer']/100;
+
+
+                //setting images
+                const imgSrc = this.imgRoot + this.productDetails['brand']['brandName'] + '%2F';
+                this.productDetails['images'] = [];
+                this.productDetails['images'][0] = imgSrc + this.productDetails['image1'];
+                this.activeImageIndex = 0;
+                this.activeProductImage = this.productDetails['images'][0];
+                if(this.productDetails['image2'].trim()!=''){
+                    this.productDetails['images'][1] = imgSrc + this.productDetails['image2'];
+                }
+                if (this.productDetails['image3'].trim()!=''){
+                    this.productDetails['images'][2] = imgSrc + this.productDetails['image3'];
+                }
+                if (this.productDetails['image4'].trim()!=''){
+                    this.productDetails['images'][3] = imgSrc + this.productDetails['image4'];
+                }
+                if (this.productDetails['image5'].trim()!=''){
+                    this.productDetails['images'][5] = imgSrc + this.productDetails['image5'];
+                }
+
 
                 let productFeatureList = this.productDetails['featureList'];
 
@@ -148,4 +171,11 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
     setLastVisitedUrl(){
         Utils.setPreviousUrlLocalStorage(Utils.getCurrentUrl());
     }
+
+
+    onHoverMiniImage(index){
+        this.activeProductImage = this.productDetails['images'][index];
+        this.activeImageIndex = index;
+    }
+
 }
