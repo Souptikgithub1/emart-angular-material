@@ -1,6 +1,6 @@
 
 export class Utils {
-    public static emartBaseUrl : string = !!Utils.isLocalHost() ? "http://localhost:5555/" : "https://emartapi.herokuapp.com/";
+    public static emartBaseUrl : string = !!Utils.isLocalHost() ? "http://localhost:5556/" : "https://emartapi.herokuapp.com/";
     public static imgRoot : string = "https://firebasestorage.googleapis.com/v0/b/emart-7fabf.appspot.com/o/";
 
     public static adminBaseRoot: string = '/admin/';
@@ -15,6 +15,30 @@ export class Utils {
 
 
     public static previousUrlKey = 'previousUrl';
+
+    public static USER_AUTH_TOKEN_KEY = 'eAtkn';
+    public static USER_DETAILS_KEY = 'eud';
+
+    public static setUserAuthToken(authToken: string){
+        localStorage.setItem(this.USER_AUTH_TOKEN_KEY, authToken);
+    }
+
+    public static setUserToLocalStorage(user: object){
+        localStorage.setItem(this.USER_DETAILS_KEY, btoa(JSON.stringify(user)));
+    }
+
+    public static getUserFromLocalStorage(){
+        const data = localStorage.getItem(this.USER_DETAILS_KEY);
+
+        if(!!data && data !== undefined && data!=''){
+            return JSON.parse(atob(data));
+        }else{
+            return null;
+        }
+    }
+    public static removeUserFromLocalStorage(){
+        localStorage.removeItem(this.USER_DETAILS_KEY);
+    }
 
     public static setPreviousUrlLocalStorage(previousUrl: string){
         localStorage.setItem(this.previousUrlKey, previousUrl);

@@ -19,6 +19,9 @@ export class RegisterComponent implements OnInit {
     phone: string;
     provider: string;
 
+
+    msg: string;
+    isMsgVisible: boolean = false;
     constructor(private userService: UserService,
                 private authService: AuthService) { }
 
@@ -51,7 +54,16 @@ export class RegisterComponent implements OnInit {
         }
 
         this.userService.add(userPayload).subscribe(response => {
-
+                if(response['status'].toUpperCase() === 'SUCCESS' ){
+                    Utils.setUserToLocalStorage(response['data']);
+                    location.reload();
+                }else {
+                    this.msg = response['msg'];
+                    this.isMsgVisible = true;
+                    setTimeout(() => {
+                        this.isMsgVisible = false;
+                    }, 5000);
+                }
         });
     }
 
@@ -73,8 +85,7 @@ export class RegisterComponent implements OnInit {
     socialSignUp(){
         this.authService.authState.subscribe(user => {
             console.log(user);
-            /*this.register(user);
-            window.location.reload();*/
+            this.register(user);
         }).unsubscribe();
     }
 

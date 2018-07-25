@@ -29,7 +29,9 @@
             </div>
         </form>
     </div>
-    {{provider}}
+    <div *ngIf="!!isMsgVisible">
+        {{msg}}
+    </div>
     <div><a class="action text-danger">Forgot password?</a></div>
     <div class="text-center" style="padding: 25px; "><a class="action text-blue" style="font-size: 14px; font-weight: 600" (click)="goToSignup()">Don't have an account? Signup</a></div>
 </div>

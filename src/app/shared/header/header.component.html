@@ -1,38 +1,51 @@
 <nav class="navbar navbar-expand-lg fixed-top " color-on-scroll="500">
   <div class="container-fluid">
-      <a class="navbar-brand" href="/">EMART</a>
-      <div class="collapse navbar-collapse" id="navbar-menu">
-        <ul class="navbar-nav">
+    <a class="navbar-brand" href="/">EMART</a>
+    <div class="collapse navbar-collapse" id="navbar-menu">
+      <ul class="navbar-nav">
 
-          <li class="nav-item" *ngFor="let parentCategory of categories; let i = index">
-            <div *ngIf="parentCategory.parentId == 0" ngbDropdown class="d-inline-block dropdown">
-              <a routerLink="/lp/{{parentCategory.id}}" class="nav-link" id="dropdownBasic1" ngbDropdownToggle>{{parentCategory.name}}</a>
+        <li class="nav-item" *ngFor="let parentCategory of categories; let i = index">
+          <div *ngIf="parentCategory.parentId == 0" ngbDropdown class="d-inline-block dropdown">
+            <a routerLink="/lp/{{parentCategory.id}}" class="nav-link" id="dropdownBasic1" ngbDropdownToggle>{{parentCategory.name}}</a>
 
-              <div  aria-labelledby="dropdownBasic1" class="row dropdown-primary dropdown-content">
-                <div class="category-menu-link-container" *ngFor="let vertical of categories; let i = index">
-                  <div class="" *ngIf="vertical.parentId == parentCategory.id" ><a class="dropdown-item category-menu-link text-uppercase" routerLink="/search" [queryParams]="{vertId : vertical.id  }">{{vertical.name}} <i class="fa fa-caret-right"></i></a>
+            <div  aria-labelledby="dropdownBasic1" class="row dropdown-primary dropdown-content">
+              <div class="category-menu-link-container" *ngFor="let vertical of categories; let i = index">
+                <div class="" *ngIf="vertical.parentId == parentCategory.id" ><a class="dropdown-item category-menu-link text-uppercase" routerLink="/search" [queryParams]="{vertId : vertical.id  }">{{vertical.name}} <i class="fa fa-caret-right"></i></a>
 
-                    <div *ngFor="let leaf of categories;">
-                      <a class="dropdown-item sub-category-menu-link" *ngIf="leaf.parentId == vertical.id" routerLink="/search" [queryParams]="{catId : leaf.id  }">{{leaf.name}}</a>
-                    </div>
-
+                  <div *ngFor="let leaf of categories;">
+                    <a class="dropdown-item sub-category-menu-link" *ngIf="leaf.parentId == vertical.id" routerLink="/search" [queryParams]="{catId : leaf.id  }">{{leaf.name}}</a>
                   </div>
+
                 </div>
               </div>
             </div>
-          </li>
-        </ul>
-      </div>
+          </div>
+        </li>
+      </ul>
+    </div>
 
 
-      <div class="collapse navbar-collapse" id="navbar-primary">
-        <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="navbar-primary">
+      <ul class="navbar-nav ml-auto">
+        <li *ngIf="!!isUserLoggedIn" class="nav-item">
+          <a class="nav-link action">
+              <i class="fa fa-shopping-cart"></i> Cart
+          </a>
+        </li>
+        <li *ngIf="!isUserLoggedIn" class="nav-item">
+          <a class="nav-link action" (click)="openModal()"><i class="nc-icon nc-single-02" aria-hidden="true"></i>&nbsp;Signup / Login</a>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link action" (click)="openModal()"><i class="nc-icon nc-single-02" aria-hidden="true"></i>&nbsp;Signup / Login</a>
-          </li>
+        <li *ngIf="!!isUserLoggedIn" class="nav-item">
+          <div ngbDropdown class="d-inline-block dropdown">
+            <a class="nav-link action" id="dropdownBasic1" ngbDropdownToggle>Hi, {{userFirstName}}</a>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
+              <a class="dropdown-item" (click)="logout()">Logout</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
 
-        </ul>
-      </div>
   </div>
 </nav>

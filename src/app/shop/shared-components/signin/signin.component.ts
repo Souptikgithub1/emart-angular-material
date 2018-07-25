@@ -2,37 +2,67 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import { AuthService } from "angular4-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
+import {Utils} from "../../utils/utils";
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+    selector: 'app-signin',
+    templateUrl: './signin.component.html',
+    styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
 
-  email: string;
-  password: string;
-  provider: string;
+    email: string;
+    password: string;
+    provider: string;
 
-  constructor(private userService: UserService,
-              private authService: AuthService) { }
+    msg: string;
+    isMsgVisible: boolean = false;
 
-  ngOnInit() {
-  }
+    constructor(private userService: UserService,
+                private authService: AuthService) { }
 
-  login(){
-    this.userService.login(this.email, this.password).subscribe(response => {
-        if(!!response){
-            localStorage.setItem('uc', btoa(this.email + '|' + this.password));
+    ngOnInit() {
+    }
+
+    login(user: object = null){
+        let userPayload = {};
+        if(!!user){
+            userPayload = {
+                id: -1,
+                name: user['name'],
+                email: user['email'],
+                password: '',
+                phone: '',
+                authToken: user['authToken'],
+                provider: user['provider']
+            };
+        }else{
+            userPayload = {
+                email: this.email,
+                password: this.password,
+                provider: Utils.SELF_PROVIDER
+            }
         }
-    });
-  }
+        this.userService.login(userPayload).subscribe(response => {
+            if(response['status'] === 'SUCCESS'){
+                Utils.setUserToLocalStorage(response['data']);
+                location.reload();
+            }else {
+                this.msg = response['msg'];
+                this.isMsgVisible = true;
+                setTimeout(() => {
+                    this.isMsgVisible = false;
+                }, 5000);
+            }
+        });
+    }
 
     signInWithGoogle(): void {
         this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
 
         this.authService.authState.subscribe((user) => {
             console.log(user);
+            this.login(user);
             this.provider = user.provider;
         });
     }
@@ -41,6 +71,7 @@ export class SigninComponent implements OnInit {
         this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
         this.authService.authState.subscribe((user) => {
             console.log(user);
+            this.login(user);
             this.provider = user.provider;
         });
     }
