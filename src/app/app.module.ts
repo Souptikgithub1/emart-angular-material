@@ -87,6 +87,7 @@ import {BannerService} from "./shop/services/banner.service";
 import { ProductDetailedCardSkeletonComponent } from './shop/shared-partials/product-detailed-card-skeleton/product-detailed-card-skeleton.component';
 import { HomepageSkeletonComponent } from './shop/shared-partials/homepage-skeleton/homepage-skeleton.component';
 import { BannerSkeletonComponent } from './shop/shared-partials/banner-skeleton/banner-skeleton.component';
+import {RvpEventService} from "./shop/services/rvpEvent/rvp-event.service";
 
 
 /*@NgModule({
@@ -211,6 +212,7 @@ export function getAuthServiceConfigs() {
         ProductFeatureValueService,
         UserService,
         BannerService,
+        RvpEventService,
 
         RegisterSigninModalComponent
     ],

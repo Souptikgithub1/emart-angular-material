@@ -68,6 +68,11 @@ export class Utils {
         return this.getCurrentUrl().split('/')[2].split(':')[0];
     }
 
+    public static getBaseDomain(){
+        const arr = this.getCurrentUrl().split('/');
+        return (!!this.isLocalHost() ? 'http://' : 'https://') +  arr[2];
+    }
+
     public static getBaseUrl() : string{
         let currentUrl : string = this.getCurrentUrl();
         let baseUrl : string = currentUrl.split("?")[0];

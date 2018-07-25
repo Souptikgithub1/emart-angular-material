@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {Utils} from "../../utils/utils";
+import {RvpEventService} from "../../services/rvpEvent/rvp-event.service";
 
 @Component({
     selector: 'app-rvp',
@@ -11,10 +12,13 @@ export class RvpComponent implements OnInit {
     public rvpProducts: Array<object>;
     isVisible: boolean = false;
 
-    constructor() { }
+    constructor(private rvpEventService: RvpEventService) { }
 
     ngOnInit() {
         this.getRvp();
+        this.rvpEventService.data.subscribe(response => {
+            this.getRvp();
+        });
     }
 
     getRvp(){

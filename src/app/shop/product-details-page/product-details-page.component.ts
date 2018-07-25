@@ -2,6 +2,7 @@ import {Component, OnChanges, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductService} from "../services/product/product.service";
 import {Utils} from "../utils/utils";
+import {RvpEventService} from "../services/rvpEvent/rvp-event.service";
 
 declare const $: any;
 
@@ -23,7 +24,8 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
     productSpecifications = [];
 
     constructor(private activatedRoute: ActivatedRoute,
-                private productService: ProductService) {
+                private productService: ProductService,
+                private rvpEventService: RvpEventService) {
         this.imgRoot = Utils.imgRoot;
     }
 
@@ -38,6 +40,9 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
         this.activatedRoute.params.subscribe(params => {
             this.productId = params['productId'];
 
+            this.productDetails = [];
+            this.keyFeatures = [];
+            this.productSpecifications = [];
             this.productService.getProdcutDetails(this.productId).subscribe(response => {
                 this.productDetails = response;
                 //console.log(this.productDetails);
@@ -126,7 +131,7 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
                 //processing all features of the product
 
 
-                this.addToRvp()
+                this.addToRvp();
             });
 
         });
@@ -166,6 +171,7 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
             rvpArr.push(rvpObj);
         }
         Utils.setRvp(JSON.stringify(rvpArr));
+        this.rvpEventService.notify();
     }
 
     setLastVisitedUrl(){

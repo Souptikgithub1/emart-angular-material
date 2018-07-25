@@ -112,8 +112,11 @@ export class SearchpageComponent implements OnInit {
 
 
 
-                    this.categoryName = this.products[0].category.name;
-                    this.searchResultName = this.products[0].category.searchResultName;
+                    if(!!catId){
+                        this.categoryName = this.products[0].category.name;
+                        this.searchResultName = this.products[0].category.searchResultName;
+                    }
+
 
                     if(!!vertId){
                         this.categoryService.getCategory(this.products[0].verticalId.toString()).subscribe(vertical => {

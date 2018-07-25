@@ -15,6 +15,7 @@ export class ProductCardDetailedComponent implements OnInit {
 
     imgRoot : string;
 
+    baseDomain: string = Utils.getBaseDomain();
     constructor(private router: Router) {
         this.imgRoot = Utils.imgRoot;
     }
