@@ -13,11 +13,14 @@ export class ProductCarouselComponent implements OnInit {
     @Input('title')
     title: string = 'Carousel';
 
+    tag: string;
+
     productChunkedArr = [];
 
     constructor() { }
 
     ngOnInit(){
+        this.tag = this.title.split(' ').join('-');
         this.productChunkedArr = Utils.arrayChunk(this.products, 6);
     }
 }

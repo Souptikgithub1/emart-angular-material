@@ -32,10 +32,19 @@
         <app-banner></app-banner>
         <app-homepage-skeleton *ngIf="!!isloaderVisible"></app-homepage-skeleton>
         <div *ngIf="!isloaderVisible">
-            <app-product-carousel *ngIf="!!isMobilesLessThan10kVisible" [products]="mobilesLessThan10k" [title]="'Mobiles less than 10K'"></app-product-carousel>
-            <app-product-carousel *ngIf="!!isTshirtsInLowPriceVisible" [products]="tshirtsInLowPrice" [title]="'T-shirts in low price'"></app-product-carousel>
+            <app-product-carousel
+                    *ngIf="!!isMobilesLessThan10kVisible"
+                    [products]="mobilesLessThan10k"
+                    [title]="'Mobiles less than 10K'"
+            ></app-product-carousel>
+            <app-product-carousel
+                    *ngIf="!!isTshirtsInLowPriceVisible"
+                    [products]="tshirtsInLowPrice"
+                    [title]="'T-shirts in low price'"
+            ></app-product-carousel>
             <app-rvp></app-rvp>
         </div>
+
 
         <!--<app-components></app-components>
         <div class="section section-dark section-nucleo-icons">
