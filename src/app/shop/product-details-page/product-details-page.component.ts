@@ -30,14 +30,17 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
+
         this.getProductDetails();
     }
     ngOnChanges(){
-        $('#product-details-container').scrollTop();
+
     }
 
     getProductDetails(){
         this.activatedRoute.params.subscribe(params => {
+            window.scrollTo(0, 0);
+            //$('#product-details-container').scrollTop();
             this.productId = params['productId'];
 
             this.productDetails = [];
