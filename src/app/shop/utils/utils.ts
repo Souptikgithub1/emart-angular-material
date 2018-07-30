@@ -131,7 +131,7 @@ export class Utils {
             }
         }
 
-        if(chunk.length < chunkSize){
+        if(chunk.length < chunkSize && chunk.length > 0){
             chunkedArr.push(chunk);
         }
 

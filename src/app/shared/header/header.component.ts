@@ -3,6 +3,7 @@ import {CategoryService} from "../../shop/services/category/category.service";
 import {Utils} from "../../shop/utils/utils";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {RegisterSigninModalComponent} from "../../shop/register-signin-modal/register-signin-modal.component";
+import {AuthService} from "angular4-social-login";
 
 @Component({
     selector: 'app-header',
@@ -18,7 +19,8 @@ export class HeaderComponent implements OnInit {
 
     modalRef: BsModalRef;
     constructor(private categoryService: CategoryService,
-                private bsModalService: BsModalService) { }
+                private bsModalService: BsModalService,
+                private authService: AuthService) { }
 
     ngOnInit() {
         this.getAllCategories();
@@ -49,6 +51,7 @@ export class HeaderComponent implements OnInit {
 
     logout(){
         Utils.removeUserFromLocalStorage();
+        this.authService.signOut();
         location.reload();
     }
 }

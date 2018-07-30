@@ -1,7 +1,7 @@
 <div *ngIf="productDetails!=null" class="page-container" >
     <div class="product-details-container">
         <div class="row">
-            <div class="col-md-5" style="padding-left: 5px">
+            <div class="product-img-section" style="padding-left: 5px">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-imgs-container">
@@ -37,8 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-7 reset-padding-left">
-                <div class="product-details-section">
+            <div class="product-details-section">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="product-details">
@@ -50,10 +49,16 @@
                                     <span *ngIf="productDetails.mrp != 0" class="mrp">{{productDetails.mrpParsed | currency:'INR':true:'1.0'}}</span>
                                     <span *ngIf="productDetails.mrp != 0" class="offer-percent">{{productDetails.offerPercent}}% off</span>
                                 </div>
-                                <div class="product-summary">
-                                    <li *ngFor="let keyFeature of keyFeatures">
-                                        {{keyFeature}}
-                                    </li>
+                                <div class="product-highlights">
+                                    <div class="product-highlights-header">
+                                        Product Summary
+                                    </div>
+                                    <div class="product-summary">
+                                        <div *ngFor="let keyFeature of keyFeatures" class="key-feature-and-bullet">
+                                            <span class="bullet">-</span>
+                                            <span class="key-feature">{{keyFeature}}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +86,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
         </div>
     </div>

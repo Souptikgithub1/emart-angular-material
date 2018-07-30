@@ -48,15 +48,20 @@
     margin: 0 20px;
 }
 
+.product-img-section{
+    width: 45%;
+}
 .product-details-section{
     /*border-left: 1px solid #dedede;*/
     overflow-y: auto;
     overflow-x: hidden;
     height: 600px;
+    width: 55%;
 }
 .product-details{
     padding: 30px 15px;
     min-height: 400px;
+    color: #212121;
 }
 .product-title{
     font-size: 20px;
@@ -67,8 +72,8 @@
 }
 
 .product-selling-price{
-    font-size: 23px;
-    font-weight: 500;
+    font-size: 25px;
+    font-weight: 400;
 }
 
 .mrp{
@@ -79,18 +84,53 @@
     padding: 0 7px;
 }
 
+.product-highlights{
+    color: #a1a1a1;
+    font-weight: 500;
+}
+.product-highlights-header{
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-top: 15px;
+    padding-bottom: 7px;
+}
 .product-summary{
-    width: 60%;
-    color: #777;
+    font-size: 13px;
+    padding-left: 20px;
+    font-weight: 400;
+}
+.key-feature-and-bullet{
+    padding: 2px 0;
+    float: left;
+    width: 100%;
+}
+.bullet{
+    color: #a1a1a1;
+    float: left;
+    font-size: 12px;
+    font-weight: 900;
+    padding-right: 10px;
+}
+
+.key-feature{
+    float: left;
+    width: 85%;
 }
 
 .product-specifications{
     /*padding: 30px 30px;*/
-    margin-right: 10px;
+    margin-right: 15px;
     border: 1px solid #f1f1f1;
     box-shadow: 0 0px 12px -4px rgba(0, 0, 0, 0.15);
 }
 
+.offer-percent{
+    font-size: 12px;
+    font-weight: 500;
+    color: #28a745;
+    padding: 4px 7px;
+    border: 1px solid #28a745;
+}
 
 .product-specification-category{
     margin-bottom: 30px;
@@ -125,7 +165,7 @@
 
 .product-feature-name{
     color: #aaa;
-    width: 190px;
+    width: 35%;
     float: left;
 }
 .product-feature-name-value-separator{
@@ -139,7 +179,7 @@
 .product-feature-value{
     color:  #212121;
     float: left;
-    width: 350px;
+    width: 35%;
 }
 
 /*Scrollbar css*/

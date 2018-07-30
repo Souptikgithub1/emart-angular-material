@@ -1,3 +1,8 @@
+.product-card-container{
+  width: 25%;
+  float: left;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 .image-holder{
   width: 200px;
   height: 200px;
@@ -9,6 +14,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .product-card{
@@ -28,11 +35,15 @@
 }
 .product-desc{
   padding: 0 30px;
-  font-family: "Helvetica", Arial, sans-serif;
+  padding-right: 10px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 .product-price{
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
+}
+.offer{
+
 }
 
 .quickViewBtn{
@@ -55,10 +66,7 @@
   display: block;
 }
 
-.product-card-container{
-  width: 25%;
-  float: left;
-}
+
 
 .product-card-carousel{
   width: 16.6667% !important;
