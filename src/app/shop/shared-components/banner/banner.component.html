@@ -3,7 +3,7 @@
   <div class="carousel-inner" role="listbox">
     <div *ngFor="let banner of banners; let i = index" class="carousel-item {{i == 0 ? 'active' : ''}}">
       <div class="banner-img-holder">
-        <img class="responsive-img" [src]="banner['bannerImage']" alt="First slide">
+        <img style="width: 100%;height: 100%" class="" [src]="banner['bannerImage']" alt="First slide">
       </div>
     </div>
   </div>
