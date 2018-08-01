@@ -1,4 +1,4 @@
-<div *ngIf="productDetails!=null" class="page-container" >
+<div *ngIf="!isLoaderVisible" class="page-container" >
     <div class="product-details-container">
         <div class="row">
             <div class="product-img-section" style="padding-left: 5px">
@@ -47,7 +47,7 @@
                                 <div class="product-price-details">
                                     <span class="product-selling-price">{{productDetails.sellingRateParsed | currency:'INR':true:'1.0'}}</span>
                                     <span *ngIf="productDetails.mrp != 0" class="mrp">{{productDetails.mrpParsed | currency:'INR':true:'1.0'}}</span>
-                                    <span *ngIf="productDetails.mrp != 0" class="offer-percent">{{productDetails.offerPercent}}% off</span>
+                                    <span *ngIf="productDetails.mrp != 0" class="offer-percent">{{(this.productDetails['offer']*100/this.productDetails['mrpParsed']).toFixed(0)}}% off</span>
                                 </div>
                                 <div class="product-highlights">
                                     <div class="product-highlights-header">
@@ -93,4 +93,4 @@
 
     <app-rvp></app-rvp>
 </div>
-
+<app-product-page-skeleton *ngIf="!!isLoaderVisible"></app-product-page-skeleton>

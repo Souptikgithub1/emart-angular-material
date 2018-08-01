@@ -13,6 +13,8 @@ declare const $: any;
 })
 export class ProductDetailsPageComponent implements OnInit, OnChanges {
 
+    isLoaderVisible: boolean = true;
+
     productId: string;
 
     productDetails: Array<object>;
@@ -47,12 +49,13 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
             this.keyFeatures = [];
             this.productSpecifications = [];
             this.productService.getProdcutDetails(this.productId).subscribe(response => {
+                this.isLoaderVisible = true;
                 this.productDetails = response;
                 //console.log(this.productDetails);
                 this.productDetails['sellingRateParsed'] = this.productDetails['sellingRate'] / 100;
                 this.productDetails['mrpParsed'] = this.productDetails['mrp'] / 100;
                 this.productDetails['offer'] = this.productDetails['mrpParsed'] - this.productDetails['sellingRateParsed'];
-                this.productDetails['offerPercent'] = this.productDetails['offer']/100;
+                this.productDetails['offerPercent'] = this.productDetails['offer']*100/this.productDetails['mrpParsed'];
 
 
                 //setting images
@@ -135,6 +138,7 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
 
 
                 this.addToRvp();
+                this.isLoaderVisible = false;
             });
 
         });

@@ -20,6 +20,7 @@ import {AddProductFeatureNamesComponent} from "./admin/product/add-product-featu
 import {ProductCardComponent} from "./shop/shared-partials/product-card/product-card.component";
 import {ProductDetailsPageComponent} from "./shop/product-details-page/product-details-page.component";
 import {HomepageComponent} from "./shop/homepage/homepage.component";
+import {ManageProductPriceComponent} from "./admin/product/manage-product-price/manage-product-price.component";
 
 const routes: Routes =[
     { path: '',             component: HomepageComponent },
@@ -39,7 +40,8 @@ const routes: Routes =[
 
             {path: 'add-product', component: AddProductComponent},
             {path: 'manage-product', component: ManageProductComponent},
-            {path: 'edit-product/:productId', component: EditProductComponent}
+            {path: 'edit-product/:productId', component: EditProductComponent},
+            {path: 'manage-product-price/:productId', component: ManageProductPriceComponent}
         ]
     },
 

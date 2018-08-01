@@ -47,8 +47,8 @@
       <td>{{product.productName}}</td>
       <td>{{product.brand.brandDisplayName}}</td>
       <td>
-        <button class="btn btn-success btn-xs" (click)="editProduct(product.id)">Edit</button>
-        <button class="btn btn-danger btn-xs" (click)="deleteProduct(product.id)">Delete</button>
+        <button class="btn btn-success btn-sm" (click)="editProduct(product.id)"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)"><i class="fa fa-trash"></i></button>
         <button class="btn {{product['state'] == '1' ? 'btn-warning' : 'btn-success'}} btn-xs" (click)="toggleProductState(product)">{{ product['state'] == '1' ? 'Deactivate' : 'Activate' }}</button>
       </td>
     </tr>

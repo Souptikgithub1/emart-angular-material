@@ -88,6 +88,8 @@ import { ProductDetailedCardSkeletonComponent } from './shop/shared-partials/pro
 import { HomepageSkeletonComponent } from './shop/shared-partials/homepage-skeleton/homepage-skeleton.component';
 import { BannerSkeletonComponent } from './shop/shared-partials/banner-skeleton/banner-skeleton.component';
 import {RvpEventService} from "./shop/services/rvpEvent/rvp-event.service";
+import { ManageProductPriceComponent } from './admin/product/manage-product-price/manage-product-price.component';
+import { ProductPageSkeletonComponent } from './shop/shared-partials/product-page-skeleton/product-page-skeleton.component';
 
 
 /*@NgModule({
@@ -174,7 +176,9 @@ export function getAuthServiceConfigs() {
         BannerComponent,
         ProductDetailedCardSkeletonComponent,
         HomepageSkeletonComponent,
-        BannerSkeletonComponent
+        BannerSkeletonComponent,
+        ManageProductPriceComponent,
+        ProductPageSkeletonComponent
     ],
     imports: [
         BrowserAnimationsModule,
