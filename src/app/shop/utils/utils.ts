@@ -1,6 +1,6 @@
 
 export class Utils {
-    public static emartBaseUrl : string = !!Utils.isLocalHost() ? "http://localhost:5556/" : "https://emartapi.herokuapp.com/";
+    public static emartBaseUrl : string = !!Utils.isLocalHost() ? "http://localhost:5555/" : "https://emartapi.herokuapp.com/";
     public static imgRoot : string = "https://firebasestorage.googleapis.com/v0/b/emart-7fabf.appspot.com/o/";
 
     public static adminBaseRoot: string = '/admin/';

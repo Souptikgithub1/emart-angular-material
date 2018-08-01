@@ -42,6 +42,7 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
     getProductDetails(){
         this.activatedRoute.params.subscribe(params => {
             window.scrollTo(0, 0);
+            this.isLoaderVisible = true;
             //$('#product-details-container').scrollTop();
             this.productId = params['productId'];
 
@@ -49,7 +50,6 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
             this.keyFeatures = [];
             this.productSpecifications = [];
             this.productService.getProdcutDetails(this.productId).subscribe(response => {
-                this.isLoaderVisible = true;
                 this.productDetails = response;
                 //console.log(this.productDetails);
                 this.productDetails['sellingRateParsed'] = this.productDetails['sellingRate'] / 100;
