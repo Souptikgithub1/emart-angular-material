@@ -59,7 +59,7 @@ export class SearchpageComponent implements OnInit {
         let page : number;
         let size : number;
         this.activatedRoute.queryParams.subscribe(params => {
-
+            window.scrollTo(0, 0);
             this.isLoaderVisible = true;
 
             //fetching url params
