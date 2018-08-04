@@ -3,6 +3,9 @@ import {ActivatedRoute} from "@angular/router";
 import {ProductService} from "../services/product/product.service";
 import {Utils} from "../utils/utils";
 import {RvpEventService} from "../services/rvpEvent/rvp-event.service";
+import {Product} from "../entities/product";
+import {BsModalService} from "ngx-bootstrap";
+import {RegisterSigninModalComponent} from "../register-signin-modal/register-signin-modal.component";
 
 declare const $: any;
 
@@ -17,7 +20,9 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
 
     productId: string;
 
-    productDetails: Array<object>;
+    productDetails: object;
+    product: Product;
+
     activeProductImage: string;
     activeImageIndex: number = 0;
     keyFeatures = [];
@@ -25,9 +30,12 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
 
     productSpecifications = [];
 
+
+    private bsModalRef;
     constructor(private activatedRoute: ActivatedRoute,
                 private productService: ProductService,
-                private rvpEventService: RvpEventService) {
+                private rvpEventService: RvpEventService,
+                public bsModalService: BsModalService) {
         this.imgRoot = Utils.imgRoot;
     }
 
@@ -46,7 +54,7 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
             //$('#product-details-container').scrollTop();
             this.productId = params['productId'];
 
-            this.productDetails = [];
+            this.productDetails = {};
             this.keyFeatures = [];
             this.productSpecifications = [];
             this.productService.getProdcutDetails(this.productId).subscribe(response => {
@@ -190,5 +198,20 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
         this.activeProductImage = this.productDetails['images'][index];
         this.activeImageIndex = index;
     }
+
+    addToCart(){
+        const userDetails = Utils.getUserFromLocalStorage();
+        if(!userDetails){
+            this.bsModalRef = this.bsModalService.show(RegisterSigninModalComponent);
+        }else{
+            const cartPayload = {
+                id: -1,
+                product: this.productDetails,
+                userId: userDetails['id']
+            };
+            console.log(cartPayload);
+        }
+    }
+
 
 }
