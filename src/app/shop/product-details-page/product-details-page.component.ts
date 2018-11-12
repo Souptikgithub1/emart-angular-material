@@ -3,6 +3,9 @@ import {ActivatedRoute} from "@angular/router";
 import {ProductService} from "../services/product/product.service";
 import {Utils} from "../utils/utils";
 import {RvpEventService} from "../services/rvpEvent/rvp-event.service";
+import {Product} from "../entities/product";
+import {User} from "../entities/user";
+import {UserCart} from "../entities/user-cart";
 
 declare const $: any;
 
@@ -24,6 +27,9 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
     imgRoot: string;
 
     productSpecifications = [];
+    product: Product;
+    user: User = new User();
+    userCart: UserCart = new UserCart();
 
     constructor(private activatedRoute: ActivatedRoute,
                 private productService: ProductService,
@@ -51,6 +57,7 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
             this.productSpecifications = [];
             this.productService.getProdcutDetails(this.productId).subscribe(response => {
                 this.productDetails = response;
+                this.product = response;
                 //console.log(this.productDetails);
                 this.productDetails['sellingRateParsed'] = this.productDetails['sellingRate'] / 100;
                 this.productDetails['mrpParsed'] = this.productDetails['mrp'] / 100;
@@ -189,6 +196,15 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
     onHoverMiniImage(index){
         this.activeProductImage = this.productDetails['images'][index];
         this.activeImageIndex = index;
+    }
+
+    addToCart(){
+        this.userCart.id = -1;
+        this.userCart.user = Utils.getUserFromLocalStorage();
+        this.userCart.product = this.product;
+        this.userCart.timeStamp = null;
+
+        console.log(this.userCart);
     }
 
 }

@@ -17,6 +17,7 @@ export class AddCategoryComponent implements OnInit {
   searchResultName: string = "";
   state: boolean = true;
   isVertical: boolean = false;
+  isLeaf: boolean = true;
 
   constructor(private categoryService: CategoryService,
               private router: Router) { }
@@ -41,7 +42,8 @@ export class AddCategoryComponent implements OnInit {
       parentId: this.parentCategoryId,
       searchResultName: this.searchResultName,
       state: !!this.state ? 1 : 0,
-      isVertical: !!this.isVertical ? 1 : 0
+      isVertical: !!this.isVertical ? 1 : 0,
+      isLeaf: !!this.isLeaf ? 1 : 0
     };
 
     this.categoryService.add(requestBody).subscribe(response => {
