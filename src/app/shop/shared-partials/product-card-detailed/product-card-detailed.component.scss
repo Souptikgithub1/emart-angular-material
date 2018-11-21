@@ -10,10 +10,19 @@
   border-bottom: 1px solid #f1f1f1;
 }
 
+.offer-tag{
+  position: absolute;
+  background: #1d8e37;
+  color: #fff;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
 
 .image-holder{
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 220px;
   margin: 0 auto;
 }
 

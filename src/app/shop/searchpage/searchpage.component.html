@@ -42,6 +42,7 @@
                         <app-product-card *ngIf="!isproductCardDetailed()" [product]="product"></app-product-card>
                         <app-product-card-detailed *ngIf="!!isproductCardDetailed()" [product]="product"></app-product-card-detailed>
                     </div>
+
                 </div>
             </div>
             <div *ngIf="!isLoaderVisible && products.length == 0" class="zero-level-product-list-holder">
