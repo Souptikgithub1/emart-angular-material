@@ -74,7 +74,7 @@ export class SearchpageComponent implements OnInit {
 
 
 
-            filtersForUrl = (params.filters !== undefined) ? JSON.parse(atob(params.filters)) : [];
+            filtersForUrl = (params.filters !== undefined && params.filters !== 'W10%3D') ? JSON.parse(atob(params.filters)) : [];
             this.activeFilters = filtersForUrl;
 
             let queryParams = {
@@ -152,7 +152,7 @@ export class SearchpageComponent implements OnInit {
     }
 
     navigateToPage(pageParam){
-        //console.log(pageParam);
+        console.log(pageParam);
         this.router.navigate(['/search'], {queryParams : pageParam});
     }
 
@@ -234,19 +234,19 @@ export class SearchpageComponent implements OnInit {
         });
     }
 
-    onFilterChange(event, featureNameId, filterValue, i, j){
+    onFilterChange(event, featureNameId, filterValue, filterIndex, filterValueIndex){
         //console.log(event.target.checked, featureNameId, filterValue);
 
         const filterObj = {featureId: featureNameId, filterValues: [filterValue]};
         if(!!event.target.checked){
-            this.filters[i]['values'][j]['checked'] = true;
+            this.filters[filterIndex]['values'][filterValueIndex]['checked'] = true;
             if(this.activeFilters.length == 0){
                 this.activeFilters = [filterObj];
             }else{
                 let isKeyFound = false;
-                for (let i = 0 ; i < this.activeFilters.length ; i++){
-                    if(this.activeFilters[i]['featureId'] == featureNameId){
-                        this.activeFilters[i]['filterValues'].push(filterValue);
+                for (let k = 0 ; k < this.activeFilters.length ; k++){
+                    if(this.activeFilters[k]['featureId'] == featureNameId){
+                        this.activeFilters[k]['filterValues'].push(filterValue);
                         isKeyFound = true;
                         break;
                     }
@@ -257,19 +257,19 @@ export class SearchpageComponent implements OnInit {
 
             }
         }else {
-            this.filters[i]['values'][j]['checked'] = false;
+            this.filters[filterIndex]['values'][filterValueIndex]['checked'] = false;
             if (this.activeFilters.length > 0) { //if elements exists in activeFilters
-                for(let i = 0 ; i < this.activeFilters.length ; i++){
-                    if(this.activeFilters[i]['featureId'] == featureNameId){ //if filter with that featureId-key exists in the array
+                for(let k = 0 ; k < this.activeFilters.length ; k++){
+                    if(this.activeFilters[k]['featureId'] == featureNameId){ //if filter with that featureId-key exists in the array
 
-                        if(this.activeFilters[i]['filterValues'].length > 1){ //if there is more than one filterValues with that featureId-key
-                            for(let j = 0 ; j < this.activeFilters[i]['filterValues'].length ; j++){
-                                if(this.activeFilters[i]['filterValues'][j] === filterValue){ //if filterValue matches
-                                    this.activeFilters[i]['filterValues'].splice(j, 1);
+                        if(this.activeFilters[k]['filterValues'].length > 1){ //if there is more than one filterValues with that featureId-key
+                            for(let l = 0 ; l < this.activeFilters[k]['filterValues'].length ; l++){
+                                if(this.activeFilters[k]['filterValues'][l] === filterValue){ //if filterValue matches
+                                    this.activeFilters[k]['filterValues'].splice(l, 1);
                                 }
                             }
-                        }else if(this.activeFilters[i]['filterValues'].length == 1){
-                            this.activeFilters.splice(i, 1);
+                        }else if(this.activeFilters[k]['filterValues'].length == 1){
+                            this.activeFilters.splice(k, 1);
                         }
                     }
                 }
@@ -278,6 +278,7 @@ export class SearchpageComponent implements OnInit {
 
 
         let urlParamsObj = Utils.getUrlParamsAsObj();
+        urlParamsObj['page'] = 1;
             if (urlParamsObj.hasOwnProperty('filters')){
                 urlParamsObj['filters'] = btoa(JSON.stringify(this.activeFilters));
             } else {

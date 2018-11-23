@@ -5,12 +5,12 @@
                 <div class="col-md-12">
                     <div class="filters">
                         <div class="filters-header">Filters</div>
-                        <div *ngFor="let filter of filters; let i = index" class="">
+                        <div *ngFor="let filter of filters; let filterIndex = index" class="">
                             <div class="filter-header">{{filter['prodFeatureName']}}</div>
                             <div class="filter-body">
-                                <div *ngFor="let value of filter['values']; let j = index" class="form-check">
+                                <div *ngFor="let value of filter['values']; let filterValueIndex = index" class="form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" [checked]="value['checked']"  (change)="onFilterChange($event, filter['id'], value.value, i, j)">
+                                        <input class="form-check-input" type="checkbox" [checked]="value['checked']"  (change)="onFilterChange($event, filter['id'], value.value, filterIndex, filterValueIndex)">
                                         {{value.text}}
                                         <span class="form-check-sign"></span>
                                     </label>
