@@ -153,6 +153,11 @@ export class SearchpageComponent implements OnInit {
 
     navigateToPage(pageParam){
         console.log(pageParam);
+        if(pageParam.hasOwnProperty('filters')){
+            if(pageParam['filters'] === 'W10%3D'){
+                delete pageParam['filters'];
+            }
+        }
         this.router.navigate(['/search'], {queryParams : pageParam});
     }
 
