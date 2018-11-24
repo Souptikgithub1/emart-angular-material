@@ -25,9 +25,14 @@
 .product-card:hover{
   box-shadow: 0px 0px 15px 3px #ededed;
   color: #000;
+    transition-duration: .3s;
 }
 .product-card:hover .product-name{
   color: blue;
+}
+.product-card:hover .image-holder{
+  transform: scale(1.05);
+  transition-duration: .3s;
 }
 
 .product-card-anchor{
