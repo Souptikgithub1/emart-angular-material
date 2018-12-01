@@ -38,9 +38,9 @@
             <div *ngIf="products.length > 0">
                 <div class="search-details-container">
                     <div class="search-details">
-                        <span *ngIf="!searchResDetails" class="search-category-name">{{searchResultName ? searchResultName : categoryName}}</span>
-                        <span *ngIf="!!searchResDetails" class="search-result-details">{{searchResDetails}}</span>
-                        <span *ngIf="!!searchString" class="search-string search-category-name">{{searchString}}</span>
+                        <span *ngIf="!queryString" class="search-category-name">{{searchResultName ? searchResultName : categoryName}}</span>
+                        <span *ngIf="!!queryString" class="search-result-details">{{searchResDetails}}</span>
+                        <span *ngIf="!!queryString" class="search-string search-category-name">{{searchString}}</span>
                         <span class="search-count">(Showing {{startCount}} - {{endCount}} products of {{totalProductCount}})</span>
                     </div>
                 </div>

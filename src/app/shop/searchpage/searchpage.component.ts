@@ -43,6 +43,7 @@ export class SearchpageComponent implements OnInit {
     value: number = 100;
     highValue: number = 150;
 
+    queryString: string;
 
     constructor(private activatedRoute: ActivatedRoute,
                 private router: Router,
@@ -74,6 +75,8 @@ export class SearchpageComponent implements OnInit {
             //console.log(params.vertId);
             catId = params.catId;
             vertId = params.vertId;
+
+            this.queryString = params.q;
 
             page = (!!params.page || typeof params.page !== 'undefined') ? params.page-1 : 0;
             this.page = page;
@@ -135,6 +138,9 @@ export class SearchpageComponent implements OnInit {
                     if(!!params.q){
                         this.searchResDetails = "Showing Search Results For ";
                         this.searchString = "'" + params.q + "'";
+                    }else{
+                        this.searchResDetails = '';
+                        this.searchString = '';
                     }
 
                     //fetch filterable features
