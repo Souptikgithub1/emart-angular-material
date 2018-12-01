@@ -1,6 +1,6 @@
 <div class="reset-padding product-card-container  {{cardType}}">
 
-  <a class="product-card-anchor action" [routerLink]="'/product/'+product['id']">
+  <a class="product-card-anchor action" [routerLink]="'/product/'+productIdEncoded">
     <div class="product-card" >
       <div class="image-holder">
         <img class="responsive-img" src="{{imgRoot}}{{product.brand.brandName}}%2F{{product.image1}}" />

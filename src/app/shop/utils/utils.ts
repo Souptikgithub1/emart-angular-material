@@ -137,4 +137,8 @@ export class Utils {
 
         return chunkedArr;
     }
+
+    public static getProductIdEncoded(product){
+        return product['productIdEncoded'] = product.productName.split(' ').join('-') + '-' + btoa(product.id.toString());
+    }
 }

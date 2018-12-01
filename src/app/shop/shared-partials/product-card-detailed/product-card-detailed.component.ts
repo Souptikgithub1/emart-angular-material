@@ -15,12 +15,15 @@ export class ProductCardDetailedComponent implements OnInit {
 
     imgRoot : string;
 
+    productIdEncoded: string;
+
     baseDomain: string = Utils.getBaseDomain();
     constructor(private router: Router) {
         this.imgRoot = Utils.imgRoot;
     }
 
     ngOnInit() {
+        this.productIdEncoded = Utils.getProductIdEncoded(this.product);
     }
 
     onClickProductCard(){

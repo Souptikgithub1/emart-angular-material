@@ -21,17 +21,13 @@
                                                 [zoomMode]="'hover'"
                                         ></ngx-image-zoom>-->
                                     </div>
+                                    <div class="action-btns">
+                                        <div class="row">
+                                            <div class="col-md-6 reset-padding-left"><button class="btn btn-danger btn-block">Buy Now</button></div>
+                                            <div class="col-md-6 reset-padding"><button class="btn btn-success btn-block" (click)="addToCart()">Add to cart</button></div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="action-btns">
-                            <div class="row">
-                                <div class="col-md-6"><button class="btn btn-danger btn-block">Buy Now</button></div>
-                                <div class="col-md-6"><button class="btn btn-success btn-block" (click)="addToCart()">Add to cart</button></div>
                             </div>
                         </div>
                     </div>
@@ -90,7 +86,9 @@
         </div>
     </div>
 
+    <div style="margin-bottom: -20px">
+        <app-rvp></app-rvp>
+    </div>
 
-    <app-rvp></app-rvp>
 </div>
 <app-product-page-skeleton *ngIf="!!isLoaderVisible"></app-product-page-skeleton>

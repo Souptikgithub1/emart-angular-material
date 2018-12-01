@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
     userDetails: object;
     userFirstName: string;
 
+    searchString: string;
+
     modalRef: BsModalRef;
     constructor(private categoryService: CategoryService,
                 private bsModalService: BsModalService,
@@ -47,6 +49,11 @@ export class HeaderComponent implements OnInit {
             this.isUserLoggedIn = false;
         }
         this.bsModalService.hide(0);
+    }
+
+    onSearch(){
+        let searchArr = this.searchString.split(' ');
+        console.log(searchArr);
     }
 
     logout(){

@@ -37,6 +37,11 @@ export class SearchpageComponent implements OnInit {
     filters: Array<object>;
     activeFilters: Array<object> = [];
 
+    value: number = 100;
+    highValue: number = 150;
+
+    range = [10,20];
+
     constructor(private activatedRoute: ActivatedRoute,
                 private router: Router,
                 private productService: ProductService,

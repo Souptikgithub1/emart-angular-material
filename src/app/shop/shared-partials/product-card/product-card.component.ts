@@ -17,11 +17,14 @@ export class ProductCardComponent implements OnInit {
 
   imgRoot : string;
 
+  productIdEncoded: string;
+
   constructor(private router: Router) {
     this.imgRoot = Utils.imgRoot;
   }
 
   ngOnInit() {
+    this.productIdEncoded = Utils.getProductIdEncoded(this.product);
   }
 
   onClickProductCard(){

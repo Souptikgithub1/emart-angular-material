@@ -90,9 +90,10 @@ import { BannerSkeletonComponent } from './shop/shared-partials/banner-skeleton/
 import {RvpEventService} from "./shop/services/rvpEvent/rvp-event.service";
 import { ManageProductPriceComponent } from './admin/product/manage-product-price/manage-product-price.component';
 import { ProductPageSkeletonComponent } from './shop/shared-partials/product-page-skeleton/product-page-skeleton.component';
+import 'hammerjs';
 
 
-/*@NgModule({
+@NgModule({
     exports: [
         MatAutocompleteModule,
         MatButtonModule,
@@ -128,7 +129,7 @@ import { ProductPageSkeletonComponent } from './shop/shared-partials/product-pag
     ],
     declarations: []
 })
-export class MaterialModule {}*/
+export class MaterialModule {}
 
 
 export function getAuthServiceConfigs() {

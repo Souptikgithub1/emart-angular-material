@@ -50,7 +50,9 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
             window.scrollTo(0, 0);
             this.isLoaderVisible = true;
             //$('#product-details-container').scrollTop();
-            this.productId = params['productId'];
+            let prodDetailsArr = params['productId'].split('-');
+
+            this.productId = atob(prodDetailsArr[prodDetailsArr.length-1]);
 
             this.productDetails = [];
             this.keyFeatures = [];

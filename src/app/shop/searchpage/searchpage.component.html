@@ -5,6 +5,11 @@
                 <div class="col-md-12">
                     <div class="filters">
                         <div class="filters-header">Filters</div>
+                        <!--<div class="filter-header"> Price
+                            <div class="filter-body">
+                                &lt;!&ndash;<ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>&ndash;&gt;
+                            </div>
+                        </div>-->
                         <div *ngFor="let filter of filters; let filterIndex = index" class="">
                             <div class="filter-header">{{filter['prodFeatureName']}}</div>
                             <div class="filter-body">
