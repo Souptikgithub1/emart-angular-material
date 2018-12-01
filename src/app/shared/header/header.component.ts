@@ -4,6 +4,7 @@ import {Utils} from "../../shop/utils/utils";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {RegisterSigninModalComponent} from "../../shop/register-signin-modal/register-signin-modal.component";
 import {AuthService} from "angular4-social-login";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-header',
@@ -20,7 +21,8 @@ export class HeaderComponent implements OnInit {
     searchString: string;
 
     modalRef: BsModalRef;
-    constructor(private categoryService: CategoryService,
+    constructor(private router: Router,
+                private categoryService: CategoryService,
                 private bsModalService: BsModalService,
                 private authService: AuthService) { }
 
@@ -52,8 +54,7 @@ export class HeaderComponent implements OnInit {
     }
 
     onSearch(){
-        let searchArr = this.searchString.split(' ');
-        console.log(searchArr);
+        this.router.navigate(['/search'], {queryParams: {'q': this.searchString} });
     }
 
     logout(){

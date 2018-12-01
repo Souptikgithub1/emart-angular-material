@@ -38,14 +38,16 @@
             <div *ngIf="products.length > 0">
                 <div class="search-details-container">
                     <div class="search-details">
-                        <span class="search-category-name">{{searchResultName ? searchResultName : categoryName}}</span>
+                        <span *ngIf="!searchResDetails" class="search-category-name">{{searchResultName ? searchResultName : categoryName}}</span>
+                        <span *ngIf="!!searchResDetails" class="search-result-details">{{searchResDetails}}</span>
+                        <span *ngIf="!!searchString" class="search-string search-category-name">{{searchString}}</span>
                         <span class="search-count">(Showing {{startCount}} - {{endCount}} products of {{totalProductCount}})</span>
                     </div>
                 </div>
                 <div class="product-list">
                     <div  *ngFor="let product of products; let i = index">
-                        <app-product-card *ngIf="!isproductCardDetailed()" [product]="product"></app-product-card>
-                        <app-product-card-detailed *ngIf="!!isproductCardDetailed()" [product]="product"></app-product-card-detailed>
+                        <app-product-card *ngIf="!isproductCardDetailed() || !!searchResDetails" [product]="product"></app-product-card>
+                        <app-product-card-detailed *ngIf="!!isproductCardDetailed() && !searchResDetails" [product]="product"></app-product-card-detailed>
                     </div>
 
                 </div>

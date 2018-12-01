@@ -34,13 +34,15 @@ export class SearchpageComponent implements OnInit {
     verticalName: string;
     searchResultName: string;
 
+    searchResDetails: string;
+    searchString: string;
+
     filters: Array<object>;
     activeFilters: Array<object> = [];
 
     value: number = 100;
     highValue: number = 150;
 
-    range = [10,20];
 
     constructor(private activatedRoute: ActivatedRoute,
                 private router: Router,
@@ -75,7 +77,7 @@ export class SearchpageComponent implements OnInit {
 
             page = (!!params.page || typeof params.page !== 'undefined') ? params.page-1 : 0;
             this.page = page;
-            size = (!!params.size || typeof params.size !== 'undefined') ? params.size : 12;
+            size = (!!params.size || typeof params.size !== 'undefined') ? params.size : 15;
 
 
 
@@ -83,6 +85,7 @@ export class SearchpageComponent implements OnInit {
             this.activeFilters = filtersForUrl;
 
             let queryParams = {
+                'q': params.q,
                 'categoryId' : !!catId ? catId : 0,
                 'verticalId' : !!vertId ? vertId : 0,
                 'page' : page,
@@ -127,6 +130,11 @@ export class SearchpageComponent implements OnInit {
                         this.categoryService.getCategory(this.products[0].verticalId.toString()).subscribe(vertical => {
                             this.searchResultName = !!vertical.searchResultName ? vertical.searchResultName : vertical.name;
                         });
+                    }
+
+                    if(!!params.q){
+                        this.searchResDetails = "Showing Search Results For ";
+                        this.searchString = "'" + params.q + "'";
                     }
 
                     //fetch filterable features

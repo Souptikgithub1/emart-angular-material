@@ -178,3 +178,14 @@
 .cart-item-count{
   text-align: center;
 }
+
+.offer-tag{
+  position: absolute;
+  background: #1d8e37;
+  color: #fff;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  z-index: 2;
+}

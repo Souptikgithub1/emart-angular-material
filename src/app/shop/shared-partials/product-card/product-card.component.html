@@ -2,6 +2,7 @@
 
   <a class="product-card-anchor action" [routerLink]="'/product/'+productIdEncoded">
     <div class="product-card" >
+      <div *ngIf="product.mrp != 0" class="offer-tag">On Offer</div>
       <div class="image-holder">
         <img class="responsive-img" src="{{imgRoot}}{{product.brand.brandName}}%2F{{product.image1}}" />
         <!--<button class="btn btn-dark quickViewBtn" (click)="openQuickViewModal()">Quick View</button>-->

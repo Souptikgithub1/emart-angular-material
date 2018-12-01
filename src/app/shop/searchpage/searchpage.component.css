@@ -25,6 +25,12 @@
   padding: 15px 0;
   padding-left: 15px;
 }
+
+.search-result-details{
+  font-size: 13px;
+  font-weight: 500;
+}
+
 .search-category-name{
   font-size: 14px;
   font-weight: 600;
