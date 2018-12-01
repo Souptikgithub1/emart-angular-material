@@ -76,7 +76,7 @@ export class SearchpageComponent implements OnInit {
             catId = params.catId;
             vertId = params.vertId;
 
-            this.queryString = params.q;
+            this.queryString = decodeURI(params.q);
 
             page = (!!params.page || typeof params.page !== 'undefined') ? params.page-1 : 0;
             this.page = page;
@@ -137,7 +137,7 @@ export class SearchpageComponent implements OnInit {
 
                     if(!!params.q){
                         this.searchResDetails = "Showing Search Results For ";
-                        this.searchString = "'" + params.q + "'";
+                        this.searchString = "'" + this.queryString + "'";
                     }else{
                         this.searchResDetails = '';
                         this.searchString = '';
@@ -302,6 +302,9 @@ export class SearchpageComponent implements OnInit {
 
 
         let urlParamsObj = Utils.getUrlParamsAsObj();
+        if(!!urlParamsObj['q']){
+            urlParamsObj['q'] = decodeURI(urlParamsObj['q']);
+        }
         urlParamsObj['page'] = 1;
             if (urlParamsObj.hasOwnProperty('filters')){
                 urlParamsObj['filters'] = btoa(JSON.stringify(this.activeFilters));
