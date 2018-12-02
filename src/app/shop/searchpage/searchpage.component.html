@@ -8,7 +8,7 @@
                         <div class="filter-container">
                             <div class="filter-header">Price</div>
                             <div class="filter-body">
-                                <ng5-slider [(value)]="minPrice" [(highValue)]="maxPrice" [(options)]="options" (valueChange)="changeFilterAndNavigate()"></ng5-slider>
+                                <ng5-slider [(value)]="minPrice" [(highValue)]="maxPrice" [(options)]="options" (userChangeEnd)="changeFilterAndNavigate()"></ng5-slider>
                             </div>
                         </div>
                         <div *ngFor="let filter of filters; let filterIndex = index" class="filter-container">
