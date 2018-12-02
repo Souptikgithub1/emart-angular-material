@@ -5,19 +5,21 @@
                 <div class="col-md-12">
                     <div class="filters">
                         <div class="filters-header">Filters</div>
-                        <!--<div class="filter-header"> Price
+                        <div class="filter-container">
+                            <div class="filter-header">Price</div>
                             <div class="filter-body">
-                                &lt;!&ndash;<ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>&ndash;&gt;
+                                <ng5-slider [(value)]="minPrice" [(highValue)]="maxPrice" [(options)]="options" (valueChange)="changeFilterAndNavigate()"></ng5-slider>
                             </div>
-                        </div>-->
-                        <div *ngFor="let filter of filters; let filterIndex = index" class="">
+                        </div>
+                        <div *ngFor="let filter of filters; let filterIndex = index" class="filter-container">
                             <div class="filter-header">{{filter['prodFeatureName']}}</div>
                             <div class="filter-body">
                                 <div *ngFor="let value of filter['values']; let filterValueIndex = index" class="form-check">
                                     <label class="form-check-label">
                                         <input class="form-check-input" type="checkbox" [checked]="value['checked']"  (change)="onFilterChange($event, filter['id'], value.value, filterIndex, filterValueIndex)">
-                                        {{value.text}}
+
                                         <span class="form-check-sign"></span>
+                                        <span class="filter-value">{{value.text}}</span>
                                     </label>
                                 </div>
                             </div>

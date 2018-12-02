@@ -29,7 +29,7 @@ export class AddCategoryComponent implements OnInit {
   getAllCategories(){
     this.categoryService.getAll().subscribe(response => {
       console.log(response);
-      this.parentCategories = response;
+      //this.parentCategories = response;
     });
   }
 

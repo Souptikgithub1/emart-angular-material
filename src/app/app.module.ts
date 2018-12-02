@@ -91,6 +91,7 @@ import {RvpEventService} from "./shop/services/rvpEvent/rvp-event.service";
 import { ManageProductPriceComponent } from './admin/product/manage-product-price/manage-product-price.component';
 import { ProductPageSkeletonComponent } from './shop/shared-partials/product-page-skeleton/product-page-skeleton.component';
 import 'hammerjs';
+import {Ng5SliderModule} from "ng5-slider";
 
 
 @NgModule({
@@ -192,7 +193,8 @@ export function getAuthServiceConfigs() {
         HttpModule,
         HttpClientModule,
         ModalModule,
-        ComponentsModule
+        ComponentsModule,
+        Ng5SliderModule
         /*SocialLoginModule.initialize(config)*/
     ],
     entryComponents: [

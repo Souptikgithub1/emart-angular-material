@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Http, RequestOptions, ResponseContentType} from "@angular/http";
-import 'rxjs/add/operator/map';
 import {Utils} from "../../utils/utils";
 import {HttpClient} from "@angular/common/http";
+import {map} from "rxjs/internal/operators";
 
 @Injectable()
 export class ProductService {
@@ -13,39 +13,39 @@ export class ProductService {
 
   getProducts(params : object){
     const options = new RequestOptions({params: params});
-    return this.http.get(this.endpoint + 'search', options).map(res => res.json());
+    return this.http.get(this.endpoint + 'search', options).pipe(map(res => res.json()));
   }
 
   getProdcutDetails(productId: any){
-    return this.http.get(this.endpoint + 'product/' + productId).map(res => res.json());
+    return this.http.get(this.endpoint + 'product/' + productId).pipe(map(res => res.json()));
   }
 
   add(requestBody: object){
-    return this.http.post(this.endpoint + 'add', requestBody).map(res => res.json());
+    return this.http.post(this.endpoint + 'add', requestBody).pipe(map(res => res.json()));
   }
 
   getAll(){
-    return this.http.get(this.endpoint + 'product/getAll').map(res => res.json());
+    return this.http.get(this.endpoint + 'product/getAll').pipe(map(res => res.json()));
   }
 
   getByBrandAndVertical(params: object){
-    return this.http.get(this.endpoint + 'product/' + params['verticalId'] + "/" + params['brandId']).map(res => res.json());
+    return this.http.get(this.endpoint + 'product/' + params['verticalId'] + "/" + params['brandId']).pipe(map(res => res.json()));
   }
 
   update(productBody: object){
-    return this.http.put(this.endpoint + 'product/' + productBody['id'], productBody).map(res => res.json());
+    return this.http.put(this.endpoint + 'product/' + productBody['id'], productBody).pipe(map(res => res.json()));
   }
 
   deleteProduct(productId: number){
-    return this.http.delete(this.endpoint + 'product/' + productId).map(res => res.json());
+    return this.http.delete(this.endpoint + 'product/' + productId).pipe(map(res => res.json()));
   }
 
   updateProductState(productId: number){
-    return this.http.put(this.endpoint + 'product/updateState/' + productId, {}).map(res => res.json());
+    return this.http.put(this.endpoint + 'product/updateState/' + productId, {}).pipe(map(res => res.json()));
   }
 
   getSearchedProducts(params : object){
     const options = new RequestOptions({params: params});
-    return this.http.get(this.endpoint + '?categoryId=' + params['categoryId']).map(res => res.json());
+    return this.http.get(this.endpoint + '?categoryId=' + params['categoryId']).pipe(map(res => res.json()));
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Utils} from "../utils/utils";
 import {ProductService} from "../services/product/product.service";
@@ -6,6 +6,7 @@ import {Product} from "../entities/product";
 import {CategoryService} from "../services/category/category.service";
 import {ProductFeatureNamesService} from "../services/ProductFeatureNames/product-feature-names.service";
 import {Filters} from "../utils/filters";
+import {Options} from "ng5-slider";
 
 declare var $: any;
 
@@ -40,8 +41,13 @@ export class SearchpageComponent implements OnInit {
     filters: Array<object>;
     activeFilters: Array<object> = [];
 
-    value: number = 100;
-    highValue: number = 150;
+    minPrice: number = 0;
+    maxPrice: number = 100000;
+    options: Options = {
+        floor: 0,
+        ceil: 100000,
+        step: 1,
+    };
 
     queryString: string;
 
@@ -87,13 +93,16 @@ export class SearchpageComponent implements OnInit {
             filtersForUrl = (params.filters !== undefined && params.filters !== 'W10%3D') ? JSON.parse(atob(params.filters)) : [];
             this.activeFilters = filtersForUrl;
 
+
             let queryParams = {
                 'q': params.q,
                 'categoryId' : !!catId ? catId : 0,
                 'verticalId' : !!vertId ? vertId : 0,
                 'page' : page,
                 'size' : size,
-                'filters' : filtersForUrl
+                'filters' : filtersForUrl,
+                'minPrice' : (!!params.minPrice ? params.minPrice : this.minPrice)*100,
+                'maxPrice' : (!!params.maxPrice ? params.maxPrice : this.maxPrice)*100
             };
 
             //fetching data from api
@@ -101,6 +110,17 @@ export class SearchpageComponent implements OnInit {
             this.productService.getProducts(queryParams).subscribe(response => {
                 //console.log(response);
                 this.products = response.productDetailsBeans;
+
+                this.minPrice = !!params.minPrice ? params.minPrice : response.minPrice/100;
+                this.maxPrice = !!params.maxPrice ? params.maxPrice : response.maxPrice/100;
+
+
+                let options: Options = {
+                    floor: response.minPrice/100,
+                    ceil: response.maxPrice/100,
+                    step: 1,
+                };
+                this.options = options;
 
                 // build pagination strip
                 this.noOfPages = Number(response.noOfPages);
@@ -141,6 +161,7 @@ export class SearchpageComponent implements OnInit {
                     }else{
                         this.searchResDetails = '';
                         this.searchString = '';
+                        this.queryString = '';
                     }
 
                     //fetch filterable features
@@ -301,19 +322,27 @@ export class SearchpageComponent implements OnInit {
         }
 
 
+        this.changeFilterAndNavigate();
+
+    }
+
+    changeFilterAndNavigate(){
         let urlParamsObj = Utils.getUrlParamsAsObj();
         if(!!urlParamsObj['q']){
             urlParamsObj['q'] = decodeURI(urlParamsObj['q']);
         }
+
         urlParamsObj['page'] = 1;
-            if (urlParamsObj.hasOwnProperty('filters')){
-                urlParamsObj['filters'] = btoa(JSON.stringify(this.activeFilters));
-            } else {
-                Object.assign(urlParamsObj, {filters: btoa(JSON.stringify(this.activeFilters))})
-            }
+        urlParamsObj['minPrice'] = this.minPrice;
+        urlParamsObj['maxPrice'] = this.maxPrice;
 
-            this.router.navigate(['/search'], {queryParams: urlParamsObj});
+        if (urlParamsObj.hasOwnProperty('filters')){
+            urlParamsObj['filters'] = btoa(JSON.stringify(this.activeFilters));
+        } else {
+            Object.assign(urlParamsObj, {filters: btoa(JSON.stringify(this.activeFilters))})
+        }
 
+        this.router.navigate(['/search'], {queryParams: urlParamsObj});
     }
 
 }

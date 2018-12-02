@@ -44,7 +44,7 @@ export class SigninComponent implements OnInit {
             }
         }
         this.userService.login(userPayload).subscribe(response => {
-            if(response['status'] === 'SUCCESS'){
+            if(response['status'].toString() === 'SUCCESS'){
                 Utils.setUserToLocalStorage(response['data']);
                 location.reload();
             }else {

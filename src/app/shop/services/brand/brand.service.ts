@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 import {Utils} from "../../utils/utils";
+import {map} from "rxjs/internal/operators";
 
 @Injectable()
 export class BrandService {
@@ -12,11 +13,11 @@ export class BrandService {
   }
 
   add(brand: object){
-    return this.http.post(this.endpoint + 'add', brand).map(res => res.json());
+    return this.http.post(this.endpoint + 'add', brand).pipe(map(res => res.json()));
   }
 
   getAll(){
-    return this.http.get(this.endpoint + 'getAll').map(res => res.json());
+    return this.http.get(this.endpoint + 'getAll').pipe(map(res => res.json()));
   }
 
 }

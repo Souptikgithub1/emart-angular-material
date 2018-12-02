@@ -10,8 +10,8 @@
       <div class="product-desc">
         <div class="product-name">{{product.productName}}</div>
         <div class="">
-          <span class="product-price">{{product.sellingRate/100 | currency:'INR':true:'1.0'}}</span>
-          <span *ngIf="product.mrp != 0" class="mrp">{{product.mrp/100 | currency:'INR':true:'1.0'}}</span>
+          <span class="product-price">{{product.sellingRate/100 | currency:'INR':'symbol':'1.0'}}</span>
+          <span *ngIf="product.mrp != 0" class="mrp">{{product.mrp/100 | currency:'INR':'symbol':'1.0'}}</span>
           <span *ngIf="product.mrp != 0" class="offer-percent">{{((product.mrp-product.sellingRate)*100/(product.mrp)).toFixed(0)}}% off</span>
         </div>
       </div>

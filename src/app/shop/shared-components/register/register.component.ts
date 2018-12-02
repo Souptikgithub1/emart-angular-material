@@ -2,8 +2,7 @@ import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core'
 import {UserService} from "../../services/user.service";
 import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from "angular4-social-login";
 import {Utils} from "../../utils/utils";
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/takeUntil';
+import 'rxjs/operators';
 
 
 @Component({
@@ -54,7 +53,7 @@ export class RegisterComponent implements OnInit {
         }
 
         this.userService.add(userPayload).subscribe(response => {
-                if(response['status'].toUpperCase() === 'SUCCESS' ){
+                if(response['status'].toString().toUpperCase() === 'SUCCESS' ){
                     Utils.setUserToLocalStorage(response['data']);
                     location.reload();
                 }else {

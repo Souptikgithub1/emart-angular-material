@@ -79,6 +79,15 @@
   text-transform: uppercase;
 }
 
+.filter-container{
+  margin-bottom: 15px;
+}
+
+.filter-value{
+  position: relative;
+  padding-left: 25px;
+}
+
 body {
   margin: 0;
 }
