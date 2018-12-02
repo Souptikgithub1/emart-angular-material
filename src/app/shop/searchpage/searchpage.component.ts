@@ -36,7 +36,7 @@ export class SearchpageComponent implements OnInit {
     searchResultName: string;
 
     searchResDetails: string;
-    searchString: string;
+    searchResultString: string;
 
     filters: Array<object>;
     activeFilters: Array<object> = [];
@@ -82,7 +82,7 @@ export class SearchpageComponent implements OnInit {
             catId = params.catId;
             vertId = params.vertId;
 
-            this.queryString = decodeURI(params.q);
+
 
             page = (!!params.page || typeof params.page !== 'undefined') ? params.page-1 : 0;
             this.page = page;
@@ -94,8 +94,8 @@ export class SearchpageComponent implements OnInit {
             this.activeFilters = filtersForUrl;
 
 
-            let queryParams = {
-                'q': params.q,
+            let queryParams = {};
+             queryParams = {
                 'categoryId' : !!catId ? catId : 0,
                 'verticalId' : !!vertId ? vertId : 0,
                 'page' : page,
@@ -104,6 +104,15 @@ export class SearchpageComponent implements OnInit {
                 'minPrice' : (!!params.minPrice ? params.minPrice : this.minPrice)*100,
                 'maxPrice' : (!!params.maxPrice ? params.maxPrice : this.maxPrice)*100
             };
+
+             if(!!params.q){
+                 if(decodeURI(params.q) !== this.queryString){
+                     queryParams = {'q': params.q};
+                 }else{
+                     Object.assign(queryParams, {'q': params.q});
+                 }
+             }
+            this.queryString = decodeURI(params.q);
 
             //fetching data from api
             this.products = [];
@@ -157,10 +166,10 @@ export class SearchpageComponent implements OnInit {
 
                     if(!!params.q){
                         this.searchResDetails = "Showing Search Results For ";
-                        this.searchString = "'" + this.queryString + "'";
+                        this.searchResultString = "'" + this.queryString + "'";
                     }else{
                         this.searchResDetails = '';
-                        this.searchString = '';
+                        this.searchResultString = '';
                         this.queryString = '';
                     }
 
