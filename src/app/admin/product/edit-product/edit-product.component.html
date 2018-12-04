@@ -103,6 +103,27 @@
         </div>
       </form>
     </div>
+    <div class="col-md-3">
+      <form class="form-horizontal" (ngSubmit)="updateProductFeatures()">
+
+
+        <div *ngFor="let feature of productFeatureList" class="form-group">
+          <label class="control-label col-sm-8" >{{feature['prodFeatureName']}}</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" [(ngModel)]="feature['prodFeatureValue']" [name]="feature['prodFeatureName']">
+            {{feature['prodFeatureValue']}}
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Submit</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
     <div class="col-md-5" *ngIf="productFeatureNames.length > 0">
       <h6>New Features</h6>
       <table class="table">
@@ -113,7 +134,7 @@
         </tr>
         </thead>
         <tbody>
-        <form (ngSubmit)="addNewFeatures()">
+        <form class="form-horizontal" (ngSubmit)="addNewFeatures()">
           <tr *ngFor="let feature of productFeatureNames; let i = index">
             <td>{{feature.prodFeatureName}}</td>
             <td><input type="text" [name]="feature.prodFeatureName" [(ngModel)]="productFeatureNames[i]['value']"></td>
@@ -126,26 +147,6 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-3">
-      <form class="form-horizontal" (ngSubmit)="updateProductFeatures()">
 
-
-          <div *ngFor="let feature of productFeatureList" class="form-group">
-            <label class="control-label col-sm-8" >{{feature['prodFeatureName']}}</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" [(ngModel)]="feature['prodFeatureValue']" [name]="feature['prodFeatureName']">
-              {{feature['prodFeatureValue']}}
-            </div>
-          </div>
-
-
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Submit</button>
-          </div>
-        </div>
-
-      </form>
-    </div>
   </div>
 </div>

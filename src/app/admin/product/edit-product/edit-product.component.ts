@@ -121,12 +121,14 @@ export class EditProductComponent implements OnInit {
 
     getProductFeatureNames(){
         this.productFeatureNamesService.getByVerticalId(this.verticalId).subscribe(response => {
-            for (let i = 0 ; i < response.length ; i++){
-              for(let j = 0 ; j < this.productFeatureList.length ; j++){
-                if(response[i].id == this.productFeatureList[j].id){
-                  response.splice(i,1);
+            if(this.productFeatureList.length > 0){
+                for (let i = 0 ; i < response.length ; i++){
+                    for(let j = 0 ; j < this.productFeatureList.length ; j++){
+                        if(response[i].id == this.productFeatureList[j].id){
+                            response.splice(i,1);
+                        }
+                    }
                 }
-              }
             }
             console.log(response);
             this.productFeatureNames = response;
