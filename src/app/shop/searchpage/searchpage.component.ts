@@ -101,8 +101,8 @@ export class SearchpageComponent implements OnInit {
                 'page' : page,
                 'size' : size,
                 'filters' : filtersForUrl,
-                'minPrice' : (!!params.minPrice ? params.minPrice : this.minPrice)*100,
-                'maxPrice' : (!!params.maxPrice ? params.maxPrice : this.maxPrice)*100
+                'minPrice' : (!!params.minPrice ? params.minPrice : 0)*100,
+                'maxPrice' : (!!params.maxPrice ? params.maxPrice : 100000)*100
             };
 
              if(!!params.q){
