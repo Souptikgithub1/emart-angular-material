@@ -18,12 +18,13 @@
 
 .search-details-container{
   display: flex;
-  border-bottom: 1px solid #f1f1f1;
+  /*border-bottom: 1px solid #f1f1f1;*/
 }
 .search-details{
   flex-grow: 20;
   padding: 15px 0;
   padding-left: 15px;
+  padding-bottom: 5px;
 }
 
 .search-result-details{
@@ -99,4 +100,25 @@ body {
   height: 500px;
   font-size: 25px;
   font-weight: 500;
+}
+
+.order-tab-item{
+  padding: 0;
+}
+
+/deep/ .mat-tab-label{
+  height: 40px !important;
+  min-width: 100px !important;
+  font-size: 13px !important;
+  padding: 0 15px;
+}
+
+/deep/ .mat-tab-body-wrapper{
+  display: none !important;
+}
+
+/deep/ .mat-tab-label.mat-tab-disabled,
+.mat-tab-link.mat-tab-disabled{
+  color: #000;
+  opacity: 1;
 }

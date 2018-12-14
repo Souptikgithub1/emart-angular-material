@@ -46,6 +46,14 @@
                         <span class="search-count">(Showing {{startCount}} - {{endCount}} products of {{totalProductCount}})</span>
                     </div>
                 </div>
+                <div>
+                    <mat-tab-group [selectedIndex]="selectedSortIndex" (selectedIndexChange)="doSort($event)">
+                        <mat-tab label="Order By" disabled></mat-tab>
+                        <mat-tab label="Price: Low to high"></mat-tab>
+                        <mat-tab label="Price: High to low"></mat-tab>
+                        <mat-tab label="Latest"></mat-tab>
+                    </mat-tab-group>
+                </div>
                 <div class="product-list">
                     <div  *ngFor="let product of products; let i = index">
                         <app-product-card *ngIf="!isproductCardDetailed() || !!searchResDetails" [product]="product"></app-product-card>

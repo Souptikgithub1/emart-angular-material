@@ -50,6 +50,8 @@ export class SearchpageComponent implements OnInit {
     };
 
     queryString: string;
+    sort: string;
+    selectedSortIndex: number;
 
     constructor(private activatedRoute: ActivatedRoute,
                 private router: Router,
@@ -93,6 +95,7 @@ export class SearchpageComponent implements OnInit {
             filtersForUrl = (params.filters !== undefined && params.filters !== 'W10%3D') ? JSON.parse(atob(params.filters)) : [];
             this.activeFilters = filtersForUrl;
 
+            this.selectedSortIndex = !!params.sort ? Utils.sortArr.findIndex(x => x === params.sort) + 1 : 1;
 
             let queryParams = {};
              queryParams = {
@@ -102,7 +105,8 @@ export class SearchpageComponent implements OnInit {
                 'size' : size,
                 'filters' : filtersForUrl,
                 'minPrice' : (!!params.minPrice ? params.minPrice : 0)*100,
-                'maxPrice' : (!!params.maxPrice ? params.maxPrice : 100000)*100
+                'maxPrice' : (!!params.maxPrice ? params.maxPrice : 100000)*100,
+                'sort' : (!!params.sort ? params.sort : "price_asc")
             };
 
              if(!!params.q){
@@ -345,6 +349,8 @@ export class SearchpageComponent implements OnInit {
         urlParamsObj['minPrice'] = this.minPrice;
         urlParamsObj['maxPrice'] = this.maxPrice;
 
+        urlParamsObj['sort'] = this.sort;
+
         if (urlParamsObj.hasOwnProperty('filters')){
             urlParamsObj['filters'] = btoa(JSON.stringify(this.activeFilters));
         } else {
@@ -352,6 +358,20 @@ export class SearchpageComponent implements OnInit {
         }
 
         this.router.navigate(['/search'], {queryParams: urlParamsObj});
+    }
+
+    doSort($event){
+        if($event == 1){
+            this.sort = "price_asc";
+        }
+        if($event == 2){
+            this.sort = "price_desc";
+        }
+        if($event == 3){
+            this.sort = "latest_desc";
+        }
+        this.selectedSortIndex = $event;
+        this.changeFilterAndNavigate();
     }
 
 }

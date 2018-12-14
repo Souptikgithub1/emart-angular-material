@@ -96,37 +96,8 @@ import {Ng5SliderModule} from "ng5-slider";
 
 @NgModule({
     exports: [
-        MatAutocompleteModule,
         MatButtonModule,
-        MatButtonToggleModule,
-        MatCardModule,
-        MatCheckboxModule,
-        MatChipsModule,
-        MatStepperModule,
-        MatDatepickerModule,
-        MatDialogModule,
-        MatExpansionModule,
-        MatGridListModule,
-        MatIconModule,
-        MatInputModule,
-        MatListModule,
-        MatMenuModule,
-        MatNativeDateModule,
-        MatPaginatorModule,
-        MatProgressBarModule,
-        MatProgressSpinnerModule,
-        MatRadioModule,
-        MatRippleModule,
-        MatSelectModule,
-        MatSidenavModule,
-        MatSliderModule,
-        MatSlideToggleModule,
-        MatSnackBarModule,
-        MatSortModule,
-        MatTableModule,
-        MatTabsModule,
-        MatToolbarModule,
-        MatTooltipModule
+        MatTabsModule
     ],
     declarations: []
 })
@@ -194,7 +165,8 @@ export function getAuthServiceConfigs() {
         HttpClientModule,
         ModalModule,
         ComponentsModule,
-        Ng5SliderModule
+        Ng5SliderModule,
+        MaterialModule
         /*SocialLoginModule.initialize(config)*/
     ],
     entryComponents: [
