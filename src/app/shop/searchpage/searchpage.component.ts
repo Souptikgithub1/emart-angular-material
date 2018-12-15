@@ -361,15 +361,7 @@ export class SearchpageComponent implements OnInit {
     }
 
     doSort($event){
-        if($event == 1){
-            this.sort = "price_asc";
-        }
-        if($event == 2){
-            this.sort = "price_desc";
-        }
-        if($event == 3){
-            this.sort = "latest_desc";
-        }
+        this.sort = Utils.sortArr[$event-1];
         this.selectedSortIndex = $event;
         this.changeFilterAndNavigate();
     }
