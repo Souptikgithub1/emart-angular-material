@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
@@ -73,7 +73,7 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatStepperModule,
+    MatStepperModule, MatBadgeModule,
 } from '@angular/material';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SigninComponent } from './shop/shared-components/signin/signin.component';
@@ -97,7 +97,10 @@ import {Ng5SliderModule} from "ng5-slider";
 @NgModule({
     exports: [
         MatButtonModule,
-        MatTabsModule
+        MatTabsModule,
+        MatBadgeModule,
+        MatIconModule,
+        MatSnackBarModule
     ],
     declarations: []
 })
@@ -195,6 +198,7 @@ export function getAuthServiceConfigs() {
 
         RegisterSigninModalComponent
     ],
+    schemas: [NO_ERRORS_SCHEMA],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

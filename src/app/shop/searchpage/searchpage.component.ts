@@ -63,7 +63,6 @@ export class SearchpageComponent implements OnInit {
 
     ngOnInit() {
         this.getProducts();
-        //this.getSearchedProducts();
     }
 
     getProducts(){
@@ -220,24 +219,6 @@ export class SearchpageComponent implements OnInit {
         //console.log(event);
     }
 
-    getSearchedProducts(){
-        let catId : number;
-        let page : number;
-        let size : number;
-
-        this.activatedRoute.queryParams.subscribe(params => {
-            //fetching url params
-            catId = params.catId;
-            page = (!!params.page || typeof params.page !== 'undefined') ? params.page-1 : 0;
-            size = (!!params.size || typeof params.size !== 'undefined') ? params.size : 12;
-
-            this.productService.getSearchedProducts({'categoryId' : catId, 'page' : page, 'size' : size}).subscribe(response => {
-                    console.log(response);
-                }, error => {},
-                () => {});
-        });
-
-    }
 
 
     isproductCardDetailed(){

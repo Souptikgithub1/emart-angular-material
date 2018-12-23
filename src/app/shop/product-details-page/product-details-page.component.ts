@@ -6,6 +6,7 @@ import {RvpEventService} from "../services/rvpEvent/rvp-event.service";
 import {Product} from "../entities/product";
 import {User} from "../entities/user";
 import {UserCart} from "../entities/user-cart";
+import {MatSnackBar} from "@angular/material";
 
 declare const $: any;
 
@@ -33,7 +34,8 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
 
     constructor(private activatedRoute: ActivatedRoute,
                 private productService: ProductService,
-                private rvpEventService: RvpEventService) {
+                private rvpEventService: RvpEventService,
+                public snackBar: MatSnackBar) {
         this.imgRoot = Utils.imgRoot;
     }
 
@@ -207,6 +209,9 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
         this.userCart.timeStamp = null;
 
         console.log(this.userCart);
+        this.snackBar.open("Item added to cart", "", {
+            duration: 3000
+        });
     }
 
 }

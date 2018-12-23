@@ -41,10 +41,11 @@
         <li *ngIf="!!isUserLoggedIn" class="nav-item">
 
           <a class="nav-link action">
-              <div class="cart-item-count-holder">
-                  <div class="cart-item-count">10</div>
-              </div>
-              <i class="fa fa-shopping-cart"></i> Cart
+              <i class="fa fa-shopping-cart"
+                 matBadge="15"
+                 matBadgePosition="before"
+                 matBadgeColor="warn"
+              matBadgeSize="medium"></i> Cart
           </a>
         </li>
         <li *ngIf="!isUserLoggedIn" class="nav-item">

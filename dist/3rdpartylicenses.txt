@@ -423,6 +423,9 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 END OF TERMS AND CONDITIONS
 
 
+@angular/core
+MIT
+
 @angular/common
 MIT
 
@@ -510,6 +513,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
+@angular/animations
+MIT
+
 @angular/cdk
 MIT
 The MIT License
@@ -535,8 +541,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-@angular/animations
-MIT
+@angular/material/button
+
+@angular/material/snack-bar
 
 @ng-bootstrap/ng-bootstrap
 MIT
@@ -596,8 +603,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-@angular/material/button
-
 ngx-bootstrap/utils
 
 ngx-bootstrap/component-loader
@@ -634,7 +639,4 @@ SOFTWARE.
 
 
 jw-bootstrap-switch-ng2
-MIT
-
-@angular/core
 MIT
