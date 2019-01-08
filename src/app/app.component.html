@@ -1,5 +1,6 @@
 <div style="height: 74px">
-    <app-header></app-header>
+    <app-header [deviceType]="deviceType"></app-header>
+    <!--<app-navbar></app-navbar>-->
 </div>
 <router-outlet></router-outlet>
 <app-footer *ngIf="removeFooter()"></app-footer>

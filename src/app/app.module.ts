@@ -92,6 +92,9 @@ import { ManageProductPriceComponent } from './admin/product/manage-product-pric
 import { ProductPageSkeletonComponent } from './shop/shared-partials/product-page-skeleton/product-page-skeleton.component';
 import 'hammerjs';
 import {Ng5SliderModule} from "ng5-slider";
+import {CartService} from "./shop/services/cart/cart.service";
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import {DeviceDetectorModule} from "ngx-device-detector";
 
 
 @NgModule({
@@ -169,7 +172,9 @@ export function getAuthServiceConfigs() {
         ModalModule,
         ComponentsModule,
         Ng5SliderModule,
-        MaterialModule
+        MaterialModule,
+        DragDropModule,
+        DeviceDetectorModule.forRoot()
         /*SocialLoginModule.initialize(config)*/
     ],
     entryComponents: [
@@ -195,6 +200,7 @@ export function getAuthServiceConfigs() {
         UserService,
         BannerService,
         RvpEventService,
+        CartService,
 
         RegisterSigninModalComponent
     ],

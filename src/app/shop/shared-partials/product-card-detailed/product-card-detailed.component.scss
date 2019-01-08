@@ -1,7 +1,6 @@
 .product-card-anchor{
   color: #1d1e1f;
-  /*font-family: Roboto;*/
-  font-family: Helvetica,Arial,sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 .product-card-anchor:hover .product-name{
   color: #2874f0;
@@ -11,29 +10,40 @@
   border-bottom: 1px solid #f1f1f1;
 }
 
+.product-img-container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .image-holder{
-  width: 200px;
-  height: 220px;
+  width: 240px;
+  height: 200px;
   margin: 0 auto;
+}
+.offer-tag{
+  top: 0;
 }
 
 .product-desc{
 
 }
 .product-name{
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .product-highlights{
-  padding-top: 20px;
-  color: #a1a1a1;
+  padding-top: 5px;
+  color: #515151;
   font-weight: 400;
+  font-size: 13px;
 }
 
 .product-price{
-  font-size: 25px;
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: 500;
 }
 .mrp{
   font-size: 17px;

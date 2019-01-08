@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CategoryService} from "../../shop/services/category/category.service";
 import {Utils} from "../../shop/utils/utils";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
@@ -12,13 +12,17 @@ import {Router} from "@angular/router";
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+    @Input('deviceType')
+    deviceType: string = 'desktop';
+    isCollapsed = true;
     categories = [];
     isUserLoggedIn: boolean = false;
     userDetails: object;
     userFirstName: string;
 
     searchString: string;
+
+    menuArray = [];
 
     modalRef: BsModalRef;
     constructor(private router: Router,
@@ -34,6 +38,34 @@ export class HeaderComponent implements OnInit {
     getAllCategories(){
         this.categoryService.getCategories().subscribe(response => {
             this.categories = response;
+            console.log(Utils.getBaseDomain());
+            let parentCount = 0;
+            for(let parentCat of this.categories){
+                if(parentCat['parentId'] == 0){
+                    let obj1 = {'title': parentCat['name'], 'link': '#', 'subItems': []};
+                    this.menuArray.push(obj1);
+
+                    let verticalCount = 0;
+                    for(let vertical of this.categories){
+                        if(vertical['parentId'] == parentCat['id']){
+                            let obj2 = {'title': vertical['name'], 'link': Utils.getBaseDomain()+'/search?catId=' + vertical['id'], 'subItems': []};
+                            this.menuArray[parentCount]['subItems'].push(obj2);
+
+                            let leafCount = 0;
+                            for(let leaf of this.categories){
+                                if(leaf['parentId'] == vertical['id']){
+                                    let obj3 = {'title': leaf['name'], 'link': '/search?catId=' + leaf['id']};
+                                    this.menuArray[parentCount]['subItems'][verticalCount]['subItems'].push(obj3);
+                                    leafCount++;
+                                }
+                            }
+                            verticalCount++;
+                        }
+                    }
+                    parentCount++;
+                }
+            }
+            console.log(this.menuArray);
         });
     }
 
@@ -61,5 +93,15 @@ export class HeaderComponent implements OnInit {
         Utils.removeUserFromLocalStorage();
         this.authService.signOut();
         location.reload();
+    }
+
+    public onMenuClose(){
+        console.log("menu closed");
+    }
+    public onMenuOpen(){
+        console.log("menu Opened");
+    }
+    private onItemSelect(item:any){
+        console.log(item);
     }
 }

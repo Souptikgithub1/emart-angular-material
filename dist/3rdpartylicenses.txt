@@ -454,6 +454,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+ngx-device-detector
+MIT
+
 @angular/platform-browser
 MIT
 

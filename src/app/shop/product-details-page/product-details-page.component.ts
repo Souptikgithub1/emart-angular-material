@@ -7,6 +7,7 @@ import {Product} from "../entities/product";
 import {User} from "../entities/user";
 import {UserCart} from "../entities/user-cart";
 import {MatSnackBar} from "@angular/material";
+import {CartService} from "../services/cart/cart.service";
 
 declare const $: any;
 
@@ -35,7 +36,8 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
     constructor(private activatedRoute: ActivatedRoute,
                 private productService: ProductService,
                 private rvpEventService: RvpEventService,
-                public snackBar: MatSnackBar) {
+                public snackBar: MatSnackBar,
+                private cartService: CartService) {
         this.imgRoot = Utils.imgRoot;
     }
 
@@ -208,7 +210,12 @@ export class ProductDetailsPageComponent implements OnInit, OnChanges {
         this.userCart.product = this.product;
         this.userCart.timeStamp = null;
 
-        console.log(this.userCart);
+        //console.log(this.userCart);
+
+        this.cartService.add(this.userCart).subscribe(response => {
+            console.log('response', response);
+        });
+
         this.snackBar.open("Item added to cart", "", {
             duration: 3000
         });
