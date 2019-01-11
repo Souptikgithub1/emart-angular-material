@@ -15,8 +15,17 @@ export class NavSideMenuComponent implements OnInit {
     @Input('categories')
     categories = [];
 
+    verticals = [];
+    parentCatItemIndex: number = 0;
+
+    leaves = [];
+
     @ViewChild('drawer')
-    public drawer: MatSidenav;
+    drawer: MatSidenav;
+    @ViewChild('verticalDrawer')
+    verticalDrawer: MatSidenav;
+    @ViewChild('leafDrawer')
+    leafDrawer: MatSidenav;
 
     constructor(private navSideMenuService: NavSideMenuService) {}
 
@@ -36,6 +45,22 @@ export class NavSideMenuComponent implements OnInit {
 
     closeSideNav(){
       this.navSideMenuService.toggleSideMenu(false);
+      this.verticalDrawer.close();
+      this.leafDrawer.close();
     }
+
+
+    onClickParentCat(i){
+        this.parentCatItemIndex = i;
+        this.verticals = this.categories[i]['child'];
+        this.verticalDrawer.toggle();
+    }
+
+    onClickVertical(i){
+        this.leaves = this.categories[this.parentCatItemIndex]['child'][i]['child'];
+        this.leafDrawer.toggle();
+    }
+
+
 
 }

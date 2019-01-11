@@ -1,37 +1,46 @@
 <mat-sidenav-container class="matSideNav-container" autosize>
   <mat-sidenav #drawer class="example-sidenav" mode="side">
-      <mat-accordion>
 
-          <mat-expansion-panel *ngFor="let parentCat of categories">
-              <mat-expansion-panel-header>
-                  {{parentCat.name}}
-              </mat-expansion-panel-header>
+      <mat-list role="list">
+          <mat-list-item
+                  class="action"
+            role="listitem"
+            *ngFor="let parentCat of categories;let i=index"
+            (click)="onClickParentCat(i)">
+              {{parentCat['name']}}
+              <i class="material-icons">chevron_right</i>
+          </mat-list-item>
 
-              <mat-expansion-panel *ngFor="let vertical of parentCat['child']">
-                  <mat-expansion-panel-header>
-                      {{vertical.name}}
-                  </mat-expansion-panel-header>
+      </mat-list>
 
-
-                  <mat-list role="list">
-                      <mat-list-item
-                              class="action"
-                              role="listitem"
-                              *ngFor="let leaf of vertical['child']"
-                              routerLink="/search"
-                              [queryParams]="{catId: leaf.id}"
-                              (click)="closeSideNav()">
-                          {{leaf.name}}
-                      </mat-list-item>
-                  </mat-list>
-
-
-              </mat-expansion-panel>
-
-          </mat-expansion-panel>
-
-
-      </mat-accordion>
   </mat-sidenav>
 
+    <mat-sidenav #verticalDrawer class="example-sidenav" mode="side">
+        <i class="material-icons" (click)="verticalDrawer.toggle()">chevron_left</i>
+        <mat-list role="list">
+            <mat-list-item
+                    class="action"
+                    role="listitem"
+                    *ngFor="let vertical of verticals;let i=index"
+                    (click)="onClickVertical(i)" >
+                {{vertical['name']}}
+                <i class="material-icons">chevron_right</i>
+            </mat-list-item>
+
+        </mat-list>
+    </mat-sidenav>
+    <mat-sidenav #leafDrawer class="example-sidenav" mode="side">
+        <i class="material-icons" (click)="leafDrawer.toggle()">chevron_left</i>
+        <mat-list role="list">
+            <mat-list-item
+                    class="action"
+                    role="listitem"
+                    *ngFor="let leaf of leaves;let i=index">
+                {{leaf['name']}}
+            </mat-list-item>
+
+        </mat-list>
+    </mat-sidenav>
 </mat-sidenav-container>
+
+
