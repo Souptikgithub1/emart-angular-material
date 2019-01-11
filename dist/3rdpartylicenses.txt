@@ -641,5 +641,13 @@ SOFTWARE.
 
 
 
+@angular/material/core
+
+@angular/material/list
+
+@angular/material/expansion
+
+@angular/material/sidenav
+
 jw-bootstrap-switch-ng2
 MIT

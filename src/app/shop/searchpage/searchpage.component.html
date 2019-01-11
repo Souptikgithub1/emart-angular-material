@@ -1,6 +1,6 @@
 <div class="container-fluid reset-padding-right reset-padding-left">
     <div  class="search-page-container">
-        <div class="col-md-2">
+        <div class="col-lg-2 d-none d-lg-block">
             <div class="row">
                 <div class="col-md-12">
                     <div class="filters">
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="col-md-10 product-list-container reset-padding">
+        <div class="col-lg-10 col-md-12 product-list-container reset-padding">
             <div *ngIf="!!isLoaderVisible" class="skeleton-loader-detailed-card">
                 <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
                 <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>

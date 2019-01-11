@@ -2,7 +2,7 @@
     <div class="product-card">
         <div class="row reset-margin">
 
-            <div class="col-md-3 reset-padding-left">
+            <div class="col-3 reset-padding-left">
                 <div class="product-img-container">
                     <div *ngIf="product.mrp != 0" class="offer-tag">On Offer</div>
                     <div class="image-holder">
@@ -10,7 +10,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-7 col-md-6">
                 <div class="product-desc">
                     <div class="product-name">{{product.productName}}</div>
                 </div>
@@ -18,7 +18,7 @@
                     <li *ngFor="let feature of product['featureList']" >{{feature['name']}} {{feature['value']}}</li>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-2 col-md-3">
                 <div class="">
                     <div class="product-price">{{product.sellingRate/100 | currency:'INR':'symbol':'1.0'}}</div>
                     <div *ngIf="product.mrp != 0" class="mrp">{{product.mrp/100 | currency:'INR':'symbol':'1.0'}}</div>

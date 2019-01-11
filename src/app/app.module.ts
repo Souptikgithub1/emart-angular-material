@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
@@ -95,6 +95,8 @@ import {Ng5SliderModule} from "ng5-slider";
 import {CartService} from "./shop/services/cart/cart.service";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {DeviceDetectorModule} from "ngx-device-detector";
+import {NavSideMenuService} from "./shop/services/navSideMenu/nav-side-menu.service";
+import { NavSideMenuComponent } from './shared/nav-side-menu/nav-side-menu.component';
 
 
 @NgModule({
@@ -103,8 +105,12 @@ import {DeviceDetectorModule} from "ngx-device-detector";
         MatTabsModule,
         MatBadgeModule,
         MatIconModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatSidenavModule,
+        MatExpansionModule,
+        MatListModule
     ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     declarations: []
 })
 export class MaterialModule {}
@@ -157,7 +163,8 @@ export function getAuthServiceConfigs() {
         HomepageSkeletonComponent,
         BannerSkeletonComponent,
         ManageProductPriceComponent,
-        ProductPageSkeletonComponent
+        ProductPageSkeletonComponent,
+        NavSideMenuComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -199,8 +206,10 @@ export function getAuthServiceConfigs() {
         ProductFeatureValueService,
         UserService,
         BannerService,
+
         RvpEventService,
         CartService,
+        NavSideMenuService,
 
         RegisterSigninModalComponent
     ],

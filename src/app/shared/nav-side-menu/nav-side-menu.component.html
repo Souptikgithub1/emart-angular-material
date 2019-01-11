@@ -1,0 +1,37 @@
+<mat-sidenav-container class="matSideNav-container" autosize>
+  <mat-sidenav #drawer class="example-sidenav" mode="side">
+      <mat-accordion>
+
+          <mat-expansion-panel *ngFor="let parentCat of categories">
+              <mat-expansion-panel-header>
+                  {{parentCat.name}}
+              </mat-expansion-panel-header>
+
+              <mat-expansion-panel *ngFor="let vertical of parentCat['child']">
+                  <mat-expansion-panel-header>
+                      {{vertical.name}}
+                  </mat-expansion-panel-header>
+
+
+                  <mat-list role="list">
+                      <mat-list-item
+                              class="action"
+                              role="listitem"
+                              *ngFor="let leaf of vertical['child']"
+                              routerLink="/search"
+                              [queryParams]="{catId: leaf.id}"
+                              (click)="closeSideNav()">
+                          {{leaf.name}}
+                      </mat-list-item>
+                  </mat-list>
+
+
+              </mat-expansion-panel>
+
+          </mat-expansion-panel>
+
+
+      </mat-accordion>
+  </mat-sidenav>
+
+</mat-sidenav-container>

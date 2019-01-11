@@ -1,0 +1,19 @@
+.matSideNav-container{
+  z-index: 1031;
+  height: 100%;
+
+  width: 100%;
+  /* border: 1px solid rgba(0, 0, 0, 0.5); */
+  background: transparent;
+  position: fixed!important;
+  visibility: hidden;
+}
+
+.mat-drawer.mat-drawer-side{
+  z-index: 1031;
+  width: 65%;
+}
+
+.mat-drawer-backdrop.mat-drawer-shown {
+  visibility: visible;
+}

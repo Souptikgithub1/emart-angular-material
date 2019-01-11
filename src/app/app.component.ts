@@ -6,6 +6,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import {DeviceDetectorService} from "ngx-device-detector";
+import {CategoryService} from "./shop/services/category/category.service";
 
 @Component({
     selector: 'app-root',
@@ -17,12 +18,16 @@ export class AppComponent implements OnInit {
     private _router: Subscription;
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
+    categories = [];
+    menuArr = [];
+
     constructor( private renderer : Renderer,
                  private router: Router,
                  @Inject(DOCUMENT,) private document: any,
                  private element : ElementRef,
                  public location: Location,
-                 private deviceDetectorService: DeviceDetectorService) {}
+                 private deviceDetectorService: DeviceDetectorService,
+                 private categoryService: CategoryService) {}
     ngOnInit() {
         console.log(this.deviceDetectorService.isDesktop(),
             this.deviceDetectorService.isMobile(),
@@ -34,6 +39,9 @@ export class AppComponent implements OnInit {
         }else{
             this.deviceType = 'tablet';
         }
+        this.getAllCategories();
+
+
         /*var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
         this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
             if (window.outerWidth > 991) {
@@ -67,6 +75,37 @@ export class AppComponent implements OnInit {
         }*/
 
     }
+
+    getAllCategories(){
+        this.categoryService.getCategories().subscribe(response => {
+            this.categories = response;
+            let parentCount = 0;
+            for(let parentCat of response){
+                if(parentCat['parentId'] == 0){
+                    let parentCatObj = {id: parentCat['id'], name: parentCat['name'], child: []};
+                    this.menuArr.push(parentCatObj);
+
+                    let verticalCount = 0;
+                    for(let vertical of response){
+                        if(vertical['parentId'] == parentCat['id']){
+                            let verticalObj = {id: vertical['id'], name: vertical['name'], child: []};
+                            this.menuArr[parentCount]['child'].push(verticalObj);
+
+                            for(let leaf of response){
+                                if(leaf['parentId'] == vertical['id']){
+                                    let leafObj = {id: leaf['id'], name: leaf['name']};
+                                    this.menuArr[parentCount]['child'][verticalCount]['child'].push(leafObj);
+                                }
+                            }
+                        verticalCount++;
+                        }
+                    }
+                parentCount++;
+                }
+            }
+        });
+    }
+
     removeFooter() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         titlee = titlee.slice( 1 );
