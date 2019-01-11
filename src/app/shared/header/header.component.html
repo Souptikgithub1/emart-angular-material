@@ -22,7 +22,7 @@
         <i *ngIf="!!isUserLoggedIn" class="material-icons nav-custom-icon d-lg-none">
           shopping_cart
         </i>
-        <i *ngIf="!isUserLoggedIn" class="material-icons nav-custom-icon d-lg-none">
+        <i *ngIf="!isUserLoggedIn" class="material-icons nav-custom-icon d-lg-none" (click)="openModal()">
           person_outline
         </i>
         <i *ngIf="!!isUserLoggedIn" class="material-icons nav-custom-icon d-lg-none">
