@@ -7,10 +7,11 @@
             role="listitem"
             *ngFor="let parentCat of categories;let i=index"
             (click)="onClickParentCat(i)">
-              {{parentCat['name']}}
-              <i class="material-icons">chevron_right</i>
+              <div class="item-container d-flex justify-content-between">
+                  <span>{{parentCat['name']}}</span>
+                  <i class="material-icons">chevron_right</i>
+              </div>
           </mat-list-item>
-
       </mat-list>
 
   </mat-sidenav>
@@ -23,10 +24,11 @@
                     role="listitem"
                     *ngFor="let vertical of verticals;let i=index"
                     (click)="onClickVertical(i)" >
-                {{vertical['name']}}
-                <i class="material-icons">chevron_right</i>
+                <div class="item-container d-flex justify-content-between">
+                    <span>{{vertical['name']}}</span>
+                    <i class="material-icons">chevron_right</i>
+                </div>
             </mat-list-item>
-
         </mat-list>
     </mat-sidenav>
     <mat-sidenav #leafDrawer class="example-sidenav" mode="side">
@@ -35,7 +37,9 @@
             <mat-list-item
                     class="action"
                     role="listitem"
-                    *ngFor="let leaf of leaves;let i=index">
+                    *ngFor="let leaf of leaves;let i=index"
+                    routerLink="/search" [queryParams]="{catId: leaf.id}"
+                    (click)="closeSideNav()">
                 {{leaf['name']}}
             </mat-list-item>
 
