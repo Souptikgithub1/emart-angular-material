@@ -1,18 +1,32 @@
 <nav class="navbar navbar-expand-lg fixed-top " color-on-scroll="500">
   <div class="container-fluid">
-    <div class="navbar-translate justify-content-start">
-      <button class="navbar-toggler navbar-burger d-lg-none"
-              type="button" data-toggle="collapse"
-              data-target="#navbarToggler"
-              aria-controls="navbarTogglerDemo02"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-              (click)="sidebarToggle()">
-                <span class="navbar-toggler-bar"></span>
-                <span class="navbar-toggler-bar"></span>
-                <span class="navbar-toggler-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">EMART</a>
+    <div class="navbar-translate justify-content-between">
+      <div class="d-flex justify-content-between">
+        <button class="navbar-toggler navbar-burger d-lg-none"
+                type="button" data-toggle="collapse"
+                data-target="#navbarToggler"
+                aria-controls="navbarTogglerDemo02"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                (click)="sidebarToggle()">
+          <span class="navbar-toggler-bar"></span>
+          <span class="navbar-toggler-bar"></span>
+          <span class="navbar-toggler-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">EMART</a>
+      </div>
+      <div class="d-flex justify-content-between">
+        <i class="material-icons nav-custom-icon d-lg-none">
+        search
+        </i>
+        <i *ngIf="!!isUserLoggedIn" class="material-icons nav-custom-icon d-lg-none">
+          shopping_cart
+        </i>
+        <i *ngIf="!!isUserLoggedIn" class="material-icons nav-custom-icon d-lg-none">
+          person
+        </i>
+      </div>
+
     </div>
     <div class="collapse navbar-collapse" id="navbar-menu">
       <ul class="navbar-nav">
