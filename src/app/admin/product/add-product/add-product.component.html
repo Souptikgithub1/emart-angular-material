@@ -5,14 +5,14 @@
       <div class="col-md-6">
 
         <div class="form-group">
-          <label class="control-label col-sm-2" for="brandId">Brand:</label>
-          <div class="col-sm-5">
-            <select name="parent-category" id="brandId" [(ngModel)]="brandIndex" class="form-control">
-              <option value="" disabled>--Select--</option>
-              <option *ngFor="let brand of brands; let i = index" [value]="i">
-                {{brand.brandName}}
-              </option>
-            </select>
+          <div class="col-sm-6">
+            <mat-form-field>
+              <mat-select placeholder="Brand" id="brandId" name="parent-cat" [(ngModel)]="brandIndex">
+                <mat-option *ngFor="let brand of brands; let i = index" [value]="i">
+                  {{brand.brandName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </div>
 

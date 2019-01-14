@@ -606,6 +606,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+@angular/material/core
+
+@angular/material/form-field
+
+@angular/material/select
+
 ngx-bootstrap/utils
 
 ngx-bootstrap/component-loader
@@ -641,11 +647,16 @@ SOFTWARE.
 
 
 
-@angular/material/core
-
 @angular/material/list
 
 @angular/material/sidenav
 
+@angular/material/divider
+
+@angular/material/icon
+
 jw-bootstrap-switch-ng2
+MIT
+
+ng-mat-search-bar
 MIT

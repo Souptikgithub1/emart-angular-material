@@ -1,6 +1,9 @@
-<mat-sidenav-container class="matSideNav-container" autosize>
+<mat-sidenav-container class="matSideNav-container" style="color: #66615B" autosize>
   <mat-sidenav #drawer class="example-sidenav" mode="side">
-
+      <div class="sidenav-header d-flex justify-content-between">
+          <i class="material-icons" (click)="closeSideNav()">home</i>
+      </div>
+      <mat-divider></mat-divider>
       <mat-list role="list">
           <mat-list-item
                   class="action"
@@ -8,16 +11,21 @@
             *ngFor="let parentCat of categories;let i=index"
             (click)="onClickParentCat(i)">
               <div class="item-container d-flex justify-content-between">
-                  <span>{{parentCat['name']}}</span>
+                  <span class="category-item">{{parentCat['name']}}</span>
                   <i class="material-icons">chevron_right</i>
               </div>
           </mat-list-item>
       </mat-list>
 
+
   </mat-sidenav>
 
     <mat-sidenav #verticalDrawer class="example-sidenav" mode="side">
-        <i class="material-icons" (click)="verticalDrawer.toggle()">chevron_left</i>
+        <div class="sidenav-header d-flex justify-content-between">
+            <i class="material-icons" (click)="closeSideNav()">home</i>
+            <i class="material-icons" (click)="verticalDrawer.toggle()">keyboard_backspace</i>
+        </div>
+        <mat-divider></mat-divider>
         <mat-list role="list">
             <mat-list-item
                     class="action"
@@ -25,14 +33,18 @@
                     *ngFor="let vertical of verticals;let i=index"
                     (click)="onClickVertical(i)" >
                 <div class="item-container d-flex justify-content-between">
-                    <span>{{vertical['name']}}</span>
+                    <span class="category-item">{{vertical['name']}}</span>
                     <i class="material-icons">chevron_right</i>
                 </div>
             </mat-list-item>
         </mat-list>
     </mat-sidenav>
     <mat-sidenav #leafDrawer class="example-sidenav" mode="side">
-        <i class="material-icons" (click)="leafDrawer.toggle()">chevron_left</i>
+        <div class="sidenav-header d-flex justify-content-between">
+            <i class="material-icons" (click)="closeSideNav()">home</i>
+            <i class="material-icons" (click)="leafDrawer.toggle()">keyboard_backspace</i>
+        </div>
+        <mat-divider></mat-divider>
         <mat-list role="list">
             <mat-list-item
                     class="action"
@@ -40,7 +52,7 @@
                     *ngFor="let leaf of leaves;let i=index"
                     routerLink="/search" [queryParams]="{catId: leaf.id}"
                     (click)="closeSideNav()">
-                {{leaf['name']}}
+                <span class="category-item">{{leaf['name']}}</span>
             </mat-list-item>
 
         </mat-list>

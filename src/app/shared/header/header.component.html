@@ -13,12 +13,10 @@
           <span class="navbar-toggler-bar"></span>
           <span class="navbar-toggler-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">EMART</a>
+        <a class="navbar-brand navbar-brand-sm" href="/">EMART</a>
       </div>
       <div class="d-flex justify-content-between">
-        <i class="material-icons nav-custom-icon d-lg-none">
-        search
-        </i>
+        <i class="material-icons nav-custom-icon d-lg-none">search</i>
         <i *ngIf="!!isUserLoggedIn" class="material-icons nav-custom-icon d-lg-none">
           shopping_cart
         </i>
@@ -55,7 +53,7 @@
     </div>
 
     <div class="collapse navbar-collapse">
-      <form style="width: 100%" (submit)="onSearch()">
+      <!--<form style="width: 100%" (submit)="onSearch()">
         <div class="input-group">
           <input type="text" class="form-control" [(ngModel)]="searchString" placeholder="Search" name="search">
           <div class="input-group-btn">
@@ -64,6 +62,14 @@
             </button>
           </div>
         </div>
+      </form>-->
+      <form (submit)="onSearch()" class="example-form" style="width: 100%">
+        <mat-form-field class="example-full-width" style="font-size: 15px">
+          <input matInput placeholder="Search" [(ngModel)]="searchString" name="search">
+          <button mat-button matSuffix mat-icon-button >
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
       </form>
     </div>
     <div class="collapse navbar-collapse" id="navbar-primary">

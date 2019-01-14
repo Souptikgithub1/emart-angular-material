@@ -73,7 +73,7 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatStepperModule, MatBadgeModule,
+    MatStepperModule, MatBadgeModule, MatFormFieldModule, MatDividerModule,
 } from '@angular/material';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SigninComponent } from './shop/shared-components/signin/signin.component';
@@ -97,6 +97,7 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {DeviceDetectorModule} from "ngx-device-detector";
 import {NavSideMenuService} from "./shop/services/navSideMenu/nav-side-menu.service";
 import { NavSideMenuComponent } from './shared/nav-side-menu/nav-side-menu.component';
+import {NgMatSearchBarModule} from "ng-mat-search-bar";
 
 
 @NgModule({
@@ -108,7 +109,11 @@ import { NavSideMenuComponent } from './shared/nav-side-menu/nav-side-menu.compo
         MatSnackBarModule,
         MatSidenavModule,
         MatExpansionModule,
-        MatListModule
+        MatListModule,
+        MatInputModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatDividerModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     declarations: []
@@ -181,7 +186,8 @@ export function getAuthServiceConfigs() {
         Ng5SliderModule,
         MaterialModule,
         DragDropModule,
-        DeviceDetectorModule.forRoot()
+        DeviceDetectorModule.forRoot(),
+        NgMatSearchBarModule
         /*SocialLoginModule.initialize(config)*/
     ],
     entryComponents: [

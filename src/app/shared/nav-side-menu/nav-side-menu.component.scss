@@ -20,4 +20,19 @@
 }
 .item-container{
   width: 100%;
+  .material-icons{
+    color: #66615b;
+  }
+}
+.category-item{
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #66615b;
+}
+.sidenav-header{
+  padding: 15px;
+  .material-icons{
+    color: #66615b;
+  }
 }
