@@ -43,6 +43,12 @@
 
 
   .product-card{
+    width: 50%;
+    border: 1px solid #d5d5d5;
+    padding: 10px 0;
+    float: left;
+  }
+  .carousel-product-card{
     width: 100%;
     border: 1px solid #d5d5d5;
     padding: 10px 0;

@@ -4,7 +4,9 @@
 
       <a class="product-card-anchor action" [routerLink]="'/product/'+productIdEncoded">
         <div class="product-card" >
-          <div *ngIf="product.mrp != 0" class="offer-tag">On Offer</div>
+          <div *ngIf="product.mrp != 0" class="offer-tag">
+            {{((product.mrp-product.sellingRate)*100/(product.mrp)).toFixed(0)}}% off
+          </div>
           <div class="image-holder">
             <img class="responsive-img" src="{{imgRoot}}{{product.brand.brandName}}%2F{{product.image1}}" />
             <!--<button class="btn btn-dark quickViewBtn" (click)="openQuickViewModal()">Quick View</button>-->
@@ -14,7 +16,7 @@
             <div class="">
               <span class="product-price">{{product.sellingRate/100 | currency:'INR':'symbol':'1.0'}}</span>
               <span *ngIf="product.mrp != 0" class="mrp">{{product.mrp/100 | currency:'INR':'symbol':'1.0'}}</span>
-              <span *ngIf="product.mrp != 0" class="offer-percent">{{((product.mrp-product.sellingRate)*100/(product.mrp)).toFixed(0)}}% off</span>
+              <!--<span *ngIf="product.mrp != 0" class="offer-percent">{{((product.mrp-product.sellingRate)*100/(product.mrp)).toFixed(0)}}% off</span>-->
             </div>
           </div>
         </div>
@@ -22,9 +24,9 @@
     </div>
   </div>
 
-  <div class="product-card-holder d-lg-none">
+  <div class="{{cardType == 'product-card-carousel' ? 'product-card-holder' : ''}} d-lg-none">
     <a class="product-card-anchor action" [routerLink]="'/product/'+productIdEncoded">
-      <div class="product-card {{cardType == 'product-card-carousel' ? 'rounded' : ''}}">
+      <div class="product-card {{cardType == 'product-card-carousel' ? 'carousel-product-card rounded' : ''}}">
         <div class="image-holder">
           <img class="responsive-img" src="{{imgRoot}}{{product.brand.brandName}}%2F{{product.image1}}" />
         </div>
