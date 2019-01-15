@@ -21,6 +21,18 @@ img{
   border-radius: 0;
 }
 
+@media (max-width: 991.98px){
+  .product-carousel-section{
+    border: none;
+    margin: 0;
+    margin-top: 10px;
+  }
+  .product-carousel-title{
+    padding: 10px 10px;
+    font-size: 14px;
+  }
+}
+
 ::-webkit-scrollbar {
   height: 0px;
 }

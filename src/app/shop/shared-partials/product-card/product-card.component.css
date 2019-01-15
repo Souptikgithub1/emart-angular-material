@@ -37,17 +37,18 @@
 
 @media (max-width: 991.98px){
   .product-card-holder{
-    margin: 10px;
-    margin-right: 0;
+    width: 160px;
+    margin-left: 10px;
   }
 
 
   .product-card{
+    width: 100%;
     border: 1px solid #d5d5d5;
     padding: 10px 0;
   }
   .image-holder{
-    width: 180px;
+    width: 100%;
     height: 120px;
     margin: 0 auto;
   }
@@ -58,7 +59,18 @@
 
   }
   .product-name{
-    width: 100px;
+    width: 130px;
+    font-size: 12px!important;
+  }
+
+  .product-price{
+    font-size: 13px!important;
+  }
+  .mrp{
+    font-size: 11px!important;
+  }
+  .offer-percent{
+    font-size: 9px!important;
   }
 }
 

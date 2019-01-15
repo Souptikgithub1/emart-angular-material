@@ -27,9 +27,12 @@
 
   <div class="d-lg-none">
     <div class="container-fluid p-0">
-      <div class="horizontal-scroll-wrapper">
-        <div class="d-inline-block d-lg-block" *ngFor="let product of products">
-          <app-product-card [product]="product" [card-type]="'product-card-carousel'"></app-product-card>
+      <div class="product-carousel-section">
+        <div class="product-carousel-title">{{title}}</div>
+        <div class="horizontal-scroll-wrapper">
+          <div class="carousel-product-container d-inline-block d-lg-block" *ngFor="let product of products">
+            <app-product-card [product]="product" [card-type]="'product-card-carousel'"></app-product-card>
+          </div>
         </div>
       </div>
     </div>

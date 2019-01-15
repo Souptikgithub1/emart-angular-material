@@ -247,6 +247,10 @@
       white-space: nowrap;
    }
 
-.horizontal-scroll-wrapper .product-card-holder:last-child{
+.carousel-product-container:last-child .product-card-holder:last-child{
   margin-right: 10px;
+}
+
+.custom-divider{
+  border-top: 1px solid #d5d5d5!important;
 }
