@@ -2,3 +2,21 @@
   width: 100%;
   height: 300px;
 }
+.banner-img{
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 991.98px){
+  .banner-img-holder{
+    height: 130px;
+    padding: 0 10px;
+    display: inline-block;
+  }
+  .banner-img{
+    border-radius: 5px;
+  }
+}
+
+::-webkit-scrollbar {
+  height: 0px;
+}
