@@ -1,5 +1,5 @@
 <a class="product-card-anchor action" [routerLink]="'/product/'+productIdEncoded">
-    <div class="product-card">
+    <div class="product-card d-none d-lg-block">
         <div class="row reset-margin">
 
             <div class="col-3 reset-padding-left">
@@ -14,7 +14,7 @@
                 <div class="product-desc">
                     <div class="product-name">{{product.productName}}</div>
                 </div>
-                <div class="product-highlights">
+                <div class="product-highlights d-none d-lg-block">
                     <li *ngFor="let feature of product['featureList']" >{{feature['name']}} {{feature['value']}}</li>
                 </div>
             </div>
@@ -26,6 +26,28 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <div class="product-card d-lg-none">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-5 p-0">
+                    <div class="product-img-container">
+                        <div class="image-holder">
+                            <img class="responsive-img" src="{{imgRoot}}{{product.brand.brandName}}%2F{{product.image1}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7 pl-0">
+                    <div class="product-desc">
+                        <div class="product-name">{{product.productName}}</div>
+                    </div>
+                    <div class="product-price">{{product.sellingRate/100 | currency:'INR':'symbol':'1.0'}}</div>
+                    <div *ngIf="product.mrp != 0" class="mrp">{{product.mrp/100 | currency:'INR':'symbol':'1.0'}}</div>
+                    <span *ngIf="product.mrp != 0" class="offer-percent">{{((product.mrp-product.sellingRate)*100/(product.mrp)).toFixed(0)}}% off</span>
+                </div>
+            </div>
         </div>
     </div>
 </a>
