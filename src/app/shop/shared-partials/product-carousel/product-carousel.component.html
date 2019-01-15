@@ -1,28 +1,36 @@
-<div class="section product-carousel-section" id="carousel">
-  <div class="">
-    <div class="product-carousel-title">{{title}}</div>
-    <div class="divider"></div>
-    <div class="row">
-      <div class="col-md-12 mr-auto ml-auto">
-        <div id="carousel-{{tag}}" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner" role="listbox">
-            <div *ngFor="let productChunk of productChunkedArr; let i = index" class="carousel-item {{i == 0 ? 'active' : ''}}">
-              <div *ngFor="let product of productChunk">
-                <app-product-card [product]="product" [card-type]="'product-card-carousel'"></app-product-card>
+
+  <div class="section product-carousel-section d-none d-lg-block" id="carousel">
+    <div class="">
+      <div class="product-carousel-title">{{title}}</div>
+      <div class="divider"></div>
+      <div class="row">
+        <div class="col-md-12 mr-auto ml-auto">
+          <div id="carousel-{{tag}}" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+              <div *ngFor="let productChunk of productChunkedArr; let i = index" class="carousel-item {{i == 0 ? 'active' : ''}}">
+                <div *ngFor="let product of productChunk">
+                  <app-product-card [product]="product" [card-type]="'product-card-carousel'"></app-product-card>
+                </div>
               </div>
             </div>
+            <a *ngIf="productChunkedArr.length > 1" class="carousel-control-prev" href="#carousel-{{tag}}" role="button" data-slide="prev">
+              <i class="fa fa-angle-left fa-angle-custom"></i>
+            </a>
+            <a *ngIf="productChunkedArr.length > 1" class="carousel-control-next" href="#carousel-{{tag}}" role="button" data-slide="next">
+              <i class="fa fa-angle-right fa-angle-custom"></i>
+            </a>
           </div>
-          <a *ngIf="productChunkedArr.length > 1" class="carousel-control-prev" href="#carousel-{{tag}}" role="button" data-slide="prev">
-            <i class="fa fa-angle-left fa-angle-custom"></i>
-          </a>
-          <a *ngIf="productChunkedArr.length > 1" class="carousel-control-next" href="#carousel-{{tag}}" role="button" data-slide="next">
-            <i class="fa fa-angle-right fa-angle-custom"></i>
-          </a>
         </div>
-
-
-
       </div>
     </div>
   </div>
-</div>
+
+  <div class="d-lg-none">
+    <div class="container-fluid p-0">
+      <div class="horizontal-scroll-wrapper">
+        <div class="d-inline-block d-lg-block" *ngFor="let product of products">
+          <app-product-card [product]="product" [card-type]="'product-card-carousel'"></app-product-card>
+        </div>
+      </div>
+    </div>
+  </div>

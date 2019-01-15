@@ -17,6 +17,8 @@
   }
 }
 
-::-webkit-scrollbar {
-  height: 0px;
+@media (max-width: 991.98px){
+  ::-webkit-scrollbar {
+    height: 0px;
+  }
 }
