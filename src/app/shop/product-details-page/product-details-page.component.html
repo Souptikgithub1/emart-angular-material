@@ -1,5 +1,5 @@
 <div *ngIf="!isLoaderVisible" class="page-container" >
-    <div class="product-details-container">
+    <div class="product-details-container d-none d-lg-block">
         <div class="row">
             <div class="product-img-section" style="padding-left: 5px">
                 <div class="row">
@@ -85,10 +85,33 @@
 
         </div>
     </div>
-
-    <div style="margin-bottom: -20px">
-        <app-rvp></app-rvp>
+    <div class="d-lg-none">
+        <div class="product-img-section">
+            <div class="product-img-holder">
+                <img class="responsive-img" src="{{activeProductImage}}" (onload)="onLoad()">
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="product-image-strip-carousel">
+                <div *ngFor="let img of productDetails['images']; let i = index" class="mini-image-holder {{activeImageIndex == i ?'active':''}}"  (mouseenter)="onHoverMiniImage(i)">
+                    <img class="responsive-img " src="{{img}}" >
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div class="rvp-container">
+        <app-rvp></app-rvp>
+    </div>
+    <div class="container-fluid p-0 fixed-bottom custom-bottom-navbar">
+        <div class="row">
+            <div class="col-6 pr-0">
+                <div class="btn btn-block btn-nav-bottom add-to-cart">Add to Cart</div>
+            </div>
+            <div class="col-6 pl-0">
+                <div class="btn btn-block btn-nav-bottom buy-now">Buy Now</div>
+            </div>
+        </div>
+    </div>
 </div>
 <app-product-page-skeleton *ngIf="!!isLoaderVisible"></app-product-page-skeleton>
