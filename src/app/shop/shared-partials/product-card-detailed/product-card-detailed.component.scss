@@ -60,6 +60,11 @@
     height: 120px;
     padding: 0;
   }
+  .product-desc{
+    clear: both;
+    width: 100%;
+    float: left;
+  }
   .product-name{
     font-size: 12px!important;
     white-space: nowrap;
@@ -80,8 +85,23 @@
   }
   .offer-percent{
     font-size: 9px;
+    padding: 1px 4px;
   }
   .image-holder-width{
     height: 80px!important;
+  }
+  .product-highlights{
+    padding-top: 1px;
+    float: left;
+    width: 100%;
+  }
+  .product-feature-highlighted{
+    font-size: 8px;
+    border: 1px solid #d5d5d5;
+    padding: 1px 4px;
+    margin-right: 3px;
+    float: left;
+    margin-top: 3px;
+    font-weight: 500;
   }
 }

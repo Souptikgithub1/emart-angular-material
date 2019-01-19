@@ -42,10 +42,15 @@
                 <div class="{{product.verticalId == 5 ? 'col-8' : 'col-9'}}">
                     <div class="product-desc">
                         <div class="product-name">{{product.productName}}</div>
+                        <div class="product-price">{{product.sellingRate/100 | currency:'INR':'symbol':'1.0'}}</div>
+                        <div *ngIf="product.mrp != 0" class="mrp">{{product.mrp/100 | currency:'INR':'symbol':'1.0'}}</div>
+                        <span *ngIf="product.mrp != 0" class="offer-percent">{{((product.mrp-product.sellingRate)*100/(product.mrp)).toFixed(0)}}% off</span>
                     </div>
-                    <div class="product-price">{{product.sellingRate/100 | currency:'INR':'symbol':'1.0'}}</div>
-                    <div *ngIf="product.mrp != 0" class="mrp">{{product.mrp/100 | currency:'INR':'symbol':'1.0'}}</div>
-                    <span *ngIf="product.mrp != 0" class="offer-percent">{{((product.mrp-product.sellingRate)*100/(product.mrp)).toFixed(0)}}% off</span>
+                    <div class="product-highlights">
+                        <div class="product-feature-highlighted" *ngFor="let feature of product['featureList']">
+                            {{feature['value']}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
