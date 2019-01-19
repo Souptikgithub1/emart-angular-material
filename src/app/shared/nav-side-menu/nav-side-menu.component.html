@@ -7,7 +7,7 @@
       <mat-divider></mat-divider>
       <mat-list role="list">
           <mat-list-item
-                  class="action"
+            class="action"
             role="listitem"
             *ngFor="let parentCat of categories;let i=index"
             (click)="onClickParentCat(i)">
@@ -19,9 +19,12 @@
       </mat-list>
       <mat-divider></mat-divider>
       <mat-list role="list">
-          <mat-list-item class="action" role="listitem">
+          <mat-list-item
+                  class="action"
+                  role="listitem"
+                  (click)="logout()">
               <div class="item-container d-flex justify-content-between">
-                  <span class="category-item" (click)="logout()">Logout</span>
+                  <span class="category-item">Logout</span>
               </div>
           </mat-list-item>
       </mat-list>
