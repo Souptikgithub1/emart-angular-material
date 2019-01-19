@@ -50,7 +50,10 @@
     <mat-sidenav #leafDrawer class="example-sidenav" mode="side">
         <div class="sidenav-header d-flex justify-content-start align-items-center" (click)="leafDrawer.toggle()">
             <i class="material-icons" >chevron_left</i>
-            <div *ngIf="!!categories[parentCatItemIndex]" class="parent-category d-flex justify-content-center">{{categories[parentCatItemIndex]['child'][verticalItemIndex]['name']}}</div>
+            <div *ngIf="!!categories[parentCatItemIndex] && !!categories[parentCatItemIndex]['child'][verticalItemIndex]"
+                 class="parent-category d-flex justify-content-center">
+                {{categories[parentCatItemIndex]['child'][verticalItemIndex]['name']}}
+            </div>
         </div>
         <mat-divider></mat-divider>
         <mat-list role="list">
