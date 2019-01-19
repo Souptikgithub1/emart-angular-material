@@ -1,7 +1,8 @@
 <mat-sidenav-container class="matSideNav-container" style="color: #66615B" autosize>
   <mat-sidenav #drawer class="example-sidenav" mode="side">
-      <div class="sidenav-header d-flex justify-content-between">
-          <i class="material-icons" (click)="closeSideNav()">home</i>
+      <div class="sidenav-header d-flex justify-content-center">
+          <div *ngIf="!!isUserLoggedIn" class="user-name-section">Hi, {{userDetails['name']}}</div>
+          <div *ngIf="!isUserLoggedIn" class="user-name-section" (click)="openModal()">Login / Signup</div>
       </div>
       <mat-divider></mat-divider>
       <mat-list role="list">
@@ -16,14 +17,21 @@
               </div>
           </mat-list-item>
       </mat-list>
-
-
+      <mat-divider></mat-divider>
+      <mat-list role="list">
+          <mat-list-item class="action" role="listitem">
+              <div class="item-container d-flex justify-content-between">
+                  <span class="category-item" (click)="logout()">Logout</span>
+              </div>
+          </mat-list-item>
+      </mat-list>
   </mat-sidenav>
 
     <mat-sidenav #verticalDrawer class="example-sidenav" mode="side">
-        <div class="sidenav-header d-flex justify-content-between">
-            <i class="material-icons" (click)="closeSideNav()">home</i>
-            <i class="material-icons" (click)="verticalDrawer.toggle()">keyboard_backspace</i>
+        <div class="sidenav-header d-flex justify-content-start align-items-center"
+             (click)="verticalDrawer.toggle()">
+            <i class="material-icons" >chevron_left</i>
+            <div *ngIf="!!categories[parentCatItemIndex]" class="parent-category d-flex justify-content-center">{{categories[parentCatItemIndex]['name']}}</div>
         </div>
         <mat-divider></mat-divider>
         <mat-list role="list">
@@ -40,9 +48,9 @@
         </mat-list>
     </mat-sidenav>
     <mat-sidenav #leafDrawer class="example-sidenav" mode="side">
-        <div class="sidenav-header d-flex justify-content-between">
-            <i class="material-icons" (click)="closeSideNav()">home</i>
-            <i class="material-icons" (click)="leafDrawer.toggle()">keyboard_backspace</i>
+        <div class="sidenav-header d-flex justify-content-start align-items-center" (click)="leafDrawer.toggle()">
+            <i class="material-icons" >chevron_left</i>
+            <div *ngIf="!!categories[parentCatItemIndex]" class="parent-category d-flex justify-content-center">{{categories[parentCatItemIndex]['child'][verticalItemIndex]['name']}}</div>
         </div>
         <mat-divider></mat-divider>
         <mat-list role="list">
