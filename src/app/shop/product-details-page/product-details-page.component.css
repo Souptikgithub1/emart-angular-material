@@ -37,11 +37,11 @@
 
 
 .product-img-holder{
-    padding: 40px 0;
+    padding: 40px 20px;
     margin: 0 auto;
     height: 500px;
     width: 100%;
-    border: 1px solid #f1f1f1;
+    border: 1px solid #d5d5d5;
     box-shadow: 0 0px 20px -4px rgba(0, 0, 0, 0.15);
 }
 
@@ -189,6 +189,11 @@
 }
 
 @media (max-width: 992px){
+    .product-details-container{
+        /*box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);*/
+        padding-bottom: 15px;
+        margin: 0;
+    }
     .rvp-container{
         margin-bottom: unset;
     }
@@ -237,6 +242,20 @@
     }
     .buy-now{
         background: #f5593d;
+        color: #fff;
+    }
+
+    .product-title{
+        font-size: 15px;
+        font-weight: 500;
+        color: #212121;
+    }
+    .product-selling-price{
+        font-size: 22px;
+        font-weight: 600;
+        color: #212121;
+    }
+    .offer-percent{
         color: #fff;
     }
 }
