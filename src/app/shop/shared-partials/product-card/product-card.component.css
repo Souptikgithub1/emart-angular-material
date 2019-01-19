@@ -54,9 +54,10 @@
     padding: 10px 0;
   }
   .image-holder{
-    width: 100%;
+    width: auto;
     height: 120px;
     margin: 0 auto;
+    padding: 0 10px;
   }
 
   .product-desc{

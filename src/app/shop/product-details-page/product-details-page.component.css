@@ -196,8 +196,8 @@
         width: 100%;
     }
     .product-img-holder{
-        padding: 15px 0;
-        height: 300px;
+        padding: 15px 10px;
+        height: 290px;
         border: none;
         box-shadow: none;
     }
