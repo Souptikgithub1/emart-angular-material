@@ -21,7 +21,8 @@ export class SearchpageComponent implements OnInit {
 
     @ViewChild('sortDrawer')
     drawer: MatSidenav;
-
+    @ViewChild('filterDrawer')
+    filterDrawer: MatSidenav;
 
     isLoaderVisible: boolean = true;
 
@@ -74,6 +75,9 @@ export class SearchpageComponent implements OnInit {
     ngOnInit() {
         $('.js-sort-sidenav').on('click', '.mat-drawer-backdrop', () => {
             this.closeSortSidenav();
+        });
+        $('.js-filter-sidenav').on('click', '.mat-drawer-backdrop', () => {
+            this.closeFilterSidenav();
         });
         this.getProducts();
     }
@@ -370,14 +374,22 @@ export class SearchpageComponent implements OnInit {
 
 
     //for short devices
-    onClickSort(){
+    onClickSortBtn(){
         this.drawer.open();
         $('.js-sort-sidenav .mat-drawer-backdrop').addClass('mat-drawer-shown');
+    }
+    onClickFilterBtn(){
+        this.filterDrawer.open();
+        $('.js-filter-sidenav .mat-drawer-backdrop').addClass('mat-drawer-shown');
     }
 
     closeSortSidenav(){
         this.drawer.close();
         $('.js-sort-sidenav .mat-drawer-backdrop').removeClass('mat-drawer-shown');
+    }
+    closeFilterSidenav(){
+        this.filterDrawer.close();
+        $('.js-filter-sidenav .mat-drawer-backdrop').removeClass('mat-drawer-shown');
     }
 }
 

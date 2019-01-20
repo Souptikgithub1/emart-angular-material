@@ -9,6 +9,37 @@
         </div>
     </mat-sidenav>
 </mat-sidenav-container>
+<mat-sidenav-container class="matSideNav-container js-filter-sidenav" style="color: #66615B" autosize>
+    <mat-sidenav #filterDrawer class="example-sidenav" mode="side" position="end">
+        <div class="container-fluid">
+            <div class="filters">
+                <div class="filters-header d-flex justify-content-between">
+                    <div>Filters</div>
+                    <button mat-raised-button color="accent" (click)="applyFiltersAndNavigate();closeFilterSidenav()">Apply</button>
+                </div>
+                <div class="filter-container">
+                    <div class="filter-header">Price</div>
+                    <div class="filter-body">
+                        <ng5-slider [(value)]="minPrice" [(highValue)]="maxPrice" [(options)]="options" (userChangeEnd)="changeFilterAndNavigate(false)"></ng5-slider>
+                    </div>
+                </div>
+                <div *ngFor="let filter of filters; let filterIndex = index" class="filter-container">
+                    <div class="filter-header">{{filter['prodFeatureName']}}</div>
+                    <div class="filter-body">
+                        <div *ngFor="let value of filter['values']; let filterValueIndex = index" class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" [checked]="value['checked']"  (change)="onFilterChange($event, filter['id'], value.value, filterIndex, filterValueIndex,false)">
+
+                                <span class="form-check-sign"></span>
+                                <span class="filter-value">{{value.text}}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav>
+</mat-sidenav-container>
 <div class="container-fluid reset-padding-right reset-padding-left">
     <div  class="search-page-container">
         <div class="col-lg-2 d-none d-lg-block">
@@ -81,10 +112,10 @@
     <div class="container-fluid p-0 fixed-bottom custom-bottom-navbar d-lg-none">
         <div class="row">
             <div class="col-6 pr-0">
-                <div class="btn btn-block btn-nav-bottom add-to-cart" (click)="onClickSort()">Sort</div>
+                <div class="btn btn-block btn-nav-bottom add-to-cart" (click)="onClickSortBtn()">Sort</div>
             </div>
             <div class="col-6 pl-0">
-                <div class="btn btn-block btn-nav-bottom buy-now">Filter</div>
+                <div class="btn btn-block btn-nav-bottom buy-now" (click)="onClickFilterBtn()">Filter</div>
             </div>
         </div>
     </div>
