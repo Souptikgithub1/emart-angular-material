@@ -579,7 +579,11 @@ MIT
 @angular/http
 MIT
 
+@angular/material/radio
+
 @angular/material/tabs
+
+@angular/material/sidenav
 
 ng5-slider
 MIT
@@ -648,8 +652,6 @@ SOFTWARE.
 
 
 @angular/material/list
-
-@angular/material/sidenav
 
 @angular/material/divider
 

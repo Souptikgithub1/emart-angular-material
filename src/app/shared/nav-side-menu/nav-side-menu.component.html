@@ -1,4 +1,4 @@
-<mat-sidenav-container class="matSideNav-container" style="color: #66615B" autosize>
+<mat-sidenav-container class="matSideNav-container js-menu-mat-sidenav" style="color: #66615B" autosize>
   <mat-sidenav #drawer class="example-sidenav" mode="side">
       <div class="sidenav-header d-flex justify-content-center">
           <div *ngIf="!!isUserLoggedIn" class="user-name-section">Hi, {{userDetails['name']}}</div>
@@ -17,8 +17,8 @@
               </div>
           </mat-list-item>
       </mat-list>
-      <mat-divider></mat-divider>
-      <mat-list role="list">
+      <mat-divider *ngIf="!!isUserLoggedIn"></mat-divider>
+      <mat-list *ngIf="!!isUserLoggedIn" role="list">
           <mat-list-item
                   class="action"
                   role="listitem"

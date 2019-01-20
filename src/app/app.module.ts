@@ -113,7 +113,8 @@ import {NgMatSearchBarModule} from "ng-mat-search-bar";
         MatInputModule,
         MatSelectModule,
         MatFormFieldModule,
-        MatDividerModule
+        MatDividerModule,
+        MatRadioModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     declarations: []

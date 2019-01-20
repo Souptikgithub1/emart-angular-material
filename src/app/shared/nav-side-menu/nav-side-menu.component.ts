@@ -46,13 +46,13 @@ export class NavSideMenuComponent implements OnInit {
         this.navSideMenuService.isSideMenuOpenedObservable.subscribe(response => {
             if(!!response){
                 this.drawer.open();
-                $('.mat-drawer-backdrop').addClass('mat-drawer-shown');
+                $('.js-menu-mat-sidenav .mat-drawer-backdrop').addClass('mat-drawer-shown');
             }else{
                 this.drawer.close();
-                $('.mat-drawer-backdrop').removeClass('mat-drawer-shown');
+                $('.js-menu-mat-sidenav .mat-drawer-backdrop').removeClass('mat-drawer-shown');
             }
         });
-        $('body').on('click', '.mat-drawer-backdrop', () => this.closeSideNav());
+        $('.js-menu-mat-sidenav').on('click', '.mat-drawer-backdrop', () => this.closeSideNav());
     }
 
     closeSideNav(){

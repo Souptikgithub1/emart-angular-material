@@ -245,6 +245,7 @@
    .horizontal-scroll-wrapper{
       overflow: auto;
       white-space: nowrap;
+      padding-top: 10px;
    }
 
 .carousel-product-container:last-child .product-card-holder:last-child{
@@ -255,10 +256,62 @@
   border-top: 1px solid #d5d5d5!important;
 }
 
+
+/* Mat drawer css*/
+.matSideNav-container{
+  z-index: 1033!important;
+  height: 100%;
+
+  width: 100%;
+  /* border: 1px solid rgba(0, 0, 0, 0.5); */
+  background: transparent;
+  position: fixed!important;
+  visibility: hidden;
+}
+
+.mat-drawer.mat-drawer-side{
+  z-index: 1034!important;
+  width: 80%;
+  box-shadow: 5px 10px 18px #444;
+}
+
+.mat-drawer-backdrop.mat-drawer-shown {
+  visibility: visible;
+}
+/* Mat drawer css*/
+
 @media (max-width: 991.98px) {
   .offer-percent{
     font-size: 9px;
     color: #fff;
     background: #28a745;
   }
+
+  .custom-bottom-navbar{
+    background: #fff;
+  }
+
+  .btn-nav-bottom{
+    border: none;
+    background: none;
+    color: #212121;
+    padding: 13px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 0px;
+    box-shadow: 0px -6px 10px -4px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.example-radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
 }

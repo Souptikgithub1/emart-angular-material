@@ -142,5 +142,9 @@ export class Utils {
         return product['productIdEncoded'] = product.productName.split(' ').join('-') + '-' + btoa(product.id.toString());
     }
 
-    public static sortArr = ["price_asc", "price_desc", "latest_desc"];
+    public static sortArr = [
+        {label: 'Price: Low to high', value: 'price_asc'},
+        {label: 'Price: High to low', value: 'price_desc'},
+        {label: 'Latest', value: 'latest_desc'}
+    ];
 }

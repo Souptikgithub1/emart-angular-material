@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Utils} from "../utils/utils";
 import {ProductService} from "../services/product/product.service";
@@ -7,8 +7,10 @@ import {CategoryService} from "../services/category/category.service";
 import {ProductFeatureNamesService} from "../services/ProductFeatureNames/product-feature-names.service";
 import {Filters} from "../utils/filters";
 import {Options} from "ng5-slider";
+import {MatSidenav} from "@angular/material";
 
-declare var $: any;
+declare var jquery: any;
+declare var $ :any;
 
 @Component({
     selector: 'app-searchpage',
@@ -16,6 +18,10 @@ declare var $: any;
     styleUrls: ['./searchpage.component.css']
 })
 export class SearchpageComponent implements OnInit {
+
+    @ViewChild('sortDrawer')
+    drawer: MatSidenav;
+
 
     isLoaderVisible: boolean = true;
 
@@ -50,8 +56,12 @@ export class SearchpageComponent implements OnInit {
     };
 
     queryString: string;
+
+    sortByArr = Utils.sortArr;
     sort: string;
     selectedSortIndex: number;
+
+    urlParamsObj: object;
 
     constructor(private activatedRoute: ActivatedRoute,
                 private router: Router,
@@ -62,6 +72,9 @@ export class SearchpageComponent implements OnInit {
     }
 
     ngOnInit() {
+        $('.js-sort-sidenav').on('click', '.mat-drawer-backdrop', () => {
+            this.closeSortSidenav();
+        });
         this.getProducts();
     }
 
@@ -94,7 +107,9 @@ export class SearchpageComponent implements OnInit {
             filtersForUrl = (params.filters !== undefined && params.filters !== 'W10%3D') ? JSON.parse(atob(params.filters)) : [];
             this.activeFilters = filtersForUrl;
 
-            this.selectedSortIndex = !!params.sort ? Utils.sortArr.findIndex(x => x === params.sort) + 1 : 1;
+            console.log(params.sort);
+            this.selectedSortIndex = !!params.sort ? this.sortByArr.findIndex(x => x['value'] === params.sort) : 0;
+            console.log(this.selectedSortIndex);
 
             let queryParams = {};
              queryParams = {
@@ -273,7 +288,7 @@ export class SearchpageComponent implements OnInit {
         });
     }
 
-    onFilterChange(event, featureNameId, filterValue, filterIndex, filterValueIndex){
+    onFilterChange(event, featureNameId, filterValue, filterIndex, filterValueIndex, isNavigate: boolean = true){
         //console.log(event.target.checked, featureNameId, filterValue);
 
         const filterObj = {featureId: featureNameId, filterValues: [filterValue]};
@@ -316,37 +331,54 @@ export class SearchpageComponent implements OnInit {
         }
 
 
-        this.changeFilterAndNavigate();
+        this.changeFilterAndNavigate(isNavigate);
 
     }
 
-    changeFilterAndNavigate(){
-        let urlParamsObj = Utils.getUrlParamsAsObj();
-        if(!!urlParamsObj['q']){
-            urlParamsObj['q'] = decodeURI(urlParamsObj['q']);
+    changeFilterAndNavigate(isNavigate: boolean = true){
+        this.urlParamsObj = Utils.getUrlParamsAsObj();
+        if(!!this.urlParamsObj['q']){
+            this.urlParamsObj['q'] = decodeURI(this.urlParamsObj['q']);
         }
 
-        urlParamsObj['page'] = 1;
-        urlParamsObj['minPrice'] = this.minPrice;
-        urlParamsObj['maxPrice'] = this.maxPrice;
+        this.urlParamsObj['page'] = 1;
+        this.urlParamsObj['minPrice'] = this.minPrice;
+        this.urlParamsObj['maxPrice'] = this.maxPrice;
 
-        urlParamsObj['sort'] = this.sort;
+        this.urlParamsObj['sort'] = this.sort;
 
-        if (urlParamsObj.hasOwnProperty('filters')){
-            urlParamsObj['filters'] = btoa(JSON.stringify(this.activeFilters));
+        if (this.urlParamsObj.hasOwnProperty('filters')){
+            this.urlParamsObj['filters'] = btoa(JSON.stringify(this.activeFilters));
         } else {
-            Object.assign(urlParamsObj, {filters: btoa(JSON.stringify(this.activeFilters))})
+            Object.assign(this.urlParamsObj, {filters: btoa(JSON.stringify(this.activeFilters))})
         }
 
-        this.router.navigate(['/search'], {queryParams: urlParamsObj});
+        if(!!isNavigate){
+            this.applyFiltersAndNavigate();
+        }
     }
 
-    doSort($event){
-        this.sort = Utils.sortArr[$event-1];
+    doSort($event, isNavigate: boolean = true){
+        this.sort = this.sortByArr[$event]['value'];
         this.selectedSortIndex = $event;
-        this.changeFilterAndNavigate();
+        this.changeFilterAndNavigate(isNavigate);
     }
 
+    applyFiltersAndNavigate(){
+        this.router.navigate(['/search'], {queryParams: this.urlParamsObj});
+    }
+
+
+    //for short devices
+    onClickSort(){
+        this.drawer.open();
+        $('.js-sort-sidenav .mat-drawer-backdrop').addClass('mat-drawer-shown');
+    }
+
+    closeSortSidenav(){
+        this.drawer.close();
+        $('.js-sort-sidenav .mat-drawer-backdrop').removeClass('mat-drawer-shown');
+    }
 }
 
 
