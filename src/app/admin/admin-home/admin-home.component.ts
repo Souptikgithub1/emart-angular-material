@@ -32,7 +32,7 @@ export class AdminHomeComponent implements OnInit {
   }
 
   navigateToAddProduct(){
-    this.router.navigate([this.adminBaseRoute + 'add-product']);
+    this.router.navigate([this.adminBaseRoute + 'add-product-v2']);
   }
   navigateToManageProduct(){
     this.router.navigate([this.adminBaseRoute + 'manage-product']);

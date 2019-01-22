@@ -21,6 +21,7 @@ import {ProductCardComponent} from "./shop/shared-partials/product-card/product-
 import {ProductDetailsPageComponent} from "./shop/product-details-page/product-details-page.component";
 import {HomepageComponent} from "./shop/homepage/homepage.component";
 import {ManageProductPriceComponent} from "./admin/product/manage-product-price/manage-product-price.component";
+import {AddProductV2Component} from "./admin/product/add-product-v2/add-product-v2.component";
 
 const routes: Routes =[
     { path: '',             component: HomepageComponent },
@@ -39,6 +40,7 @@ const routes: Routes =[
             {path: 'edit-product-feature-names', component: EditProductFeatureNamesComponent},
 
             {path: 'add-product', component: AddProductComponent},
+            {path: 'add-product-v2', component: AddProductV2Component},
             {path: 'manage-product', component: ManageProductComponent},
             {path: 'edit-product/:productId', component: EditProductComponent},
             {path: 'manage-product-price/:productId', component: ManageProductPriceComponent}

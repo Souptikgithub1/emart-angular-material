@@ -98,6 +98,7 @@ import {DeviceDetectorModule} from "ngx-device-detector";
 import {NavSideMenuService} from "./shop/services/navSideMenu/nav-side-menu.service";
 import { NavSideMenuComponent } from './shared/nav-side-menu/nav-side-menu.component';
 import {NgMatSearchBarModule} from "ng-mat-search-bar";
+import { AddProductV2Component } from './admin/product/add-product-v2/add-product-v2.component';
 
 
 @NgModule({
@@ -170,7 +171,8 @@ export function getAuthServiceConfigs() {
         BannerSkeletonComponent,
         ManageProductPriceComponent,
         ProductPageSkeletonComponent,
-        NavSideMenuComponent
+        NavSideMenuComponent,
+        AddProductV2Component
     ],
     imports: [
         BrowserAnimationsModule,

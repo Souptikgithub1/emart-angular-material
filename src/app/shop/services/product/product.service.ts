@@ -9,6 +9,8 @@ export class ProductService {
 
   private endpoint: string = Utils.emartBaseUrl + 'productApi/';
   private searchEndpoint: string = Utils.emartBaseUrl + 'search/';
+
+  private nodejsEndpoint: string = Utils.emartNodejsBaseUrl + 'products';
   constructor(private http: Http, private  httpClient: HttpClient) { }
 
   getProducts(params : object){
@@ -22,6 +24,9 @@ export class ProductService {
 
   add(requestBody: object){
     return this.http.post(this.endpoint + 'add', requestBody).pipe(map(res => res.json()));
+  }
+  addV2(requestBody: object){
+    return this.http.post(this.nodejsEndpoint, requestBody).pipe(map(res => res.json()));
   }
 
   getAll(){

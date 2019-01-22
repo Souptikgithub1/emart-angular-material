@@ -1,0 +1,131 @@
+<div class="container-fluid" style="background: #fff;padding: 20px 0">
+  <form class="form-horizontal" (ngSubmit)="addProduct()">
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <div class="col-5">
+            <mat-form-field>
+              <mat-select placeholder="Brand" id="brandId" name="parent-cat" [(ngModel)]="brandIndex">
+                <mat-option *ngFor="let brand of brands; let i = index" [value]="i">
+                  {{brand.brandName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-5">
+            <mat-form-field>
+              <mat-select placeholder="Vertical" id="verticalId" name="verticalId" [(ngModel)]="verticalIndex" (selectionChange)="onChangeVertical()">
+                <mat-option *ngFor="let vertical of verticals; let i = index" [value]="i">
+                  {{vertical.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-5">
+            <mat-form-field>
+              <mat-select placeholder="Category" id="categoryId" name="categoryId" [(ngModel)]="categoryIndex">
+                <mat-option *ngFor="let category of categories; let i = index" [value]="i">
+                  {{category.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-5">
+            <mat-form-field class="example-full-width">
+              <textarea matInput placeholder="Product Name" id="productName" [(ngModel)]="productName" name="productName"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-5">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Selling Rate" id="sellingRate" [(ngModel)]="sellingRate" name="sellingRate">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-5">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Mrp" id="mrp" [(ngModel)]="mrp" name="mrp">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-5">
+            <mat-list role="list">
+              <mat-list-item role="listitem">
+                <div class="container-fluid p-0 d-flex justify-content-between">
+                  <div>Images</div>
+                  <i class="material-icons action text-success" (click)="addBlankImage()">
+                    add_circle_outline
+                  </i>
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+
+        <div class="form-group" *ngFor="let image of images; let i = index">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="{{'image' + (i + 1)}}" [(ngModel)]="images[i]" name="image">
+                </mat-form-field>
+              </div>
+              <div class="col-1" *ngIf="i!=0">
+                <i class="material-icons action text-danger" (click)="removeBlankImage(i)">
+                  remove_circle_outline
+                </i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-md-6">
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Feature Name</th>
+            <th>Feature Value</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let feature of productFeatureNames; let i = index">
+            <td>{{feature.prodFeatureName}}</td>
+            <td><input type="text" [name]="feature.prodFeatureName" [(ngModel)]="productFeatureNames[i]['value']"></td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+
+
+  </form>
+</div>
