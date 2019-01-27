@@ -6,7 +6,7 @@
                 <div class="product-img-container">
                     <div *ngIf="product.mrp != 0" class="offer-tag">On Offer</div>
                     <div class="image-holder">
-                        <img class="responsive-img" src="{{imgRoot}}{{product.brand.brandName}}%2F{{product.image1}}" />
+                        <img class="responsive-img" src="{{imgRoot}}{{'1'}}%2F{{product.image1}}" />
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <div class="{{product.verticalId == 5 ? 'col-4' : 'col-3'}} pr-0">
                     <div class="product-img-container">
                         <div class="image-holder {{product.verticalId == 5 ? 'image-holder-width' : ''}}">
-                            <img class="responsive-img" src="{{imgRoot}}{{product.brand.brandName}}%2F{{product.image1}}" />
+                            <img class="responsive-img" src="{{imgRoot}}{{'1'}}%2F{{product.image1}}" />
                         </div>
                     </div>
                 </div>

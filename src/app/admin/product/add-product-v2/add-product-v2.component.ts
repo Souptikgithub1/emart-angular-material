@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {ProductFeatureValueService} from "../../../shop/services/ProductFeatureValue/product-feature-value.service";
 import {ProductFeatureNamesService} from "../../../shop/services/ProductFeatureNames/product-feature-names.service";
 import {ProductService} from "../../../shop/services/product/product.service";
+import {ProductV2Service} from "../../../shop/services/product-v2/product-v2.service";
 
 @Component({
   selector: 'app-add-product-v2',
@@ -39,7 +40,7 @@ export class AddProductV2Component implements OnInit {
                 private categoryService: CategoryService,
                 private productFeatureNamesService: ProductFeatureNamesService,
                 private productFeatureValueService: ProductFeatureValueService,
-                private productService: ProductService,
+                private productV2Service: ProductV2Service,
                 private router: Router) { }
 
     ngOnInit() {
@@ -93,7 +94,7 @@ export class AddProductV2Component implements OnInit {
 
 
         //saving a product
-        this.productService.addV2(product).subscribe(productrResponse => {
+        this.productV2Service.add(product).subscribe(productrResponse => {
 
 
 

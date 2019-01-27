@@ -14,6 +14,7 @@ export class ProductService {
   constructor(private http: Http, private  httpClient: HttpClient) { }
 
   getProducts(params : object){
+    console.log(params);
     const options = new RequestOptions({params: params});
     return this.http.get(this.endpoint + 'search', options).pipe(map(res => res.json()));
   }

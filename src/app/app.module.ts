@@ -99,6 +99,7 @@ import {NavSideMenuService} from "./shop/services/navSideMenu/nav-side-menu.serv
 import { NavSideMenuComponent } from './shared/nav-side-menu/nav-side-menu.component';
 import {NgMatSearchBarModule} from "ng-mat-search-bar";
 import { AddProductV2Component } from './admin/product/add-product-v2/add-product-v2.component';
+import {ProductV2Service} from "./shop/services/product-v2/product-v2.service";
 
 
 @NgModule({
@@ -215,6 +216,7 @@ export function getAuthServiceConfigs() {
         ProductFeatureValueService,
         UserService,
         BannerService,
+        ProductV2Service,
 
         RvpEventService,
         CartService,

@@ -8,6 +8,7 @@ import {ProductFeatureNamesService} from "../services/ProductFeatureNames/produc
 import {Filters} from "../utils/filters";
 import {Options} from "ng5-slider";
 import {MatSidenav} from "@angular/material";
+import {ProductV2Service} from "../services/product-v2/product-v2.service";
 
 declare var jquery: any;
 declare var $ :any;
@@ -67,6 +68,7 @@ export class SearchpageComponent implements OnInit {
     constructor(private activatedRoute: ActivatedRoute,
                 private router: Router,
                 private productService: ProductService,
+                private productV2Service: ProductV2Service,
                 private categoryService: CategoryService,
                 private productFeatureNamesService: ProductFeatureNamesService) {
         this.imgRoot = Utils.imgRoot;
@@ -117,8 +119,8 @@ export class SearchpageComponent implements OnInit {
 
             let queryParams = {};
              queryParams = {
-                'categoryId' : !!catId ? catId : 0,
-                'verticalId' : !!vertId ? vertId : 0,
+                'categoryId' : !!catId ? Number(catId) : 0,
+                'verticalId' : !!vertId ? Number(vertId) : 0,
                 'page' : page,
                 'size' : size,
                 'filters' : filtersForUrl,
@@ -138,8 +140,9 @@ export class SearchpageComponent implements OnInit {
 
             //fetching data from api
             this.products = [];
-            this.productService.getProducts(queryParams).subscribe(response => {
+            this.productV2Service.getProducts(queryParams).subscribe(response => {
                 //console.log(response);
+                console.log(response.productDetailsBeans);
                 this.products = response.productDetailsBeans;
 
                 this.minPrice = !!params.minPrice ? params.minPrice : response.minPrice/100;
@@ -174,7 +177,7 @@ export class SearchpageComponent implements OnInit {
 
 
 
-                    if(!!catId){
+                    /*if(!!catId){
                         this.categoryName = this.products[0].category.name;
                         this.searchResultName = this.products[0].category.searchResultName;
                     }
@@ -193,7 +196,7 @@ export class SearchpageComponent implements OnInit {
                         this.searchResDetails = '';
                         this.searchResultString = '';
                         this.queryString = '';
-                    }
+                    }*/
 
                     //fetch filterable features
                     this.getFilterableFeatures();

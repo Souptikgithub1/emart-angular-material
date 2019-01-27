@@ -1,7 +1,7 @@
 import {Brand} from "./brand";
 import {Category} from "./category";
 export interface Product {
-  id : number;
+  _id : string;
   productName : string;
   mrp : number;
   sellingRate : number;

@@ -140,7 +140,7 @@ export class Utils {
     }
 
     public static getProductIdEncoded(product){
-        return product['productIdEncoded'] = product.productName.split(' ').join('-') + '-' + btoa(product.id.toString());
+        return product['productIdEncoded'] = product.productName.split(' ').join('-') + '-' + btoa(product._id.toString());
     }
 
     public static sortArr = [

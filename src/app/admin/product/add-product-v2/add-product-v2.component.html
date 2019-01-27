@@ -2,10 +2,10 @@
   <form class="form-horizontal" (ngSubmit)="addProduct()">
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-12 col-md-6">
 
         <div class="form-group">
-          <div class="col-5">
+          <div class="col-12 col-md-5">
             <mat-form-field>
               <mat-select placeholder="Brand" id="brandId" name="parent-cat" [(ngModel)]="brandIndex">
                 <mat-option *ngFor="let brand of brands; let i = index" [value]="i">
@@ -17,7 +17,7 @@
         </div>
 
         <div class="form-group">
-          <div class="col-5">
+          <div class="col-12 col-md-5">
             <mat-form-field>
               <mat-select placeholder="Vertical" id="verticalId" name="verticalId" [(ngModel)]="verticalIndex" (selectionChange)="onChangeVertical()">
                 <mat-option *ngFor="let vertical of verticals; let i = index" [value]="i">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="form-group">
-          <div class="col-5">
+          <div class="col-12 col-md-5">
             <mat-form-field>
               <mat-select placeholder="Category" id="categoryId" name="categoryId" [(ngModel)]="categoryIndex">
                 <mat-option *ngFor="let category of categories; let i = index" [value]="i">
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-          <div class="col-5">
+          <div class="col-12 col-md-5">
             <mat-form-field class="example-full-width">
               <textarea matInput placeholder="Product Name" id="productName" [(ngModel)]="productName" name="productName"></textarea>
             </mat-form-field>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="form-group">
-          <div class="col-5">
+          <div class="col-12 col-md-5">
             <mat-form-field class="example-full-width">
               <input matInput placeholder="Selling Rate" id="sellingRate" [(ngModel)]="sellingRate" name="sellingRate">
             </mat-form-field>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="form-group">
-          <div class="col-5">
+          <div class="col-12 col-md-5">
             <mat-form-field class="example-full-width">
               <input matInput placeholder="Mrp" id="mrp" [(ngModel)]="mrp" name="mrp">
             </mat-form-field>
@@ -65,7 +65,7 @@
         </div>
 
         <div class="row">
-          <div class="col-5">
+          <div class="col-12 col-md-5">
             <mat-list role="list">
               <mat-list-item role="listitem">
                 <div class="container-fluid p-0 d-flex justify-content-between">
@@ -79,22 +79,28 @@
           </div>
         </div>
 
-        <div class="form-group" *ngFor="let image of images; let i = index">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-4">
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="{{'image' + (i + 1)}}" [(ngModel)]="images[i]" name="image">
-                </mat-form-field>
-              </div>
-              <div class="col-1" *ngIf="i!=0">
-                <i class="material-icons action text-danger" (click)="removeBlankImage(i)">
-                  remove_circle_outline
-                </i>
-              </div>
-            </div>
+
+        <div class="row">
+          <div class="col-12 col-md-5">
+            <mat-list role="list">
+              <mat-list-item class="mb-3" role="listitem" *ngFor="let image of images; let i = index">
+                <div class="col-11 pl-0">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="{{'image' + (i + 1)}}" [(ngModel)]="images[i]" name="{{'image' + (i + 1)}}">
+                  </mat-form-field>
+                </div>
+                <div class="col-1 pl-0" *ngIf="i!=0">
+                  <i class="material-icons action text-danger" (click)="removeBlankImage(i)">
+                    remove_circle_outline
+                  </i>
+                </div>
+
+              </mat-list-item>
+            </mat-list>
           </div>
         </div>
+
+
 
 
       </div>
