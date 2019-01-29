@@ -81,15 +81,15 @@ export class AddProductV2Component implements OnInit {
         //console.log(this.productFeatureNames);
 
         const product = {
-            brand_id: this.brands[this.brandIndex]['id'],
-            vertical_id: this.verticals[this.verticalIndex]['id'],
-            category_id: this.categories[this.categoryIndex]['id'],
-            product_name: this.productName,
-            selling_rate: this.sellingRate,
+            brandId: this.brands[this.brandIndex]['id'],
+            verticalId: this.verticals[this.verticalIndex]['id'],
+            categoryId: this.categories[this.categoryIndex]['id'],
+            productName: this.productName,
+            sellingRate: this.sellingRate,
             mrp: this.mrp,
             images: this.images,
             state: 1,
-            feature_category_list: []
+            features: []
         };
 
 
