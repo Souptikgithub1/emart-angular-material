@@ -1,23 +1,25 @@
-import {Component, DoCheck, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {Utils} from "../utils/utils";
-import {ProductService} from "../services/product/product.service";
-import {Product} from "../entities/product";
-import {CategoryService} from "../services/category/category.service";
-import {ProductFeatureNamesService} from "../services/ProductFeatureNames/product-feature-names.service";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ProductV2Service} from "../services/product-v2/product-v2.service";
 import {Filters} from "../utils/filters";
-import {Options} from "ng5-slider";
+import {ProductFeatureNamesService} from "../services/ProductFeatureNames/product-feature-names.service";
+import {ProductService} from "../services/product/product.service";
+import {CategoryService} from "../services/category/category.service";
 import {MatSidenav} from "@angular/material";
+import {Product} from "../entities/product";
+import {Utils} from "../utils/utils";
+import {Options} from "ng5-slider";
+import {ActivatedRoute, Router} from "@angular/router";
+
 
 declare var jquery: any;
 declare var $ :any;
 
 @Component({
-    selector: 'app-searchpage',
-    templateUrl: './searchpage.component.html',
-    styleUrls: ['./searchpage.component.css']
+  selector: 'app-searchpage-v2',
+  templateUrl: './searchpage-v2.component.html',
+  styleUrls: ['./searchpage-v2.component.scss']
 })
-export class SearchpageComponent implements OnInit {
+export class SearchpageV2Component implements OnInit {
 
     @ViewChild('sortDrawer')
     drawer: MatSidenav;
@@ -30,6 +32,7 @@ export class SearchpageComponent implements OnInit {
     isModal: boolean = false;
 
     products: Product[] = [];
+    productsFiltered: Product[] = [];
 
     startCount: string;
     endCount: string;
@@ -67,6 +70,7 @@ export class SearchpageComponent implements OnInit {
     constructor(private activatedRoute: ActivatedRoute,
                 private router: Router,
                 private productService: ProductService,
+                private productV2Service: ProductV2Service,
                 private categoryService: CategoryService,
                 private productFeatureNamesService: ProductFeatureNamesService) {
         this.imgRoot = Utils.imgRoot;
@@ -116,9 +120,9 @@ export class SearchpageComponent implements OnInit {
             console.log(this.selectedSortIndex);
 
             let queryParams = {};
-             queryParams = {
-                'categoryId' : !!catId ? catId : 0,
-                'verticalId' : !!vertId ? vertId : 0,
+            queryParams = {
+                'categoryId' : !!catId ? Number(catId) : 0,
+                'verticalId' : !!vertId ? Number(vertId) : 0,
                 'page' : page,
                 'size' : size,
                 'filters' : filtersForUrl,
@@ -127,20 +131,22 @@ export class SearchpageComponent implements OnInit {
                 'sort' : (!!params.sort ? params.sort : "price_asc")
             };
 
-             if(!!params.q){
-                 if(decodeURI(params.q) !== this.queryString){
-                     queryParams = {'q': params.q};
-                 }else{
-                     Object.assign(queryParams, {'q': params.q});
-                 }
-             }
+            if(!!params.q){
+                if(decodeURI(params.q) !== this.queryString){
+                    queryParams = {'q': params.q};
+                }else{
+                    Object.assign(queryParams, {'q': params.q});
+                }
+            }
             this.queryString = decodeURI(params.q);
 
             //fetching data from api
             this.products = [];
-            this.productService.getProducts(queryParams).subscribe(response => {
+            this.productV2Service.getProducts(queryParams).subscribe(response => {
                 //console.log(response);
-                this.products = response.productDetailsBeans;
+
+                this.products = Utils.parseProducts(response.productDetailsBeans);
+                console.log(this.products);
 
                 this.minPrice = !!params.minPrice ? params.minPrice : response.minPrice/100;
                 this.maxPrice = !!params.maxPrice ? params.maxPrice : response.maxPrice/100;
@@ -174,7 +180,7 @@ export class SearchpageComponent implements OnInit {
 
 
 
-                    if(!!catId){
+                    /*if(!!catId){
                         this.categoryName = this.products[0].category.name;
                         this.searchResultName = this.products[0].category.searchResultName;
                     }
@@ -193,7 +199,7 @@ export class SearchpageComponent implements OnInit {
                         this.searchResDetails = '';
                         this.searchResultString = '';
                         this.queryString = '';
-                    }
+                    }*/
 
                     //fetch filterable features
                     this.getFilterableFeatures();
@@ -358,7 +364,7 @@ export class SearchpageComponent implements OnInit {
         }
 
         if(!!isNavigate){
-            this.applyFiltersAndNavigate();
+            //this.applyFiltersAndNavigate();
         }
     }
 
@@ -392,5 +398,3 @@ export class SearchpageComponent implements OnInit {
         $('.js-filter-sidenav .mat-drawer-backdrop').removeClass('mat-drawer-shown');
     }
 }
-
-

@@ -100,6 +100,7 @@ import { NavSideMenuComponent } from './shared/nav-side-menu/nav-side-menu.compo
 import {NgMatSearchBarModule} from "ng-mat-search-bar";
 import { AddProductV2Component } from './admin/product/add-product-v2/add-product-v2.component';
 import {ProductV2Service} from "./shop/services/product-v2/product-v2.service";
+import { SearchpageV2Component } from './shop/searchpage-v2/searchpage-v2.component';
 
 
 @NgModule({
@@ -173,7 +174,8 @@ export function getAuthServiceConfigs() {
         ManageProductPriceComponent,
         ProductPageSkeletonComponent,
         NavSideMenuComponent,
-        AddProductV2Component
+        AddProductV2Component,
+        SearchpageV2Component
     ],
     imports: [
         BrowserAnimationsModule,

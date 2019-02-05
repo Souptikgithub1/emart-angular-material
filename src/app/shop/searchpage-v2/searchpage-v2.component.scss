@@ -1,0 +1,140 @@
+.search-page-container{
+  /*font-family: Roboto;*/
+  background: #fff;
+  display: flex;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+
+.product-list-container{
+  border-left: 1px solid #f1f1f1;
+  /*padding: 20px 20px;*/
+  padding-bottom: 20px;
+}
+.product-list{
+  display: block;
+}
+
+
+.search-details-container{
+  display: flex;
+  /*border-bottom: 1px solid #f1f1f1;*/
+}
+.search-details{
+  flex-grow: 20;
+  padding: 15px 0;
+  padding-left: 15px;
+  padding-bottom: 5px;
+}
+
+.search-result-details{
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.search-category-name{
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.search-count{
+  padding-left: 5px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.list-grid-toggle{
+  padding: 15px;
+  flex-grow: 1;
+}
+.list-icon-holder{
+  width: 50%;
+  float: left;
+}
+.grid-icon-holder{
+
+}
+
+
+.filters-header{
+  padding: 10px;
+  padding-left: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.filters{
+
+}
+
+.filter-body{
+
+}
+
+.filter-header{
+  padding-left: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.filter-container{
+  margin-bottom: 15px;
+}
+
+.filter-value{
+  position: relative;
+  padding-left: 25px;
+}
+
+@media (max-width: 992px) {
+  .sort-container{
+    font-weight: 500;
+    padding: 10px 10px;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+.zero-level-product-list-holder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.order-tab-item{
+  padding: 0;
+}
+
+/deep/ .mat-tab-label{
+  height: 40px !important;
+  min-width: 100px !important;
+  font-size: 13px !important;
+  padding: 0 15px;
+}
+
+/deep/ .mat-tab-body-wrapper{
+  display: none !important;
+}
+
+/deep/ .mat-tab-label.mat-tab-disabled,
+.mat-tab-link.mat-tab-disabled{
+  color: #000;
+  opacity: 1;
+}
+
+@media (max-width: 992px) {
+  .filters-header{
+    padding-left: 10px;
+  }
+  .filter-header{
+    padding-left: 10px;
+  }
+}

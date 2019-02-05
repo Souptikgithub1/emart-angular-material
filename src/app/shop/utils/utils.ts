@@ -148,4 +148,17 @@ export class Utils {
         {label: 'Price: High to low', value: 'price_desc'},
         {label: 'Latest', value: 'latest_desc'}
     ];
+
+    public static parseProducts(products){
+        for(let product of products){
+            product['featureList'] = [];
+            for(let feature of product['features']){
+                let obj = feature.productFeature;
+                Object.assign(obj, {value: feature.value});
+                product['featureList'].push(obj);
+            }
+        }
+    return products;
+    }
+
 }

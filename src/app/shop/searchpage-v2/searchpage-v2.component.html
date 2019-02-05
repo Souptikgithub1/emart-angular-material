@@ -1,0 +1,138 @@
+<mat-sidenav-container class="matSideNav-container js-sort-sidenav" style="color: #66615B" autosize>
+  <mat-sidenav #sortDrawer class="example-sidenav" mode="side" position="start">
+    <div class="sort-container">
+      <mat-radio-group class="example-radio-group" [(ngModel)]="selectedSortIndex">
+        <mat-radio-button class="example-radio-button" *ngFor="let sortBy of sortByArr; let i = index" [value]="i" (change)="doSort(i);closeSortSidenav()">
+          {{sortBy['label']}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>
+<mat-sidenav-container class="matSideNav-container js-filter-sidenav" style="color: #66615B" autosize>
+  <mat-sidenav #filterDrawer class="example-sidenav" mode="side" position="end">
+    <div class="container-fluid">
+      <div class="filters">
+        <div class="filters-header d-flex justify-content-between">
+          <div>Filters</div>
+          <button mat-raised-button color="accent" (click)="applyFiltersAndNavigate();closeFilterSidenav()">Apply</button>
+        </div>
+        <div class="filter-container">
+          <div class="filter-header">Price</div>
+          <div class="filter-body">
+            <ng5-slider [(value)]="minPrice" [(highValue)]="maxPrice" [(options)]="options" (userChangeEnd)="changeFilterAndNavigate(false)"></ng5-slider>
+          </div>
+        </div>
+        <div *ngFor="let filter of filters; let filterIndex = index" class="filter-container">
+          <div class="filter-header">{{filter['prodFeatureName']}}</div>
+          <div class="filter-body">
+            <div *ngFor="let value of filter['values']; let filterValueIndex = index" class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" [checked]="value['checked']"  (change)="onFilterChange($event, filter['id'], value.value, filterIndex, filterValueIndex,false)">
+
+                <span class="form-check-sign"></span>
+                <span class="filter-value">{{value.text}}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>
+<div class="container-fluid reset-padding-right reset-padding-left">
+  <div  class="search-page-container">
+    <div class="col-lg-2 d-none d-lg-block">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="filters">
+            <div class="filters-header">Filters</div>
+            <div class="filter-container">
+              <div class="filter-header">Price</div>
+              <div class="filter-body">
+                <ng5-slider [(value)]="minPrice" [(highValue)]="maxPrice" [(options)]="options" (userChangeEnd)="changeFilterAndNavigate()"></ng5-slider>
+              </div>
+            </div>
+            <div *ngFor="let filter of filters; let filterIndex = index" class="filter-container">
+              <div class="filter-header">{{filter['prodFeatureName']}}</div>
+              <div class="filter-body">
+                <div *ngFor="let value of filter['values']; let filterValueIndex = index" class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" [checked]="value['checked']"  (change)="onFilterChange($event, filter['id'], value.value, filterIndex, filterValueIndex)">
+
+                    <span class="form-check-sign"></span>
+                    <span class="filter-value">{{value.text}}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-10 col-md-12 product-list-container reset-padding">
+      <div *ngIf="!!isLoaderVisible" class="skeleton-loader-detailed-card">
+        <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
+        <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
+        <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
+        <app-product-detailed-card-skeleton></app-product-detailed-card-skeleton>
+      </div>
+
+      <div *ngIf="products.length > 0">
+        <div class="search-details-container d-none d-lg-block">
+          <div class="search-details">
+            <span *ngIf="!queryString" class="search-category-name">{{searchResultName ? searchResultName : categoryName}}</span>
+            <span *ngIf="!!queryString" class="search-result-details">{{searchResDetails}}</span>
+            <span *ngIf="!!queryString" class="search-string search-category-name">{{searchResultString}}</span>
+            <span class="search-count">(Showing {{startCount}} - {{endCount}} products of {{totalProductCount}})</span>
+          </div>
+        </div>
+        <div class="d-none d-lg-block">
+          <mat-tab-group [selectedIndex]="selectedSortIndex" (selectedIndexChange)="doSort($event)">
+            <!--<mat-tab label="Order By" disabled></mat-tab>-->
+            <mat-tab *ngFor="let sortBy of sortByArr; let i = index" label="{{sortByArr[i]['label']}}"></mat-tab>
+          </mat-tab-group>
+        </div>
+        <div class="product-list">
+          <div  *ngFor="let product of products; let i = index">
+            <app-product-card *ngIf="!isproductCardDetailed() || !!searchResDetails" [product]="product"></app-product-card>
+            <app-product-card-detailed *ngIf="!!isproductCardDetailed() && !searchResDetails" [product]="product"></app-product-card-detailed>
+          </div>
+
+        </div>
+      </div>
+      <div *ngIf="!isLoaderVisible && products.length == 0" class="zero-level-product-list-holder">
+        <div class="zero-level-product-list">
+          No Item Found
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid p-0 fixed-bottom custom-bottom-navbar d-lg-none">
+    <div class="row">
+      <div class="col-6 pr-0">
+        <div class="btn btn-block btn-nav-bottom add-to-cart" (click)="onClickSortBtn()">Sort</div>
+      </div>
+      <div class="col-6 pl-0">
+        <div class="btn btn-block btn-nav-bottom buy-now" (click)="onClickFilterBtn()">Filter</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="pageParams.length > 0" class="container text-center">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+      <ul class="pagination">
+        <li *ngFor="let pageParam of pageParams;let i = index">
+          <a class="{{ i.toString() == page.toString() ? 'active' : 'action'}}" (click)="navigateToPage(pageParam)">{{i+1}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--
+<app-rvp></app-rvp>-->

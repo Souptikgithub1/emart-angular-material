@@ -22,10 +22,11 @@ import {ProductDetailsPageComponent} from "./shop/product-details-page/product-d
 import {HomepageComponent} from "./shop/homepage/homepage.component";
 import {ManageProductPriceComponent} from "./admin/product/manage-product-price/manage-product-price.component";
 import {AddProductV2Component} from "./admin/product/add-product-v2/add-product-v2.component";
+import {SearchpageV2Component} from "./shop/searchpage-v2/searchpage-v2.component";
 
 const routes: Routes =[
     { path: '',             component: HomepageComponent },
-    { path: 'search',  component: SearchpageComponent},
+    { path: 'search',  component: SearchpageV2Component},
     { path: 'product/:productId',  component: ProductDetailsPageComponent},
 
     {

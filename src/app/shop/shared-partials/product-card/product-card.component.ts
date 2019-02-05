@@ -29,7 +29,7 @@ export class ProductCardComponent implements OnInit {
 
   onClickProductCard(){
     console.log(this.product);
-    this.router.navigate(['/product/' + this.product._id]);
+    this.router.navigate(['/product/' + this.product.id]);
   }
 
 
