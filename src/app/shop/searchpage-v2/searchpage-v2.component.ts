@@ -9,6 +9,7 @@ import {Product} from "../entities/product";
 import {Utils} from "../utils/utils";
 import {Options} from "ng5-slider";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Location} from "@angular/common";
 
 
 declare var jquery: any;
@@ -72,7 +73,8 @@ export class SearchpageV2Component implements OnInit {
                 private productService: ProductService,
                 private productV2Service: ProductV2Service,
                 private categoryService: CategoryService,
-                private productFeatureNamesService: ProductFeatureNamesService) {
+                private productFeatureNamesService: ProductFeatureNamesService,
+                private location: Location) {
         this.imgRoot = Utils.imgRoot;
     }
 
@@ -364,7 +366,7 @@ export class SearchpageV2Component implements OnInit {
         }
 
         if(!!isNavigate){
-            //this.applyFiltersAndNavigate();
+            this.applyFiltersAndNavigate();
         }
     }
 
@@ -375,7 +377,7 @@ export class SearchpageV2Component implements OnInit {
     }
 
     applyFiltersAndNavigate(){
-        this.router.navigate(['/search'], {queryParams: this.urlParamsObj});
+        this.location.replaceState(this.router.serializeUrl(this.router.createUrlTree(['/search'], {queryParams: this.urlParamsObj})));
     }
 
 
