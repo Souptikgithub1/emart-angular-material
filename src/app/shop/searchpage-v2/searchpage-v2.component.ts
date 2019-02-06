@@ -33,7 +33,7 @@ export class SearchpageV2Component implements OnInit {
     isModal: boolean = false;
 
     products: Product[] = [];
-    productsFiltered: Product[] = [];
+    productsFiltered: Array<Product> = [];
 
     startCount: string;
     endCount: string;
@@ -148,7 +148,8 @@ export class SearchpageV2Component implements OnInit {
                 //console.log(response);
 
                 this.products = Utils.parseProducts(response.productDetailsBeans);
-                console.log(this.products);
+                this.productsFiltered = this.products;
+                console.log(this.productsFiltered);
 
                 this.minPrice = !!params.minPrice ? params.minPrice : response.minPrice/100;
                 this.maxPrice = !!params.maxPrice ? params.maxPrice : response.maxPrice/100;
@@ -345,6 +346,15 @@ export class SearchpageV2Component implements OnInit {
 
         this.changeFilterAndNavigate(isNavigate);
 
+    }
+
+    filterByPrice(){
+        this.productsFiltered = this.products.filter(product => {
+            return product['sellingRate'] >= this.minPrice*100 && product['sellingRate'] <= this.maxPrice*100;
+        });
+        this.endCount = this.productsFiltered.length;
+        console.log(this.productsFiltered);
+        this.changeFilterAndNavigate();
     }
 
     changeFilterAndNavigate(isNavigate: boolean = true){

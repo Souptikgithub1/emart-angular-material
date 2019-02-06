@@ -50,7 +50,7 @@
             <div class="filter-container">
               <div class="filter-header">Price</div>
               <div class="filter-body">
-                <ng5-slider [(value)]="minPrice" [(highValue)]="maxPrice" [(options)]="options" (userChangeEnd)="changeFilterAndNavigate()"></ng5-slider>
+                <ng5-slider [(value)]="minPrice" [(highValue)]="maxPrice" [(options)]="options" (userChangeEnd)="filterByPrice()"></ng5-slider>
               </div>
             </div>
             <div *ngFor="let filter of filters; let filterIndex = index" class="filter-container">
@@ -95,14 +95,14 @@
           </mat-tab-group>
         </div>
         <div class="product-list">
-          <div  *ngFor="let product of products; let i = index">
+          <div  *ngFor="let product of productsFiltered; let i = index">
             <app-product-card *ngIf="!isproductCardDetailed() || !!searchResDetails" [product]="product"></app-product-card>
             <app-product-card-detailed *ngIf="!!isproductCardDetailed() && !searchResDetails" [product]="product"></app-product-card-detailed>
           </div>
 
         </div>
       </div>
-      <div *ngIf="!isLoaderVisible && products.length == 0" class="zero-level-product-list-holder">
+      <div *ngIf="!isLoaderVisible && productsFiltered.length == 0" class="zero-level-product-list-holder">
         <div class="zero-level-product-list">
           No Item Found
         </div>
