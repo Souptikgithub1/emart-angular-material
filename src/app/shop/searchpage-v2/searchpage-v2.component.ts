@@ -1,16 +1,14 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ProductV2Service} from "../services/product-v2/product-v2.service";
-import {Filters} from "../utils/filters";
-import {ProductFeatureNamesService} from "../services/ProductFeatureNames/product-feature-names.service";
-import {ProductService} from "../services/product/product.service";
-import {CategoryService} from "../services/category/category.service";
-import {MatSidenav} from "@angular/material";
-import {Product} from "../entities/product";
-import {Utils} from "../utils/utils";
-import {Options} from "ng5-slider";
+import {Component, DoCheck, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {Location} from "@angular/common";
-
+import {Utils} from "../utils/utils";
+import {ProductService} from "../services/product/product.service";
+import {Product} from "../entities/product";
+import {CategoryService} from "../services/category/category.service";
+import {ProductFeatureNamesService} from "../services/ProductFeatureNames/product-feature-names.service";
+import {Filters} from "../utils/filters";
+import {Options} from "ng5-slider";
+import {MatSidenav} from "@angular/material";
+import {ProductV2Service} from "../services/product-v2/product-v2.service";
 
 declare var jquery: any;
 declare var $ :any;
@@ -33,7 +31,6 @@ export class SearchpageV2Component implements OnInit {
     isModal: boolean = false;
 
     products: Product[] = [];
-    productsFiltered: Array<Product> = [];
 
     startCount: string;
     endCount: string;
@@ -70,11 +67,9 @@ export class SearchpageV2Component implements OnInit {
 
     constructor(private activatedRoute: ActivatedRoute,
                 private router: Router,
-                private productService: ProductService,
-                private productV2Service: ProductV2Service,
+                private productService: ProductV2Service,
                 private categoryService: CategoryService,
-                private productFeatureNamesService: ProductFeatureNamesService,
-                private location: Location) {
+                private productFeatureNamesService: ProductFeatureNamesService) {
         this.imgRoot = Utils.imgRoot;
     }
 
@@ -123,8 +118,8 @@ export class SearchpageV2Component implements OnInit {
 
             let queryParams = {};
             queryParams = {
-                'categoryId' : !!catId ? Number(catId) : 0,
-                'verticalId' : !!vertId ? Number(vertId) : 0,
+                'categoryId' : !!catId ? catId : 0,
+                'verticalId' : !!vertId ? vertId : 0,
                 'page' : page,
                 'size' : size,
                 'filters' : filtersForUrl,
@@ -144,12 +139,9 @@ export class SearchpageV2Component implements OnInit {
 
             //fetching data from api
             this.products = [];
-            this.productV2Service.getProducts(queryParams).subscribe(response => {
+            this.productService.getProducts(queryParams).subscribe(response => {
                 //console.log(response);
-
-                this.products = Utils.parseProducts(response.productDetailsBeans);
-                this.productsFiltered = this.products;
-                console.log(this.productsFiltered);
+                this.products = response.productDetailsBeans;
 
                 this.minPrice = !!params.minPrice ? params.minPrice : response.minPrice/100;
                 this.maxPrice = !!params.maxPrice ? params.maxPrice : response.maxPrice/100;
@@ -183,17 +175,24 @@ export class SearchpageV2Component implements OnInit {
 
 
 
-                    /*if(!!catId){
-                        this.categoryName = this.products[0].category.name;
-                        this.searchResultName = this.products[0].category.searchResultName;
+                    if(!!catId){
+                        this.categoryService.getCategory(this.products[0].categoryId.toString()).subscribe(category => {
+                            this.categoryName = category.name;
+                            this.searchResultName = category.searchResultName;
+                            this.isLoaderVisible = false;
+                        });
+
                     }
 
 
                     if(!!vertId){
                         this.categoryService.getCategory(this.products[0].verticalId.toString()).subscribe(vertical => {
                             this.searchResultName = !!vertical.searchResultName ? vertical.searchResultName : vertical.name;
+                            this.isLoaderVisible = false;
                         });
                     }
+
+
 
                     if(!!params.q){
                         this.searchResDetails = "Showing Search Results For ";
@@ -202,12 +201,12 @@ export class SearchpageV2Component implements OnInit {
                         this.searchResDetails = '';
                         this.searchResultString = '';
                         this.queryString = '';
-                    }*/
+                    }
 
                     //fetch filterable features
                     this.getFilterableFeatures();
                 }
-                this.isLoaderVisible = false;
+
             });
         });
     }
@@ -348,15 +347,6 @@ export class SearchpageV2Component implements OnInit {
 
     }
 
-    filterByPrice(){
-        this.productsFiltered = this.products.filter(product => {
-            return product['sellingRate'] >= this.minPrice*100 && product['sellingRate'] <= this.maxPrice*100;
-        });
-        this.endCount = this.productsFiltered.length;
-        console.log(this.productsFiltered);
-        this.changeFilterAndNavigate();
-    }
-
     changeFilterAndNavigate(isNavigate: boolean = true){
         this.urlParamsObj = Utils.getUrlParamsAsObj();
         if(!!this.urlParamsObj['q']){
@@ -387,7 +377,7 @@ export class SearchpageV2Component implements OnInit {
     }
 
     applyFiltersAndNavigate(){
-        this.location.replaceState(this.router.serializeUrl(this.router.createUrlTree(['/search'], {queryParams: this.urlParamsObj})));
+        this.router.navigate(['/search'], {queryParams: this.urlParamsObj});
     }
 
 
