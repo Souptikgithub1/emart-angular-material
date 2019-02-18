@@ -105,7 +105,7 @@ export class SearchpageV2Component implements OnInit {
 
             page = (!!params.page || typeof params.page !== 'undefined') ? params.page-1 : 0;
             this.page = page;
-            size = (!!params.size || typeof params.size !== 'undefined') ? params.size : 15;
+            size = (!!params.size || typeof params.size !== 'undefined') ? params.size : 12;
 
 
 
